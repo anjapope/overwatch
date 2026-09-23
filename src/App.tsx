@@ -1,6 +1,7 @@
 import { OverwatchGlobe } from './components/OverwatchGlobe'
 import type { OverwatchEvent } from './domain/overwatch'
 import './App.css'
+import CommandBar from './components/CommandBar'
 
 function App() {
   const initialEvents: OverwatchEvent[] = []
@@ -12,6 +13,9 @@ function App() {
           <span className="brand-mark" aria-hidden="true"></span>
           <span className="brand-name">OVERWATCH</span>
         </div>
+
+        <CommandBar />
+
         <span className="status-pill">ZERO 0.1</span>
       </header>
 
