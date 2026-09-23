@@ -1,6 +1,24 @@
 import { app, BrowserWindow, shell } from 'electron'
 import path from 'node:path'
 
+// Ensure single-instance behavior in the desktop runtime. Minimal and
+// independent lifecycle protection: if another instance controls the app,
+// exit immediately; otherwise listen for second-instance events to focus
+// the existing window.
+const gotLock = app.requestSingleInstanceLock()
+if (!gotLock) {
+  // another instance is active — quit this one
+  void app.whenReady().then(() => app.quit())
+}
+
+app.on('second-instance', () => {
+  // when a second instance is attempted, focus the existing main window
+  if (mainWindow) {
+    if (mainWindow.isMinimized()) mainWindow.restore()
+    mainWindow.focus()
+  }
+})
+
 const devServerUrl = process.env.VITE_DEV_SERVER_URL
 
 let mainWindow: BrowserWindow | null = null
