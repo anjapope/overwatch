@@ -11,6 +11,11 @@ This document records the lifecycle and relationship semantics introduced in Zer
    - `supersedes`: target observation should be preferred for current use but does not erase source.
    - `contradicts`: target observation conflicts with source; contradiction is recorded, not resolved.
    - `supports`: target observation provides supporting evidence for the source.
+    - `derived-from`: source observation is derived from (depends upon) the target observation.
+    - `corrects`: source observation corrects the target observation (target remains recoverable).
+    - `supersedes`: source observation should be preferred for current use over the target but does not erase the target.
+    - `contradicts`: source observation contradicts the target; contradiction is recorded, not resolved. Contradiction remains directional in storage.
+    - `supports`: source observation provides supporting evidence for the target.
 
 3. Directionality
    - Relationships are serialized with `sourceId` → `targetId`.

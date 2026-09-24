@@ -16,7 +16,21 @@ export type RelationshipKind =
 export interface ObservationRelationship {
   id?: ObservationRelationshipId
   kind: RelationshipKind
-  // direction: source -> target (meaning depends on `kind` semantics)
+  // Canonical direction: `sourceId -> targetId`.
+  //
+  // Canonical semantics (OVERVIEW):
+  // - `sourceId` is the relationship actor / origin (the observation asserting the relation).
+  // - `targetId` is the relationship object / destination (the observation acted upon).
+  //
+  // Per-kind intent (stored as `sourceId -> targetId`):
+  // - `derived-from`: source is derived from target (source depends on target).
+  // - `corrects`: source corrects target.
+  // - `supersedes`: source supersedes target.
+  // - `contradicts`: source contradicts target (directional in storage; do not auto-resolve).
+  // - `supports`: source supports target.
+  //
+  // Helper functions in this module rely on `sourceId` as the actor and
+  // `targetId` as the affected object; do not invert these roles.
   sourceId: ObservationId
   targetId: ObservationId
   // optional provenance for the relationship itself (who asserted the relation)
