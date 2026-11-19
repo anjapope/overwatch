@@ -7,6 +7,7 @@ import {
   Viewer,
   Cartesian3,
   Color,
+  HeadingPitchRange,
 } from 'cesium'
 import { coordinatesFor, type IntelligenceDocument } from '../domain/intelligence'
 
@@ -55,6 +56,14 @@ export function OverwatchGlobe({ observations = [], selectedId, onSelect }: Over
 
     viewer.scene.globe.enableLighting = true
     viewer.scene.requestRenderMode = false
+    const cameraController = viewer.scene.screenSpaceCameraController
+    cameraController.inertiaZoom = 0
+    cameraController.minimumZoomDistance = 750_000
+    cameraController.maximumZoomDistance = 25_000_000
+    viewer.camera.lookAt(
+      Cartesian3.ZERO,
+      new HeadingPitchRange(0, -Math.PI / 2, 22_000_000),
+    )
     viewerRef.current = viewer
     const removeSelection = viewer.selectedEntityChanged.addEventListener(entity => {
       const document = observationsRef.current.find(item => item.document_id === entity?.id)
