@@ -5,18 +5,27 @@ import {
   EllipsoidTerrainProvider,
   OpenStreetMapImageryProvider,
   Viewer,
+  Cartesian3,
+  Color,
 } from 'cesium'
-
-import type { OverwatchEvent } from '../domain/overwatch'
+import { coordinatesFor, type IntelligenceDocument } from '../domain/intelligence'
 
 export interface OverwatchGlobeProps {
-  events?: readonly OverwatchEvent[]
+  observations?: readonly IntelligenceDocument[]
+  selectedId?: string
+  onSelect?(document: IntelligenceDocument): void
 }
 
-export function OverwatchGlobe({ events = [] }: OverwatchGlobeProps) {
+export function OverwatchGlobe({ observations = [], selectedId, onSelect }: OverwatchGlobeProps) {
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const viewerRef = useRef<Viewer | null>(null)
+  const observationsRef = useRef(observations)
+  const onSelectRef = useRef(onSelect)
 
-  void events
+  useEffect(() => {
+    observationsRef.current = observations
+    onSelectRef.current = onSelect
+  }, [observations, onSelect])
 
   useEffect(() => {
     const container = containerRef.current
@@ -46,13 +55,31 @@ export function OverwatchGlobe({ events = [] }: OverwatchGlobeProps) {
 
     viewer.scene.globe.enableLighting = true
     viewer.scene.requestRenderMode = false
+    viewerRef.current = viewer
+    const removeSelection = viewer.selectedEntityChanged.addEventListener(entity => {
+      const document = observationsRef.current.find(item => item.document_id === entity?.id)
+      if (document) onSelectRef.current?.(document)
+    })
 
     return () => {
+      removeSelection()
+      viewerRef.current = null
       if (!viewer.isDestroyed()) {
         viewer.destroy()
       }
     }
   }, [])
+
+  useEffect(() => {
+    const viewer = viewerRef.current
+    if (!viewer) return
+    viewer.entities.removeAll()
+    observations.map(coordinatesFor).filter(item => item !== undefined).forEach(document => {
+      viewer.entities.add({ id: document.document_id, name: document.title,
+        position: Cartesian3.fromDegrees(document.longitude, document.latitude),
+        point: { pixelSize: document.document_id === selectedId ? 14 : 10, color: Color.fromCssColorString('#7ec8ff'), outlineColor: Color.WHITE, outlineWidth: 1 } })
+    })
+  }, [observations, selectedId])
 
   return (
     <section className="globe-panel" aria-label="Cesium Earth globe">

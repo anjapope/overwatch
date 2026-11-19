@@ -62,6 +62,21 @@
   padding: 12px;
 }
 
+.operational-workspace { display: grid; grid-template-columns: minmax(0, 1fr) 360px; height: 100%; gap: 12px; }
+.observation-panel { overflow: auto; border: 1px solid rgba(122,138,166,.2); border-radius: 8px; background: rgba(9,12,18,.96); color: #d9e5f5; padding: 14px; }
+.observation-panel header { display:flex; align-items:center; justify-content:space-between; }
+.observation-panel h1, .observation-panel h2 { margin: 4px 0 12px; }
+.observation-panel header button { color:#bde0ff; background:#172334; border:1px solid #35506e; border-radius:5px; padding:7px 10px; }
+.eyebrow { color:#7ec8ff; font: 0.66rem var(--mono); letter-spacing:.16em; text-transform:uppercase; }
+.observation-list { display:grid; gap:6px; }
+.observation-list button { display:grid; gap:5px; text-align:left; color:#d9e5f5; padding:10px; border:1px solid rgba(122,138,166,.16); border-radius:6px; background:#0e141f; }
+.observation-list button.selected { border-color:#7ec8ff; background:#142234; }
+.observation-list span, .observation-list small { color:#8ba2bd; }
+.observation-detail { border-top:1px solid rgba(122,138,166,.2); margin-top:14px; padding-top:14px; }
+.observation-detail dl { display:grid; gap:7px; }.observation-detail dl div { display:grid; grid-template-columns:90px 1fr; }
+.observation-detail dt { color:#8ba2bd; }.observation-detail dd { margin:0; overflow-wrap:anywhere; }.observation-detail a { color:#7ec8ff; }
+.feed-message { padding:14px; color:#9db0c6; }.feed-message.error { color:#ffb0a8; }
+
 @media (max-width: 720px) {
   .top-bar {
     padding-inline: 12px;
@@ -74,4 +89,5 @@
   .app-main {
     padding: 8px;
   }
+  .operational-workspace { grid-template-columns: 1fr; grid-template-rows: minmax(360px, 1fr) auto; }
 }

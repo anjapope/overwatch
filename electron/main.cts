@@ -1,4 +1,4 @@
-import { app, BrowserWindow, shell } from 'electron'
+import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import path from 'node:path'
 
 // Ensure single-instance behavior in the desktop runtime. Minimal and
@@ -23,6 +23,35 @@ const devServerUrl = process.env.VITE_DEV_SERVER_URL
 
 let mainWindow: BrowserWindow | null = null
 
+const providerBaseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
+const providerToken = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN
+
+function configuredProviderUrl() {
+  if (!providerBaseUrl || !providerToken) throw new Error('Mayday Intelligence provider is not configured')
+  const url = new URL(providerBaseUrl)
+  if (url.protocol !== 'https:' && !['127.0.0.1', 'localhost', '::1'].includes(url.hostname)) {
+    throw new Error('Mayday Intelligence provider must use HTTPS or a loopback tunnel')
+  }
+  return new URL('documents?limit=100', `${url.toString().replace(/\/$/, '')}/`)
+}
+
+ipcMain.handle('intelligence:list-observations', async () => {
+  const response = await fetch(configuredProviderUrl(), {
+    headers: { Authorization: `Bearer ${providerToken}`, Accept: 'application/json' },
+    signal: AbortSignal.timeout(10_000),
+  })
+  if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
+  const payload: unknown = await response.json()
+  if (!payload || typeof payload !== 'object' || !Array.isArray((payload as { items?: unknown }).items)) {
+    throw new Error('Mayday Intelligence returned an invalid document page')
+  }
+  const items = (payload as { items: unknown[] }).items
+  if (items.some(item => !item || typeof item !== 'object' || (item as { protocol_version?: unknown }).protocol_version !== 'mayday.intelligence.document/1')) {
+    throw new Error('Mayday Intelligence returned an unsupported document contract')
+  }
+  return payload
+})
+
 function createMainWindow() {
   mainWindow = new BrowserWindow({
     width: 1600,
@@ -41,7 +70,8 @@ function createMainWindow() {
   })
 
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-    void shell.openExternal(url)
+    const parsed = new URL(url)
+    if (parsed.protocol === 'https:' || parsed.protocol === 'http:') void shell.openExternal(url)
 
     return { action: 'deny' }
   })

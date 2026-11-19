@@ -1,3 +1,5 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 
-contextBridge.exposeInMainWorld('overwatch', Object.freeze({}))
+contextBridge.exposeInMainWorld('overwatch', Object.freeze({
+  listObservations: () => ipcRenderer.invoke('intelligence:list-observations'),
+}))
