@@ -6,6 +6,8 @@ import { AppStateProvider } from './state/provider'
 import { ObservationFeed } from './components/ObservationFeed'
 import type { IntelligenceDocument, IntelligenceDocumentPage } from './domain/intelligence'
 import { buildRegionalDossiers } from './analysis/regionalIntelligence'
+import { OperationsWorkspace } from './components/OperationsWorkspace'
+import { loadWorkspace, saveWorkspace, type WorkspaceState, type WorkspaceView } from './domain/workspace'
 
 function App() {
   const [observations, setObservations] = useState<IntelligenceDocument[]>([])
@@ -13,6 +15,8 @@ function App() {
   const [selectedRegionId, setSelectedRegionId] = useState<string>()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
+  const [activeView, setActiveView] = useState<WorkspaceView>('globe')
+  const [workspace, setWorkspace] = useState<WorkspaceState>(() => loadWorkspace())
   const load = useCallback(async () => {
     setLoading(true); setError(undefined)
     try {
@@ -31,6 +35,7 @@ function App() {
     const timer = window.setTimeout(() => void load(), 0)
     return () => window.clearTimeout(timer)
   }, [load])
+  useEffect(() => saveWorkspace(workspace), [workspace])
   const select = useCallback((document: IntelligenceDocument) => setSelectedId(document.document_id), [])
   const dossiers = useMemo(() => buildRegionalDossiers(observations), [observations])
   const selectedRegion = dossiers.find(item => item.region.id === selectedRegionId)
@@ -44,16 +49,16 @@ function App() {
             <span className="brand-name">OVERWATCH</span>
           </div>
 
-          <CommandBar />
+          <CommandBar active={activeView} onNavigate={setActiveView} />
 
           <span className="status-pill">LIVE INTEGRATION</span>
         </header>
 
         <main className="app-main" aria-label="Operational globe workspace">
-          <div className="operational-workspace">
+          {activeView === 'globe' ? <div className="operational-workspace">
             <OverwatchGlobe observations={observations} dossiers={dossiers} selectedId={selectedId} selectedRegionId={selectedRegionId} onSelect={select} onSelectRegion={dossier => setSelectedRegionId(dossier.region.id)} />
             <ObservationFeed observations={observations} selectedId={selectedId} selectedRegion={selectedRegion} loading={loading} error={error} onSelect={select} onCloseRegion={() => setSelectedRegionId(undefined)} onRefresh={() => void load()} />
-          </div>
+          </div> : <OperationsWorkspace view={activeView} observations={observations} selectedId={selectedId} workspace={workspace} onChange={setWorkspace} onBack={() => setActiveView('globe')} />}
         </main>
       </div>
     </AppStateProvider>
