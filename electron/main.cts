@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain, shell } from 'electron'
+import fs from 'node:fs'
 import path from 'node:path'
 
 // Ensure single-instance behavior in the desktop runtime. Minimal and
@@ -24,7 +25,10 @@ const devServerUrl = process.env.VITE_DEV_SERVER_URL
 let mainWindow: BrowserWindow | null = null
 
 const providerBaseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
+  || app.commandLine.getSwitchValue('mayday-provider-url')
+const providerTokenFile = app.commandLine.getSwitchValue('mayday-provider-token-file')
 const providerToken = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN
+  || (providerTokenFile ? fs.readFileSync(providerTokenFile, 'utf8').trim() : '')
 
 function configuredProviderUrl() {
   if (!providerBaseUrl || !providerToken) throw new Error('Mayday Intelligence provider is not configured')

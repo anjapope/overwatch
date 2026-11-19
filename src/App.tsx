@@ -4,7 +4,7 @@ import './App.css'
 import CommandBar from './components/CommandBar'
 import { AppStateProvider } from './state/provider'
 import { ObservationFeed } from './components/ObservationFeed'
-import type { IntelligenceDocument } from './domain/intelligence'
+import type { IntelligenceDocument, IntelligenceDocumentPage } from './domain/intelligence'
 
 function App() {
   const [observations, setObservations] = useState<IntelligenceDocument[]>([])
@@ -14,8 +14,12 @@ function App() {
   const load = useCallback(async () => {
     setLoading(true); setError(undefined)
     try {
-      if (!window.overwatch) throw new Error('Intelligence bridge is available only in the Overwatch desktop application')
-      const page = await window.overwatch.listObservations()
+      const page = window.overwatch
+        ? await window.overwatch.listObservations()
+        : await fetch('/api/intelligence').then(async response => {
+            if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
+            return response.json() as Promise<IntelligenceDocumentPage>
+          })
       setObservations(page.items)
       setSelectedId(current => current && page.items.some(item => item.document_id === current) ? current : page.items[0]?.document_id)
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'Could not load Mayday Intelligence observations') }

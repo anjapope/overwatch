@@ -58,6 +58,36 @@ function serveCesiumAssets() {
   }
 }
 
+function serveIntelligenceObservations() {
+  return {
+    name: 'overwatch-intelligence-dev-bridge',
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use('/api/intelligence', async (_request, response) => {
+        const baseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
+        const token = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN
+        if (!baseUrl || !token) {
+          response.statusCode = 503
+          response.end(JSON.stringify({ error: 'Mayday Intelligence provider is not configured' }))
+          return
+        }
+        try {
+          const upstream = await fetch(new URL('documents?limit=100', `${baseUrl.replace(/\/$/, '')}/`), {
+            headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
+            signal: AbortSignal.timeout(10_000),
+          })
+          response.statusCode = upstream.status
+          response.setHeader('Content-Type', 'application/json; charset=utf-8')
+          response.setHeader('Cache-Control', 'no-store')
+          response.end(await upstream.text())
+        } catch {
+          response.statusCode = 502
+          response.end(JSON.stringify({ error: 'Mayday Intelligence provider is unavailable' }))
+        }
+      })
+    },
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
   base: './',
@@ -68,6 +98,7 @@ export default defineConfig({
     CESIUM_BASE_URL: JSON.stringify(cesiumBasePath),
   },
   plugins: [
+    serveIntelligenceObservations(),
     serveCesiumAssets(),
     react(),
     viteStaticCopy({

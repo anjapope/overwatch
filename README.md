@@ -18,4 +18,12 @@ MAYDAY_INTELLIGENCE_PROVIDER_TOKEN='<same generated secret>' \
 npm start
 ```
 
+For a macOS Launch Services start, pass the loopback provider URL and a mode-`600` token file. The token value remains outside the command line:
+
+```bash
+open -n node_modules/electron/dist/Electron.app --args "$PWD" \
+  --mayday-provider-url=http://127.0.0.1:18767/api/v1/provider \
+  --mayday-provider-token-file=/secure/path/overwatch-provider.token
+```
+
 The application rejects plain HTTP except on loopback. Do not commit tokens or place them in Vite variables; `VITE_*` values are renderer-visible. The provider must already be running with the operational Intelligence database. A successful build does not prove access to Mayday 3; verify the connection from the target machine by refreshing the Observations panel.
