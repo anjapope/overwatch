@@ -1,11 +1,31 @@
+import { useCallback, useEffect, useState } from 'react'
 import { OverwatchGlobe } from './components/OverwatchGlobe'
-import type { OverwatchEvent } from './domain/overwatch'
 import './App.css'
 import CommandBar from './components/CommandBar'
 import { AppStateProvider } from './state/provider'
+import { ObservationFeed } from './components/ObservationFeed'
+import type { IntelligenceDocument } from './domain/intelligence'
 
 function App() {
-  const initialEvents: OverwatchEvent[] = []
+  const [observations, setObservations] = useState<IntelligenceDocument[]>([])
+  const [selectedId, setSelectedId] = useState<string>()
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string>()
+  const load = useCallback(async () => {
+    setLoading(true); setError(undefined)
+    try {
+      if (!window.overwatch) throw new Error('Intelligence bridge is available only in the Overwatch desktop application')
+      const page = await window.overwatch.listObservations()
+      setObservations(page.items)
+      setSelectedId(current => current && page.items.some(item => item.document_id === current) ? current : page.items[0]?.document_id)
+    } catch (reason) { setError(reason instanceof Error ? reason.message : 'Could not load Mayday Intelligence observations') }
+    finally { setLoading(false) }
+  }, [])
+  useEffect(() => {
+    const timer = window.setTimeout(() => void load(), 0)
+    return () => window.clearTimeout(timer)
+  }, [load])
+  const select = useCallback((document: IntelligenceDocument) => setSelectedId(document.document_id), [])
 
   return (
     <AppStateProvider>
@@ -18,11 +38,14 @@ function App() {
 
           <CommandBar />
 
-          <span className="status-pill">ZERO 0.1</span>
+          <span className="status-pill">LIVE INTEGRATION</span>
         </header>
 
         <main className="app-main" aria-label="Operational globe workspace">
-          <OverwatchGlobe events={initialEvents} />
+          <div className="operational-workspace">
+            <OverwatchGlobe observations={observations} selectedId={selectedId} onSelect={select} />
+            <ObservationFeed observations={observations} selectedId={selectedId} loading={loading} error={error} onSelect={select} onRefresh={() => void load()} />
+          </div>
         </main>
       </div>
     </AppStateProvider>
