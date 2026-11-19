@@ -77,6 +77,14 @@
 .observation-detail dl { display:grid; gap:7px; }.observation-detail dl div { display:grid; grid-template-columns:90px 1fr; }
 .observation-detail dt { color:#8ba2bd; }.observation-detail dd { margin:0; overflow-wrap:anywhere; }.observation-detail a { color:#7ec8ff; }
 .feed-message { padding:14px; color:#9db0c6; }.feed-message.error { color:#ffb0a8; }
+.signal-banner { display:grid; gap:4px; margin:8px 0 12px; padding:10px; border:1px solid; border-radius:6px; }
+.signal-banner span { color:#a9bbcf; font-size:.82rem; }.signal-banner.conflict { border-color:#ff443d; background:rgba(255,68,61,.12); }.signal-banner.attention { border-color:#ffb84d; background:rgba(255,184,77,.1); }.signal-banner.activity { border-color:#42bff5; background:rgba(66,191,245,.1); }
+.dossier-metrics { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 10px; }.dossier-metrics div { padding:9px; border:1px solid rgba(122,138,166,.18); border-radius:6px; }.dossier-metrics dt { color:#8ba2bd; font-size:.72rem; }.dossier-metrics dd { margin:3px 0 0; font-size:1.2rem; font-weight:700; }
+.derivation-note { color:#9db0c6; font-size:.76rem; line-height:1.45; }
+.athos-slot { margin:12px 0; padding:11px; border:1px dashed rgba(126,200,255,.35); border-radius:6px; background:rgba(20,34,52,.42); }.athos-slot strong { display:block; margin:5px 0; }.athos-slot p { margin:0; color:#8ba2bd; font-size:.76rem; }
+.dossier-list { padding-top:2px; }
+.region-legend { position:absolute; z-index:2; top:14px; left:14px; display:grid; gap:5px; width:190px; max-height:calc(100% - 28px); overflow:auto; padding:10px; border:1px solid rgba(122,138,166,.25); border-radius:8px; background:rgba(5,9,15,.86); backdrop-filter:blur(8px); }
+.region-legend button { display:grid; grid-template-columns:8px 1fr auto; align-items:center; gap:7px; border:1px solid transparent; border-radius:5px; padding:6px; color:#d9e5f5; background:rgba(18,26,38,.82); text-align:left; font-size:.72rem; }.region-legend button i { width:8px; height:8px; border-radius:2px; box-shadow:0 0 8px currentColor; }.region-legend button strong { font-family:var(--mono); }.region-legend button.conflict i { color:#ff443d; background:#ff443d; }.region-legend button.attention i { color:#ffb84d; background:#ffb84d; }.region-legend button.activity i { color:#42bff5; background:#42bff5; }.region-legend button.selected { border-color:#7ec8ff; background:#18283b; }
 
 @media (max-width: 720px) {
   .top-bar {

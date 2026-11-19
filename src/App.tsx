@@ -1,14 +1,16 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { OverwatchGlobe } from './components/OverwatchGlobe'
 import './App.css'
 import CommandBar from './components/CommandBar'
 import { AppStateProvider } from './state/provider'
 import { ObservationFeed } from './components/ObservationFeed'
 import type { IntelligenceDocument, IntelligenceDocumentPage } from './domain/intelligence'
+import { buildRegionalDossiers } from './analysis/regionalIntelligence'
 
 function App() {
   const [observations, setObservations] = useState<IntelligenceDocument[]>([])
   const [selectedId, setSelectedId] = useState<string>()
+  const [selectedRegionId, setSelectedRegionId] = useState<string>()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
   const load = useCallback(async () => {
@@ -30,6 +32,8 @@ function App() {
     return () => window.clearTimeout(timer)
   }, [load])
   const select = useCallback((document: IntelligenceDocument) => setSelectedId(document.document_id), [])
+  const dossiers = useMemo(() => buildRegionalDossiers(observations), [observations])
+  const selectedRegion = dossiers.find(item => item.region.id === selectedRegionId)
 
   return (
     <AppStateProvider>
@@ -47,8 +51,8 @@ function App() {
 
         <main className="app-main" aria-label="Operational globe workspace">
           <div className="operational-workspace">
-            <OverwatchGlobe observations={observations} selectedId={selectedId} onSelect={select} />
-            <ObservationFeed observations={observations} selectedId={selectedId} loading={loading} error={error} onSelect={select} onRefresh={() => void load()} />
+            <OverwatchGlobe observations={observations} dossiers={dossiers} selectedId={selectedId} selectedRegionId={selectedRegionId} onSelect={select} onSelectRegion={dossier => setSelectedRegionId(dossier.region.id)} />
+            <ObservationFeed observations={observations} selectedId={selectedId} selectedRegion={selectedRegion} loading={loading} error={error} onSelect={select} onCloseRegion={() => setSelectedRegionId(undefined)} onRefresh={() => void load()} />
           </div>
         </main>
       </div>

@@ -1,7 +1,10 @@
 import { safeExternalUrl, type IntelligenceDocument } from '../domain/intelligence'
-interface Props { observations: readonly IntelligenceDocument[]; selectedId?: string; loading: boolean; error?: string; onSelect(document: IntelligenceDocument): void; onRefresh(): void }
+import type { RegionalDossier } from '../analysis/regionalIntelligence'
+import { RegionDossier } from './RegionDossier'
+interface Props { observations: readonly IntelligenceDocument[]; selectedId?: string; selectedRegion?: RegionalDossier; loading: boolean; error?: string; onSelect(document: IntelligenceDocument): void; onCloseRegion(): void; onRefresh(): void }
 function timestamp(document: IntelligenceDocument) { const value = document.publication_time ?? document.retrieval_time ?? document.storage_time; const parsed = new Date(value); return Number.isNaN(parsed.getTime()) ? value : parsed.toLocaleString() }
-export function ObservationFeed({ observations, selectedId, loading, error, onSelect, onRefresh }: Props) {
+export function ObservationFeed({ observations, selectedId, selectedRegion, loading, error, onSelect, onCloseRegion, onRefresh }: Props) {
+  if (selectedRegion) return <RegionDossier dossier={selectedRegion} selectedId={selectedId} onClose={onCloseRegion} onSelect={onSelect} />
   const selected = observations.find(item => item.document_id === selectedId)
   const evidenceUrl = safeExternalUrl(selected?.canonical_url)
   return <aside className="observation-panel" aria-label="Live Intelligence observations">
