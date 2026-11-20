@@ -28,3 +28,22 @@ export function validateSpaceObservation(value: SpaceObservation): boolean {
   if (value.frame.kind === 'orbital-elements') return !Number.isNaN(new Date(value.frame.epoch).getTime())
   return true
 }
+
+const bodyTerms: Record<CelestialBodyId, RegExp> = {
+  sun: /\b(sun|solar|heliophysics|coronal|sunspot)\b/i,
+  earth: /\b(earth|terrestrial|near-earth|geomagnetic|aurora)\b/i,
+  moon: /\b(moon|lunar|artemis)\b/i,
+  mars: /\b(mars|martian|perseverance|curiosity rover)\b/i,
+  jupiter: /\b(jupiter|jovian|europa|ganymede|io)\b/i,
+  saturn: /\b(saturn|saturnian|enceladus|cassini)\b/i,
+  titan: /\b(titan|dragonfly)\b/i,
+  'asteroid-belt': /\b(asteroid|comet|minor planet|small bod(?:y|ies)|near-earth object|neo)\b/i,
+}
+
+export interface BodyRoutableDocument { title: string; summary?: string | null; topics?: string[] | null; source_id?: string | null }
+export function bodiesForDocument(document: BodyRoutableDocument): CelestialBodyId[] {
+  const text = `${document.title} ${document.summary ?? ''} ${(document.topics ?? []).join(' ')}`
+  const matches = celestialBodies.map(body => body.id).filter(id => bodyTerms[id].test(text))
+  if (document.source_id === 'overwatch-space-artemis' && !matches.includes('moon')) matches.push('moon')
+  return matches
+}
