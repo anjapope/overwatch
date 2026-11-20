@@ -18,12 +18,17 @@ MAYDAY_INTELLIGENCE_PROVIDER_TOKEN='<same generated secret>' \
 npm start
 ```
 
-For a macOS Launch Services start, pass the loopback provider URL and a mode-`600` token file. The token value remains outside the command line:
+Build the native Apple-Silicon Overwatch application instead of launching Electron's generic development shell:
 
 ```bash
-open -n node_modules/electron/dist/Electron.app --args "$PWD" \
+npm run package:mac
+open -n /private/tmp/overwatch-release/Overwatch-darwin-arm64/Overwatch.app --args \
   --mayday-provider-url=http://127.0.0.1:18767/api/v1/provider \
   --mayday-provider-token-file=/secure/path/overwatch-provider.token
 ```
+
+The local package is consistently ad-hoc signed and uses the stable bundle identity `com.mayday.overwatch`. It is built outside synchronized folders because file-provider metadata invalidates strict macOS signature verification. Public distribution requires an Apple Developer ID signature and notarization; do not distribute the ad-hoc package as a trusted release.
+
+For normal Finder launches, `~/Library/Application Support/Overwatch/provider.json` may contain `providerUrl` and `tokenFile`. Store only a protected token-file path there, never the token value itself.
 
 The application rejects plain HTTP except on loopback. Do not commit tokens or place them in Vite variables; `VITE_*` values are renderer-visible. The provider must already be running with the operational Intelligence database. A successful build does not prove access to Mayday 3; verify the connection from the target machine by refreshing the Observations panel.

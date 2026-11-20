@@ -24,9 +24,29 @@ const devServerUrl = process.env.VITE_DEV_SERVER_URL
 
 let mainWindow: BrowserWindow | null = null
 
+interface ProviderConfig { providerUrl?: string; tokenFile?: string }
+function localProviderConfig(): ProviderConfig {
+  const paths = [
+    path.join(app.getPath('userData'), 'provider.json'),
+    path.resolve(path.dirname(app.getPath('exe')), '..', '..', '..', 'Overwatch.provider.json'),
+  ]
+  for (const configPath of paths) {
+    try {
+      const parsed: unknown = JSON.parse(fs.readFileSync(configPath, 'utf8'))
+      if (!parsed || typeof parsed !== 'object') continue
+      const config = parsed as Record<string, unknown>
+      return {
+        providerUrl: typeof config.providerUrl === 'string' ? config.providerUrl : undefined,
+        tokenFile: typeof config.tokenFile === 'string' ? config.tokenFile : undefined,
+      }
+    } catch { /* Try the next local configuration location. */ }
+  }
+  return {}
+}
+const localConfig = localProviderConfig()
 const providerBaseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
-  || app.commandLine.getSwitchValue('mayday-provider-url')
-const providerTokenFile = app.commandLine.getSwitchValue('mayday-provider-token-file')
+  || app.commandLine.getSwitchValue('mayday-provider-url') || localConfig.providerUrl
+const providerTokenFile = app.commandLine.getSwitchValue('mayday-provider-token-file') || localConfig.tokenFile
 const providerToken = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN
   || (providerTokenFile ? fs.readFileSync(providerTokenFile, 'utf8').trim() : '')
 

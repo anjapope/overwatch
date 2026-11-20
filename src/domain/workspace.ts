@@ -1,6 +1,6 @@
 import type { IntelligenceDocument } from './intelligence'
 
-export type WorkspaceView = 'globe' | 'search' | 'dossiers' | 'events' | 'watches' | 'alerts' | 'briefings' | 'sources' | 'layers' | 'settings'
+export type WorkspaceView = 'globe' | 'system' | 'search' | 'dossiers' | 'events' | 'watches' | 'alerts' | 'briefings' | 'sources' | 'layers' | 'settings'
 export type AiPermission = 'organize' | 'draft' | 'review' | 'source' | 'apply'
 
 export interface Dossier {

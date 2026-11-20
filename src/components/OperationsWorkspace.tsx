@@ -3,7 +3,7 @@ import type { IntelligenceDocument } from '../domain/intelligence'
 import { dailyMajorEvents, newId, type AiPermission, type Briefing, type Dossier, type WatchRequest, type WorkspaceState, type WorkspaceView } from '../domain/workspace'
 
 interface Props {
-  view: Exclude<WorkspaceView, 'globe'>; observations: IntelligenceDocument[]; selectedId?: string
+  view: Exclude<WorkspaceView, 'globe' | 'system'>; observations: IntelligenceDocument[]; selectedId?: string
   workspace: WorkspaceState; onChange(next: WorkspaceState): void; onBack(): void
 }
 const permissions: Array<[AiPermission, string]> = [['organize','Create and organize folders'],['draft','Draft executive summaries'],['review','Review human writing'],['source','Suggest supporting sources'],['apply','Apply approved changes']]

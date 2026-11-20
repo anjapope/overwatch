@@ -1,7 +1,10 @@
 {
   "name": "overwatch",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "productName": "Overwatch",
+  "description": "Evidence-preserving operational intelligence workspace",
+  "author": "Mayday",
   "type": "module",
   "main": "build/electron/main.cjs",
   "scripts": {
@@ -14,6 +17,8 @@
     "build:renderer": "vite build",
     "build:electron": "tsc -p tsconfig.electron.json",
     "build": "npm run typecheck && npm run build:electron && npm run build:renderer",
+    "package:mac": "npm run build && node ./scripts/package-macos.cjs",
+    "open:mac": "open /private/tmp/overwatch-release/Overwatch-darwin-arm64/Overwatch.app",
     "lint": "eslint .",
     "test": "vitest run",
     "preview": "vite preview",
@@ -27,6 +32,7 @@
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@electron/packager": "^19.0.2",
     "@eslint/js": "^10.0.1",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
@@ -42,7 +48,7 @@
     "typescript-eslint": "^8.69.0",
     "vite": "^8.3.0",
     "vite-plugin-static-copy": "^4.1.1",
-    "wait-on": "^9.1.0",
-    "vitest": "^1.0.0"
+    "vitest": "^1.0.0",
+    "wait-on": "^9.1.0"
   }
 }

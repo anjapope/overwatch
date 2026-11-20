@@ -10,6 +10,7 @@ describe('reduceApplicationCommand', () => {
 
   it('sets lastCommand for each known command and preserves other state', () => {
     const commands = [
+      'system',
       'dossiers',
       'events',
       'watches',
