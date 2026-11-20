@@ -1,14 +1,15 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import 'cesium/Build/CesiumUnminified/Widgets/widgets.css'
 import {
   ImageryLayer,
   EllipsoidTerrainProvider,
-  OpenStreetMapImageryProvider,
+  TileMapServiceImageryProvider,
   Viewer,
   Cartesian3,
   Color,
   HeadingPitchRange,
   Rectangle,
+  buildModuleUrl,
 } from 'cesium'
 import { coordinatesFor, type IntelligenceDocument } from '../domain/intelligence'
 import type { RegionalDossier } from '../analysis/regionalIntelligence'
@@ -25,6 +26,7 @@ export interface OverwatchGlobeProps {
 const signalColor = (signal: RegionalDossier['signal']) => signal === 'conflict' ? Color.fromCssColorString('#ff443d') : signal === 'attention' ? Color.fromCssColorString('#ffb84d') : Color.fromCssColorString('#42bff5')
 
 export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, selectedRegionId, onSelect, onSelectRegion }: OverwatchGlobeProps) {
+  const [globeError, setGlobeError] = useState<string>()
   const containerRef = useRef<HTMLDivElement | null>(null)
   const viewerRef = useRef<Viewer | null>(null)
   const observationsRef = useRef(observations)
@@ -46,24 +48,32 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
       return undefined
     }
 
-    const viewer = new Viewer(container, {
-      animation: false,
-      baseLayerPicker: false,
-      fullscreenButton: false,
-      geocoder: false,
-      homeButton: true,
-      infoBox: false,
-      navigationHelpButton: false,
-      sceneModePicker: false,
-      selectionIndicator: false,
-      timeline: false,
-      terrainProvider: new EllipsoidTerrainProvider(),
-      baseLayer: new ImageryLayer(
-        new OpenStreetMapImageryProvider({
-          url: 'https://tile.openstreetmap.org/',
-        }),
-      ),
-    })
+    let viewer: Viewer
+    try {
+      viewer = new Viewer(container, {
+        animation: false,
+        baseLayerPicker: false,
+        fullscreenButton: false,
+        geocoder: false,
+        homeButton: true,
+        infoBox: false,
+        navigationHelpButton: false,
+        sceneModePicker: false,
+        selectionIndicator: false,
+        timeline: false,
+        terrainProvider: new EllipsoidTerrainProvider(),
+        baseLayer: ImageryLayer.fromProviderAsync(
+          TileMapServiceImageryProvider.fromUrl(
+            buildModuleUrl('Assets/Textures/NaturalEarthII'),
+          ),
+        ),
+      })
+    } catch (reason) {
+      const message = reason instanceof Error ? reason.message : String(reason)
+      console.error('Cesium viewer initialization failed', reason)
+      queueMicrotask(() => setGlobeError(message))
+      return undefined
+    }
 
     viewer.scene.globe.enableLighting = true
     viewer.scene.requestRenderMode = false
@@ -123,6 +133,7 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
   return (
     <section className="globe-panel" aria-label="Cesium Earth globe">
       <div ref={containerRef} className="globe-container" />
+      {globeError && <div className="globe-error" role="alert"><strong>Globe initialization failed</strong><span>{globeError}</span></div>}
       <nav className="region-legend" aria-label="Active intelligence regions">
         <span className="eyebrow">Regional signals</span>
         {dossiers.map(dossier => <button key={dossier.region.id} className={`${dossier.signal} ${dossier.region.id === selectedRegionId ? 'selected' : ''}`} onClick={() => onSelectRegion?.(dossier)}>

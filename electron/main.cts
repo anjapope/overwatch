@@ -138,6 +138,28 @@ function createMainWindow() {
     return { action: 'deny' }
   })
 
+  const diagnosticLog = path.join(app.getPath('userData'), 'diagnostics.log')
+  const appendDiagnostic = (message: string) => {
+    fs.appendFileSync(diagnosticLog, `${new Date().toISOString()} ${message}\n`, { mode: 0o600 })
+  }
+  mainWindow.webContents.on('console-message', (_event, level, message, line, sourceId) => {
+    appendDiagnostic(`renderer:${level} ${message} (${sourceId}:${line})`)
+  })
+  mainWindow.webContents.on('did-fail-load', (_event, code, description, validatedURL) => {
+    appendDiagnostic(`load-failed:${code} ${description} ${validatedURL}`)
+  })
+  mainWindow.webContents.on('render-process-gone', (_event, details) => {
+    appendDiagnostic(`renderer-gone:${details.reason} exit=${details.exitCode}`)
+  })
+  mainWindow.webContents.on('did-finish-load', () => {
+    void mainWindow?.webContents.executeJavaScript(`(() => {
+      const container = document.querySelector('.globe-container');
+      const canvas = container?.querySelector('canvas');
+      const rect = container?.getBoundingClientRect();
+      return { href: location.href, container: rect ? { width: rect.width, height: rect.height, children: container?.childElementCount } : null, canvas: canvas ? { width: canvas.width, height: canvas.height } : null, webgl2: !!document.createElement('canvas').getContext('webgl2') };
+    })()`).then(result => appendDiagnostic(`renderer-ready ${JSON.stringify(result)}`), reason => appendDiagnostic(`diagnostic-failed ${String(reason)}`))
+  })
+
   if (devServerUrl) {
     void mainWindow.loadURL(devServerUrl)
   } else {

@@ -3,7 +3,6 @@ import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type ViteDevServer } from 'vite'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 const currentDirname = path.dirname(fileURLToPath(import.meta.url))
 const cesiumBasePath = 'cesium'
@@ -88,6 +87,21 @@ function serveIntelligenceObservations() {
   }
 }
 
+function copyCesiumBuildAssets() {
+  return {
+    name: 'overwatch-cesium-build-assets',
+    closeBundle() {
+      for (const directory of ['Workers', 'Assets', 'Widgets', 'ThirdParty']) {
+        fs.cpSync(
+          path.join(cesiumBuildPath, directory),
+          path.join(currentDirname, 'dist', cesiumBasePath, directory),
+          { recursive: true },
+        )
+      }
+    },
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
   base: './',
@@ -101,14 +115,7 @@ export default defineConfig({
     serveIntelligenceObservations(),
     serveCesiumAssets(),
     react(),
-    viteStaticCopy({
-      targets: [
-        { src: path.join(cesiumBuildPath, 'Workers'), dest: cesiumBasePath },
-        { src: path.join(cesiumBuildPath, 'Assets'), dest: cesiumBasePath },
-        { src: path.join(cesiumBuildPath, 'Widgets'), dest: cesiumBasePath },
-        { src: path.join(cesiumBuildPath, 'ThirdParty'), dest: cesiumBasePath },
-      ],
-    }),
+    copyCesiumBuildAssets(),
   ],
   optimizeDeps: {
     exclude: ['cesium'],
