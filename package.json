@@ -18,6 +18,7 @@
     "build:electron": "tsc -p tsconfig.electron.json",
     "build": "npm run typecheck && npm run build:electron && npm run build:renderer",
     "package:mac": "npm run build && node ./scripts/package-macos.cjs",
+    "package:linux": "npm run build && node ./scripts/package-linux.cjs",
     "open:mac": "open /private/tmp/overwatch-release/Overwatch-darwin-arm64/Overwatch.app",
     "lint": "eslint .",
     "test": "vitest run",

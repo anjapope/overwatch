@@ -1,6 +1,11 @@
-import { app, BrowserWindow, ipcMain, shell } from 'electron'
+import { app, BrowserWindow, ipcMain, protocol, shell } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
+
+protocol.registerSchemesAsPrivileged([{
+  scheme: 'overwatch',
+  privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true },
+}])
 
 // Ensure single-instance behavior in the desktop runtime. Minimal and
 // independent lifecycle protection: if another instance controls the app,
@@ -23,6 +28,39 @@ app.on('second-instance', () => {
 const devServerUrl = process.env.VITE_DEV_SERVER_URL
 
 let mainWindow: BrowserWindow | null = null
+
+const rendererRoot = path.join(__dirname, '..', '..', 'dist')
+const rendererContentTypes: Record<string, string> = {
+  '.css': 'text/css; charset=utf-8',
+  '.gif': 'image/gif',
+  '.html': 'text/html; charset=utf-8',
+  '.jpeg': 'image/jpeg',
+  '.jpg': 'image/jpeg',
+  '.js': 'application/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.ktx2': 'application/octet-stream',
+  '.png': 'image/png',
+  '.svg': 'image/svg+xml',
+  '.wasm': 'application/wasm',
+  '.webp': 'image/webp',
+  '.xml': 'application/xml; charset=utf-8',
+}
+
+function installRendererProtocol() {
+  protocol.handle('overwatch', request => {
+    const url = new URL(request.url)
+    if (url.hostname !== 'app') return new Response('Not found', { status: 404 })
+    const relativePath = decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname)
+    const assetPath = path.resolve(rendererRoot, `.${relativePath}`)
+    if (!assetPath.startsWith(`${rendererRoot}${path.sep}`)) return new Response('Not found', { status: 404 })
+    try {
+      const body = fs.readFileSync(assetPath)
+      return new Response(body, { headers: { 'Content-Type': rendererContentTypes[path.extname(assetPath).toLowerCase()] ?? 'application/octet-stream' } })
+    } catch {
+      return new Response('Not found', { status: 404 })
+    }
+  })
+}
 
 interface ProviderConfig { providerUrl?: string; tokenFile?: string }
 function localProviderConfig(): ProviderConfig {
@@ -103,8 +141,7 @@ function createMainWindow() {
   if (devServerUrl) {
     void mainWindow.loadURL(devServerUrl)
   } else {
-    const rendererEntryPath = path.join(__dirname, '..', '..', 'dist', 'index.html')
-    void mainWindow.loadFile(rendererEntryPath)
+    void mainWindow.loadURL('overwatch://app/')
   }
 
   mainWindow.on('closed', () => {
@@ -119,6 +156,7 @@ app.on('window-all-closed', () => {
 })
 
 void app.whenReady().then(() => {
+  installRendererProtocol()
   createMainWindow()
 
   app.on('activate', () => {

@@ -27,6 +27,17 @@ open -n /private/tmp/overwatch-release/Overwatch-darwin-arm64/Overwatch.app --ar
   --mayday-provider-token-file=/secure/path/overwatch-provider.token
 ```
 
+Build the Fedora-compatible x64 application directory with:
+
+```bash
+npm run package:linux
+```
+
+The Linux package is written to
+`/private/tmp/overwatch-linux-release/Overwatch-linux-x64`. Install that
+directory as a unit and keep `provider.json` plus its protected token file
+outside the application payload, just as on macOS.
+
 The local package is consistently ad-hoc signed and uses the stable bundle identity `com.mayday.overwatch`. It is built outside synchronized folders because file-provider metadata invalidates strict macOS signature verification. Public distribution requires an Apple Developer ID signature and notarization; do not distribute the ad-hoc package as a trusted release.
 
 For normal Finder launches, `~/Library/Application Support/Overwatch/provider.json` may contain `providerUrl` and `tokenFile`. Store only a protected token-file path there, never the token value itself.
