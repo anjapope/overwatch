@@ -1,20 +1,25 @@
 import { useState } from 'react'
-import { bodiesForDocument, celestialBodies, type CelestialBodyId } from '../domain/space'
+import { bodiesForDocument, celestialBodies, missionsForDocument, spaceMissionProfiles, type CelestialBodyId } from '../domain/space'
 import type { IntelligenceDocument } from '../domain/intelligence'
 
 export function SolarSystemNavigator({ observations, onOpenEarth }: { observations: IntelligenceDocument[]; onOpenEarth(): void }) {
   const [selectedId,setSelectedId]=useState<CelestialBodyId>('earth')
   const [focusedId,setFocusedId]=useState<CelestialBodyId>()
+  const [selectedMissionId,setSelectedMissionId]=useState<string>()
   const selected=celestialBodies.find(body=>body.id===selectedId)!
   const routed=observations.filter(document=>bodiesForDocument(document).includes(selected.id))
+  const selectedMission=spaceMissionProfiles.find(mission=>mission.id===selectedMissionId)
+  const missionEvidence=selectedMission ? observations.filter(document=>missionsForDocument(document).includes(selectedMission.id)) : []
   if (focusedId) return <BodyOperationsView bodyId={focusedId} observations={observations} onBack={()=>setFocusedId(undefined)} onOpenEarth={onOpenEarth}/>
   return <section className="system-workspace" aria-label="Solar system navigator">
     <header className="operations-header"><div><span className="eyebrow">Compressed-distance operations view</span><h1>Solar system</h1></div><button onClick={onOpenEarth}>Open Earth operations</button></header>
     <div className="system-stage" aria-label="Symbolic clickable solar system overview">
       <div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="orbit orbit-three"/>
-      {celestialBodies.map(body=><button key={body.id} className={`celestial-body ${body.id} ${selectedId===body.id?'selected':''}`} style={{left:`${body.x}%`,top:`${body.y}%`,'--body-color':body.color,'--body-size':`${body.size}px`} as React.CSSProperties} onClick={()=>setSelectedId(body.id)} aria-label={`Select ${body.name}`}><i/><span>{body.name}</span></button>)}
+      {celestialBodies.map(body=><button key={body.id} className={`celestial-body ${body.id} ${!selectedMissionId&&selectedId===body.id?'selected':''}`} style={{left:`${body.x}%`,top:`${body.y}%`,'--body-color':body.color,'--body-size':`${body.size}px`} as React.CSSProperties} onClick={()=>{setSelectedId(body.id);setSelectedMissionId(undefined)}} aria-label={`Select ${body.name}`}><i/><span>{body.name}</span></button>)}
+      <nav className="mission-strip" aria-label="Human space mission profiles">{spaceMissionProfiles.map(mission=><button key={mission.id} className={selectedMissionId===mission.id?'selected':''} onClick={()=>setSelectedMissionId(mission.id)} aria-label={`Open ${mission.name} profile`}><i className={`mission-icon mission-${mission.id}`}/><span>{mission.name}</span></button>)}</nav>
     </div>
-    <aside className="system-dossier"><span className="eyebrow">Selected body</span><h2>{selected.name}</h2><dl><div><dt>Class</dt><dd>{selected.kind}</dd></div><div><dt>Reference frame</dt><dd>{selected.id==='asteroid-belt'?'Heliocentric J2000':'Body-fixed when focused'}</dd></div><div><dt>Routed evidence</dt><dd>{routed.length} observation(s)</dd></div></dl><p>Overview positions and sizes are intentionally symbolic. Operational observations retain provenance and explicit reference frames.</p><button className="primary" onClick={()=>selected.id==='earth'?onOpenEarth():setFocusedId(selected.id)}>{selected.id==='earth'?'Enter Earth Cesium view':`Open ${selected.name} operations`}</button></aside>
+    {selectedMission ? <aside className="system-dossier mission-profile"><span className="eyebrow">Mission profile</span><div className={`mission-hero mission-${selectedMission.id}`}><i className={`mission-icon mission-${selectedMission.id}`}/></div><h2>{selectedMission.name}</h2><dl><div><dt>Agency</dt><dd>{selectedMission.agency}</dd></div><div><dt>Class</dt><dd>{selectedMission.kind}</dd></div><div><dt>Status</dt><dd>{selectedMission.status}</dd></div><div><dt>Routed evidence</dt><dd>{missionEvidence.length} observation(s)</dd></div></dl><p>{selectedMission.focus}</p><div className="mission-evidence">{missionEvidence.slice(0,4).map(item=><small key={item.document_id}>{item.title}</small>)}{!missionEvidence.length&&<small>Profile ready for MERLIN archival evidence.</small>}</div></aside> :
+    <aside className="system-dossier"><span className="eyebrow">Selected body</span><h2>{selected.name}</h2><dl><div><dt>Class</dt><dd>{selected.kind}</dd></div><div><dt>Collection status</dt><dd>{selected.status}</dd></div><div><dt>Reference frame</dt><dd>{selected.id==='asteroid-belt'?'Heliocentric J2000':'Body-fixed when focused'}</dd></div><div><dt>Routed evidence</dt><dd>{routed.length} observation(s)</dd></div></dl><p>Overview positions and sizes are intentionally symbolic. Operational observations retain provenance and explicit reference frames.</p><button className="primary" onClick={()=>selected.id==='earth'?onOpenEarth():setFocusedId(selected.id)}>{selected.id==='earth'?'Enter Earth Cesium view':`Open ${selected.name} operations`}</button></aside>}
   </section>
 }
 

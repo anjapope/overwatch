@@ -16,7 +16,17 @@ export interface Briefing {
 }
 export interface WorkspaceState { dossiers: Dossier[]; watches: WatchRequest[]; briefings: Briefing[] }
 
-export const emptyWorkspace: WorkspaceState = { dossiers: [], watches: [], briefings: [] }
+export const defaultWatchRequests: WatchRequest[] = [{
+  id: 'watch-outer-solar-system-archives',
+  title: 'Outer solar system archival requisition',
+  request: 'MERLIN: assemble evidence-preserving archival collections for Saturn, Titan, Enceladus, Jupiter, Io, Europa, Ganymede, and Callisto. Prioritize primary mission records from Voyager 1 and 2, Cassini–Huygens, Galileo, and Juno; retain observation dates, mission/instrument context, reference frames, uncertainty, canonical source links, and provenance. Separately collect Mercury records from MESSENGER and BepiColombo, and Venus records from Magellan, Venus Express, Akatsuki, and relevant NASA planetary archives. Historical mission material must be labeled archive data, never live telemetry.',
+  sources: ['NASA/JPL mission archives', 'NASA Planetary Data System', 'ESA mission archives', 'JAXA mission archives'],
+  cadence: '1d',
+  status: 'ready-for-merlin',
+  createdAt: '2026-11-20T05:50:00.000Z',
+}]
+
+export const emptyWorkspace: WorkspaceState = { dossiers: [], watches: defaultWatchRequests, briefings: [] }
 export const workspaceStorageKey = 'overwatch.workspace.v1'
 
 export function loadWorkspace(): WorkspaceState {
@@ -24,7 +34,8 @@ export function loadWorkspace(): WorkspaceState {
     const value = localStorage.getItem(workspaceStorageKey)
     if (!value) return emptyWorkspace
     const parsed = JSON.parse(value) as Partial<WorkspaceState>
-    return { dossiers: parsed.dossiers ?? [], watches: parsed.watches ?? [], briefings: parsed.briefings ?? [] }
+    const watches = parsed.watches ?? []
+    return { dossiers: parsed.dossiers ?? [], watches: [...defaultWatchRequests.filter(seed => !watches.some(item => item.id === seed.id)), ...watches], briefings: parsed.briefings ?? [] }
   } catch { return emptyWorkspace }
 }
 

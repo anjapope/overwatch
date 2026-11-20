@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import 'cesium/Build/CesiumUnminified/Widgets/widgets.css'
 import {
   ImageryLayer,
@@ -24,6 +24,15 @@ export interface OverwatchGlobeProps {
 }
 
 const signalColor = (signal: RegionalDossier['signal']) => signal === 'conflict' ? Color.fromCssColorString('#ff443d') : signal === 'attention' ? Color.fromCssColorString('#ffb84d') : Color.fromCssColorString('#42bff5')
+const ukraineHotspots = [
+  { id:'kyiv', name:'Kyiv', longitude:30.5234, latitude:50.4501, terms:/\b(kyiv|kiev)\b/i },
+  { id:'kharkiv', name:'Kharkiv', longitude:36.2304, latitude:49.9935, terms:/\bkharkiv\b/i },
+  { id:'donbas', name:'Donbas', longitude:37.8, latitude:48.0, terms:/\b(donbas|donetsk|luhansk)\b/i },
+  { id:'zaporizhzhia', name:'Zaporizhzhia', longitude:35.1396, latitude:47.8388, terms:/\b(zaporizhzhia|zaporizhia)\b/i },
+  { id:'odesa', name:'Odesa', longitude:30.7233, latitude:46.4825, terms:/\b(odesa|odessa)\b/i },
+  { id:'crimea', name:'Crimea', longitude:34.1, latitude:45.2, terms:/\bcrimea\b/i },
+]
+const documentText = (document: IntelligenceDocument) => `${document.title} ${document.summary ?? ''}`
 
 export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, selectedRegionId, onSelect, onSelectRegion }: OverwatchGlobeProps) {
   const [globeError, setGlobeError] = useState<string>()
@@ -33,6 +42,7 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
   const onSelectRef = useRef(onSelect)
   const dossiersRef = useRef(dossiers)
   const onSelectRegionRef = useRef(onSelectRegion)
+  const ukraineObservations = useMemo(()=>observations.filter(document => /\b(ukraine|ukrainian|kyiv|kharkiv|donbas|donetsk|luhansk|zaporizhzhia|odesa|crimea)\b/i.test(documentText(document))),[observations])
 
   useEffect(() => {
     observationsRef.current = observations
@@ -123,12 +133,25 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
         },
       })
     })
+    ukraineHotspots.forEach(hotspot => {
+      const matched = ukraineObservations.filter(document => hotspot.terms.test(documentText(document)))
+      if (!matched.length) return
+      viewer.entities.add({
+        id:`ukraine:${hotspot.id}`, name:`${hotspot.name} — ${matched.length} evidence mention(s)`,
+        position:Cartesian3.fromDegrees(hotspot.longitude,hotspot.latitude,12_000),
+        point:{pixelSize:10+Math.min(matched.length,6),color:Color.fromCssColorString('#ff443d'),outlineColor:Color.WHITE,outlineWidth:2},
+      })
+    })
+    if (ukraineObservations.length) viewer.entities.add({
+      id:'ukraine:eastern-context', name:'Ukraine eastern conflict context — symbolic, not a claimed front line',
+      polyline:{positions:[Cartesian3.fromDegrees(36.23,49.99,8_000),Cartesian3.fromDegrees(37.8,48,8_000),Cartesian3.fromDegrees(35.14,47.84,8_000),Cartesian3.fromDegrees(34.1,45.2,8_000)],width:3,material:Color.fromCssColorString('#ff443d').withAlpha(.8)},
+    })
     observations.map(coordinatesFor).filter(item => item !== undefined).forEach(document => {
       viewer.entities.add({ id: document.document_id, name: document.title,
         position: Cartesian3.fromDegrees(document.longitude, document.latitude),
         point: { pixelSize: document.document_id === selectedId ? 14 : 10, color: Color.fromCssColorString('#7ec8ff'), outlineColor: Color.WHITE, outlineWidth: 1 } })
     })
-  }, [observations, dossiers, selectedId, selectedRegionId])
+  }, [observations, dossiers, selectedId, selectedRegionId, ukraineObservations])
 
   return (
     <section className="globe-panel" aria-label="Cesium Earth globe">
@@ -139,6 +162,7 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
         {dossiers.map(dossier => <button key={dossier.region.id} className={`${dossier.signal} ${dossier.region.id === selectedRegionId ? 'selected' : ''}`} onClick={() => onSelectRegion?.(dossier)}>
           <i aria-hidden="true" /><span>{dossier.region.name}</span><strong>{dossier.observations.length}</strong>
         </button>)}
+        {ukraineObservations.length>0&&<button className="conflict" onClick={()=>viewerRef.current?.camera.flyTo({destination:Rectangle.fromDegrees(21.5,44,41.5,53),duration:.8})} title="Evidence-linked mention anchors; the connecting line is symbolic and is not a claimed front line"><i aria-hidden="true"/><span>Ukraine detail</span><strong>{ukraineObservations.length}</strong></button>}
       </nav>
     </section>
   )
