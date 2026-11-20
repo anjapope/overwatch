@@ -85,8 +85,12 @@ const localConfig = localProviderConfig()
 const providerBaseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
   || app.commandLine.getSwitchValue('mayday-provider-url') || localConfig.providerUrl
 const providerTokenFile = app.commandLine.getSwitchValue('mayday-provider-token-file') || localConfig.tokenFile
+function readProviderToken(tokenFile?: string) {
+  if (!tokenFile) return ''
+  try { return fs.readFileSync(tokenFile, 'utf8').trim() } catch { return '' }
+}
 const providerToken = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN
-  || (providerTokenFile ? fs.readFileSync(providerTokenFile, 'utf8').trim() : '')
+  || readProviderToken(providerTokenFile)
 
 function configuredProviderUrl() {
   if (!providerBaseUrl || !providerToken) throw new Error('Mayday Intelligence provider is not configured')
