@@ -16,8 +16,15 @@ function App() {
   const [selectedRegionId, setSelectedRegionId] = useState<string>()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
+  const [loadingMore, setLoadingMore] = useState(false)
   const [activeView, setActiveView] = useState<WorkspaceView>('globe')
   const [workspace, setWorkspace] = useState<WorkspaceState>(() => loadWorkspace())
+  const applyPage = useCallback((page: IntelligenceDocumentPage) => {
+    setObservations(page.items)
+    setLoadingMore(Boolean(page.loadingMore))
+    setError(page.error ?? (page.truncated ? `Showing ${page.items.length} of ${page.total} records; archive coverage in this view is incomplete.` : undefined))
+    setSelectedId(current => current && page.items.some(item => item.document_id === current) ? current : page.items[0]?.document_id)
+  }, [])
   const load = useCallback(async () => {
     setLoading(true); setError(undefined)
     try {
@@ -27,16 +34,15 @@ function App() {
             if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
             return response.json() as Promise<IntelligenceDocumentPage>
           })
-      setObservations(page.items)
-      if (page.truncated) setError(`Showing ${page.items.length} of ${page.total} records; archive coverage in this view is incomplete.`)
-      setSelectedId(current => current && page.items.some(item => item.document_id === current) ? current : page.items[0]?.document_id)
+      applyPage(page)
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'Could not load Mayday Intelligence observations') }
     finally { setLoading(false) }
-  }, [])
+  }, [applyPage])
   useEffect(() => {
+    const unsubscribe = window.overwatch?.onObservationProgress?.(applyPage)
     const timer = window.setTimeout(() => void load(), 0)
-    return () => window.clearTimeout(timer)
-  }, [load])
+    return () => { window.clearTimeout(timer); unsubscribe?.() }
+  }, [load, applyPage])
   useEffect(() => saveWorkspace(workspace), [workspace])
   const select = useCallback((document: IntelligenceDocument) => setSelectedId(document.document_id), [])
   const dossiers = useMemo(() => buildRegionalDossiers(observations), [observations])
@@ -53,7 +59,7 @@ function App() {
 
           <CommandBar active={activeView} onNavigate={setActiveView} />
 
-          <span className="status-pill">LIVE INTEGRATION</span>
+          <span className="status-pill">{loadingMore ? `${observations.length} RECORDS · LOADING MORE` : `${observations.length} RECORDS`}</span>
         </header>
 
         <main className="app-main" aria-label="Operational globe workspace">

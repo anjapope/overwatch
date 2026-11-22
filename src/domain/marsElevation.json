@@ -1,0 +1,80 @@
+{
+  "spatialReference": {
+    "wkid": 104971,
+    "latestWkid": 104971,
+    "wkt": "GEOGCS[\"GCS_Mars_2000_Sphere\",DATUM[\"D_Mars_2000_Sphere\",SPHEROID[\"Mars_2000_Sphere_IAU_IAG\",3396190.0,0.0]],PRIMEM[\"Reference_Meridian\",0.0],UNIT[\"Degree\",0.0174532925199433]]"
+  },
+  "tileInfo": {
+    "rows": 512,
+    "cols": 512,
+    "dpi": 96,
+    "format": "LERC",
+    "compressionQuality": 0,
+    "lercError": 0.5,
+    "origin": {
+      "x": -180,
+      "y": 90
+    },
+    "spatialReference": {
+      "wkid": 104971,
+      "latestWkid": 104971,
+      "wkt": "GEOGCS[\"GCS_Mars_2000_Sphere\",DATUM[\"D_Mars_2000_Sphere\",SPHEROID[\"Mars_2000_Sphere_IAU_IAG\",3396190.0,0.0]],PRIMEM[\"Reference_Meridian\",0.0],UNIT[\"Degree\",0.0174532925199433]]"
+    },
+    "lods": [
+      {
+        "level": 0,
+        "resolution": 0.3515625,
+        "scale": 78760513.4003741
+      },
+      {
+        "level": 1,
+        "resolution": 0.17578125,
+        "scale": 39380256.70018705
+      },
+      {
+        "level": 2,
+        "resolution": 0.087890625,
+        "scale": 19690128.350093525
+      },
+      {
+        "level": 3,
+        "resolution": 0.043945312,
+        "scale": 9845064.175046762
+      },
+      {
+        "level": 4,
+        "resolution": 0.02197265625,
+        "scale": 4922532.087523381
+      },
+      {
+        "level": 5,
+        "resolution": 0.010986328125,
+        "scale": 2461266.0437616906
+      },
+      {
+        "level": 6,
+        "resolution": 0.0054931640625,
+        "scale": 1230633.0218808453
+      },
+      {
+        "level": 7,
+        "resolution": 0.00274658203125,
+        "scale": 615316.5109404227
+      }
+    ]
+  },
+  "extent": {
+    "xmin": -180,
+    "ymin": -90,
+    "xmax": 180,
+    "ymax": 90,
+    "spatialReference": {
+      "wkid": 104971,
+      "latestWkid": 104971,
+      "wkt": "GEOGCS[\"GCS_Mars_2000_Sphere\",DATUM[\"D_Mars_2000_Sphere\",SPHEROID[\"Mars_2000_Sphere_IAU_IAG\",3396190.0,0.0]],PRIMEM[\"Reference_Meridian\",0.0],UNIT[\"Degree\",0.0174532925199433]]"
+    }
+  },
+  "pixelType": "F32",
+  "bandCount": 1,
+  "copyrightText": "Source: USGS, NASA, ESA, HRSC"
+}

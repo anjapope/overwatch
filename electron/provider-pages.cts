@@ -1,5 +1,6 @@
 export interface DocumentPage { items: { document_id: string; protocol_version: string }[]; total: number; next_cursor?: string | null }
-export async function collectProviderPages(firstUrl: URL, read: (url: URL) => Promise<unknown>, maxPages = 50) {
+export interface ObservationProgress { items: DocumentPage['items']; total: number; truncated: boolean; loadingMore: boolean; error?: string }
+export async function collectProviderPages(firstUrl: URL, read: (url: URL) => Promise<unknown>, maxPages = 50, onProgress?: (page: ObservationProgress) => void) {
   const items: DocumentPage['items'] = []
   const identifiers = new Set<string>()
   const cursors = new Set<string>()
@@ -14,11 +15,16 @@ export async function collectProviderPages(firstUrl: URL, read: (url: URL) => Pr
       if (!item || typeof item.document_id !== 'string' || item.protocol_version !== 'mayday.intelligence.document/1') throw new Error('Mayday Intelligence returned an unsupported document contract')
       if (!identifiers.has(item.document_id)) { items.push(item); identifiers.add(item.document_id) }
     }
-    if (!page.items.length || !page.next_cursor || items.length >= total) return { items, total, truncated:items.length < total }
-    if (cursors.has(page.next_cursor)) throw new Error('Mayday Intelligence pagination did not advance')
-    cursors.add(page.next_cursor)
+    const done = !page.items.length || !page.next_cursor || items.length >= total
+    const bounded = count === maxPages - 1
+    const progress = { items:[...items], total, truncated:(done || bounded) && items.length < total, loadingMore:!done && !bounded }
+    onProgress?.(progress)
+    if (done) return progress
+    const cursor=page.next_cursor!
+    if (cursors.has(cursor)) throw new Error('Mayday Intelligence pagination did not advance')
+    cursors.add(cursor)
     next = new URL(firstUrl)
-    next.searchParams.set('cursor', page.next_cursor)
+    next.searchParams.set('cursor', cursor)
   }
-  return { items, total, truncated:true }
+  return { items, total, truncated:true, loadingMore:false }
 }

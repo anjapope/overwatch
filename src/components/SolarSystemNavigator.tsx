@@ -1,6 +1,9 @@
-import { useMemo, useState, type CSSProperties } from 'react'
+import { lazy, Suspense, useMemo, useState, type CSSProperties } from 'react'
 import { bodiesForDocument, celestialBodies, missionsForDocument, solarSystemGroups, spaceMissionProfiles, type CelestialBody, type CelestialBodyId } from '../domain/space'
 import { safeExternalUrl, type IntelligenceDocument } from '../domain/intelligence'
+
+import { layersForBody } from '../domain/planetary'
+const PlanetarySurface=lazy(()=>import('./PlanetarySurface'))
 
 const bodyStyle = (body: CelestialBody) => ({ '--body-color':body.color, '--body-size':`${body.size}px` }) as CSSProperties
 function Evidence({ documents }: { documents: IntelligenceDocument[] }) {
@@ -41,8 +44,9 @@ function BodyOperationsView({bodyId,observations,onBack,onOpenEarth}:{bodyId:Cel
   const body = celestialBodies.find(item => item.id === bodyId)!
   const routed = observations.filter(document => bodiesForDocument(document).includes(bodyId))
   return <section className={`body-workspace body-${bodyId}`} style={bodyStyle(body)} aria-label={`${body.name} operations view`}>
-    <header className="operations-header"><div><span className="eyebrow">Body-focused evidence · illustrative view</span><h1>{body.name}</h1></div><div className="action-row"><button onClick={onBack}>Solar atlas</button><button onClick={onOpenEarth}>Earth operations</button></div></header>
-    <div className="body-scene" aria-label={`Stylized ${body.name} view`}><div className="body-sphere" aria-hidden="true"/><div className="frame-label">ILLUSTRATION · NO MEASURED SURFACE LOCATIONS</div></div>
-    <aside className="body-intelligence"><span className="eyebrow">MERLIN space intelligence</span><h2>{routed.length} loaded record(s)</h2><p>Archive records retain their original observation periods. This illustration has no measured coordinates, terrain, or current spacecraft positions.</p><Evidence documents={routed}/></aside>
+    <header className="operations-header"><div><span className="eyebrow">Body-focused evidence · scientific surface explorer</span><h1>{body.name}</h1></div><div className="action-row"><button onClick={onBack}>Solar atlas</button><button onClick={onOpenEarth}>Earth operations</button></div></header>
+    {layersForBody(bodyId).length ? <Suspense fallback={<div className="feed-message">Starting surface explorer…</div>}><PlanetarySurface key={bodyId} bodyId={bodyId} name={body.name}/></Suspense> : <div className="body-scene" aria-label={`Stylized ${body.name} view`}><div className="body-sphere" aria-hidden="true"/><div className="frame-label">ILLUSTRATION · SURFACE DATA NOT AVAILABLE</div></div>}
+
+    <aside className="body-intelligence"><span className="eyebrow">MERLIN space intelligence</span><h2>{routed.length} loaded record(s)</h2><p>Archive records retain their original observation periods. Surface maps load independently of these archive records. Unsupported bodies retain an explicitly labeled illustration. No current spacecraft positions are inferred.</p><Evidence documents={routed}/></aside>
   </section>
 }

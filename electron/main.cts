@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain, protocol, shell } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
 import { collectProviderPages } from './provider-pages.cjs'
+import { createPlanetaryProxy } from './planetary-proxy.cjs'
 
 protocol.registerSchemesAsPrivileged([{
   scheme: 'overwatch',
@@ -48,9 +49,12 @@ const rendererContentTypes: Record<string, string> = {
 }
 
 function installRendererProtocol() {
+  const catalog = JSON.parse(fs.readFileSync(path.join(rendererRoot, 'planetary-layers.json'), 'utf8'))
+  const planetary = createPlanetaryProxy(catalog.layers)
   protocol.handle('overwatch', request => {
     const url = new URL(request.url)
     if (url.hostname !== 'app') return new Response('Not found', { status: 404 })
+    if (url.pathname.startsWith('/planetary/')) return planetary(url.pathname)
     const relativePath = decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname)
     const assetPath = path.resolve(rendererRoot, `.${relativePath}`)
     if (!assetPath.startsWith(`${rendererRoot}${path.sep}`)) return new Response('Not found', { status: 404 })
@@ -102,14 +106,36 @@ function configuredProviderUrl() {
   return new URL('documents?limit=100', `${url.toString().replace(/\/$/, '')}/`)
 }
 
-ipcMain.handle('intelligence:list-observations', async () => collectProviderPages(configuredProviderUrl(), async url => {
-  const response = await fetch(url, {
-    headers: { Authorization: `Bearer ${providerToken}`, Accept: 'application/json' },
-    signal: AbortSignal.timeout(10_000),
+let providerRequest = 0
+let providerController: AbortController | undefined
+ipcMain.handle('intelligence:list-observations', async event => {
+  providerController?.abort()
+  providerController = new AbortController()
+  const controller = providerController
+  const request = ++providerRequest
+  return new Promise((resolve, reject) => {
+    let initial = false
+    let last: unknown
+    void collectProviderPages(configuredProviderUrl(), async url => {
+      const response = await fetch(url, {
+        headers: { Authorization: `Bearer ${providerToken}`, Accept: 'application/json' },
+        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(15_000)]),
+      })
+      if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
+      return response.json()
+    }, 50, page => {
+      if (request !== providerRequest) return
+      last = page
+      if (!initial) { initial = true; resolve(page) }
+      else if (!event.sender.isDestroyed()) event.sender.send('intelligence:observations-progress', page)
+    }).catch(reason => {
+      if (request !== providerRequest) return
+      const error = reason instanceof Error ? reason.message : 'Archive loading failed'
+      if (!initial) reject(reason)
+      else if (!event.sender.isDestroyed()) event.sender.send('intelligence:observations-progress', { ...last as object, loadingMore:false, error })
+    })
   })
-  if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
-  return response.json()
-}))
+})
 
 function createMainWindow() {
   mainWindow = new BrowserWindow({

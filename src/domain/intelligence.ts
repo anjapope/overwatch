@@ -7,7 +7,7 @@ export interface IntelligenceDocument {
   verification?: Record<string, unknown> | null
 }
 export interface IntelligenceDocumentPage {
-  truncated?: boolean; total?: number; items: IntelligenceDocument[]; next_cursor?: string | null }
+  truncated?: boolean; total?: number; loadingMore?: boolean; error?: string; items: IntelligenceDocument[]; next_cursor?: string | null }
 export interface GeographicObservation extends IntelligenceDocument { latitude: number; longitude: number }
 
 function finiteCoordinate(value: unknown): number | undefined {
