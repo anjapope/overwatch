@@ -6,7 +6,8 @@ export interface IntelligenceDocument {
   source_name?: string | null; topics?: string[] | null; geography?: Record<string, unknown> | null
   verification?: Record<string, unknown> | null
 }
-export interface IntelligenceDocumentPage { items: IntelligenceDocument[]; next_cursor?: string | null }
+export interface IntelligenceDocumentPage {
+  truncated?: boolean; total?: number; items: IntelligenceDocument[]; next_cursor?: string | null }
 export interface GeographicObservation extends IntelligenceDocument { latitude: number; longitude: number }
 
 function finiteCoordinate(value: unknown): number | undefined {
@@ -29,3 +30,4 @@ export function safeExternalUrl(value?: string | null): string | undefined {
   if (!value) return undefined
   try { const url = new URL(value); return url.protocol === 'https:' || url.protocol === 'http:' ? url.toString() : undefined } catch { return undefined }
 }
+

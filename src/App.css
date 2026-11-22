@@ -134,3 +134,36 @@
   .system-workspace { grid-template-columns:1fr; grid-template-rows:auto 420px auto; }.system-workspace>.operations-header { grid-column:1; }.system-stage { min-height:420px; }
   .body-workspace { grid-template-columns:1fr; grid-template-rows:auto 420px auto; }.body-workspace>.operations-header { grid-column:1; }.body-scene { min-height:420px; }
 }
+
+
+/* Scrollable solar atlas keeps outer systems and moons selectable at tablet sizes. */
+.system-workspace { min-height:0; }
+.system-stage.system-atlas { overflow:auto; padding:18px; min-height:0; }
+.system-atlas:before { pointer-events:none; position:fixed; opacity:.12; }
+.atlas-toolbar,.atlas-grid,.atlas-missions,.atlas-note { position:relative; z-index:1; }
+.atlas-toolbar { display:flex; justify-content:space-between; gap:12px; align-items:center; margin-bottom:18px; }
+.atlas-toolbar label { display:grid; gap:6px; font:.72rem var(--mono); color:#aec9e0; }
+.atlas-toolbar input { padding:9px 12px; border:1px solid #34516a; border-radius:6px; background:#081320; color:#e3f0ff; width:240px; }
+.atlas-toolbar>span,.atlas-note { color:#8ca9c0; font:.7rem var(--mono); line-height:1.65; }
+.atlas-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; align-items:start; }
+.atlas-system { border:1px solid #233a50; border-radius:9px; background:linear-gradient(135deg,#101e2ce8,#050b13e8); padding:14px; }
+.atlas-system h2,.atlas-missions h2 { color:#92bedc; font:.72rem var(--mono); text-transform:uppercase; letter-spacing:.1em; margin:0 0 14px; }
+.atlas-family { margin-bottom:8px; }
+.atlas-body { display:flex; width:100%; align-items:center; text-align:left; gap:12px; min-height:48px; padding:9px; color:#d4e7fa; border:1px solid transparent; border-radius:6px; background:transparent; cursor:pointer; }
+.atlas-body:hover { background:#15283c; }.atlas-body.selected { border-color:#8dcaff; background:#19334a; }
+.atlas-body>i { flex:0 0 auto; width:var(--body-size); height:var(--body-size); border-radius:50%; background:radial-gradient(circle at 30% 25%,var(--body-color),#09121b); box-shadow:0 0 15px color-mix(in srgb,var(--body-color) 28%,transparent); }
+.atlas-body>span { flex:1; font-size:.8rem; overflow-wrap:anywhere; }.atlas-body>small { color:#83a6c0; font:.65rem var(--mono); }
+.atlas-satellites { margin-left:22px; border-left:1px solid #294157; padding-left:5px; }.atlas-satellites:empty { display:none; }
+.atlas-body.satellite { min-height:32px; padding:5px 8px; gap:9px; }.atlas-body.satellite span { font-size:.73rem; }
+.atlas-missions { margin-top:24px; }.system-atlas .mission-strip { position:static; display:flex; flex-wrap:wrap; overflow:visible; }
+.system-dossier { max-height:100%; box-sizing:border-box; overflow:auto; }.system-dossier a,.body-intelligence a { color:#8dcaff; font-size:.75rem; }
+.system-workspace button,.body-workspace button { cursor:pointer; }
+.body-sphere { background:radial-gradient(circle at 30% 25%,var(--body-color,#aaa),#17212a 72%); }
+.body-uranus .body-sphere { background:radial-gradient(circle at 30% 25%,#b5efe9,#68bdbf 48%,#214f62 80%); }
+.body-neptune .body-sphere { background:repeating-linear-gradient(4deg,#5387cc 0 10%,#376cae 10% 20%,#457ac2 20% 26%); }
+.body-haumea .body-sphere { aspect-ratio:1.5; }
+@media(max-width:1250px) { .atlas-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .system-workspace { grid-template-columns:minmax(0,1fr) 270px; } }
+@media(max-width:800px) { .system-workspace { height:auto; grid-template-columns:1fr; grid-template-rows:auto minmax(460px,70vh) auto; } .system-dossier { max-height:500px; }.atlas-toolbar { align-items:start; flex-direction:column; }.atlas-toolbar input { width:100%; box-sizing:border-box; }.system-workspace .operations-header { flex-wrap:wrap; } }
+@media(max-width:460px) { .atlas-grid { grid-template-columns:1fr; } }
+
+.body-kuiper-belt .body-sphere,.body-oort-cloud .body-sphere { background:radial-gradient(circle,transparent 0 35%,rgba(121,169,205,.2) 40% 58%,transparent 63%),radial-gradient(#aacbdf 1px,transparent 2px); background-size:auto,17px 23px; box-shadow:none; }

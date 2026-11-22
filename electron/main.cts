@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain, protocol, shell } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
+import { collectProviderPages } from './provider-pages.cjs'
 
 protocol.registerSchemesAsPrivileged([{
   scheme: 'overwatch',
@@ -101,22 +102,14 @@ function configuredProviderUrl() {
   return new URL('documents?limit=100', `${url.toString().replace(/\/$/, '')}/`)
 }
 
-ipcMain.handle('intelligence:list-observations', async () => {
-  const response = await fetch(configuredProviderUrl(), {
+ipcMain.handle('intelligence:list-observations', async () => collectProviderPages(configuredProviderUrl(), async url => {
+  const response = await fetch(url, {
     headers: { Authorization: `Bearer ${providerToken}`, Accept: 'application/json' },
     signal: AbortSignal.timeout(10_000),
   })
   if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
-  const payload: unknown = await response.json()
-  if (!payload || typeof payload !== 'object' || !Array.isArray((payload as { items?: unknown }).items)) {
-    throw new Error('Mayday Intelligence returned an invalid document page')
-  }
-  const items = (payload as { items: unknown[] }).items
-  if (items.some(item => !item || typeof item !== 'object' || (item as { protocol_version?: unknown }).protocol_version !== 'mayday.intelligence.document/1')) {
-    throw new Error('Mayday Intelligence returned an unsupported document contract')
-  }
-  return payload
-})
+  return response.json()
+}))
 
 function createMainWindow() {
   mainWindow = new BrowserWindow({
@@ -191,3 +184,4 @@ void app.whenReady().then(() => {
     }
   })
 })
+

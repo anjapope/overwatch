@@ -28,6 +28,7 @@ function App() {
             return response.json() as Promise<IntelligenceDocumentPage>
           })
       setObservations(page.items)
+      if (page.truncated) setError(`Showing ${page.items.length} of ${page.total} records; archive coverage in this view is incomplete.`)
       setSelectedId(current => current && page.items.some(item => item.document_id === current) ? current : page.items[0]?.document_id)
     } catch (reason) { setError(reason instanceof Error ? reason.message : 'Could not load Mayday Intelligence observations') }
     finally { setLoading(false) }
@@ -59,7 +60,7 @@ function App() {
           {activeView === 'globe' ? <div className="operational-workspace">
             <OverwatchGlobe observations={observations} dossiers={dossiers} selectedId={selectedId} selectedRegionId={selectedRegionId} onSelect={select} onSelectRegion={dossier => setSelectedRegionId(dossier.region.id)} />
             <ObservationFeed observations={observations} selectedId={selectedId} selectedRegion={selectedRegion} loading={loading} error={error} onSelect={select} onCloseRegion={() => setSelectedRegionId(undefined)} onRefresh={() => void load()} />
-          </div> : activeView === 'system' ? <SolarSystemNavigator observations={observations} onOpenEarth={() => setActiveView('globe')} /> : <OperationsWorkspace view={activeView} observations={observations} selectedId={selectedId} workspace={workspace} onChange={setWorkspace} onBack={() => setActiveView('globe')} />}
+          </div> : activeView === 'system' ? <SolarSystemNavigator observations={observations} onOpenEarth={() => setActiveView('globe')} onRefresh={() => void load()} loading={loading} error={error} /> : <OperationsWorkspace view={activeView} observations={observations} selectedId={selectedId} workspace={workspace} onChange={setWorkspace} onBack={() => setActiveView('globe')} />}
         </main>
       </div>
     </AppStateProvider>
@@ -67,3 +68,4 @@ function App() {
 }
 
 export default App
+

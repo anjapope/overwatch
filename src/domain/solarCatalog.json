@@ -1,0 +1,1397 @@
+{
+  "schema_version": 1,
+  "scope": "Major navigation bodies plus representative small bodies; archive-wide requests discover additional targets.",
+  "bodies": [
+    {
+      "id": "sun",
+      "name": "Sun",
+      "kind": "star",
+      "color": "#ffd36a",
+      "x": 8,
+      "y": 20,
+      "size": 34,
+      "aliases": [
+        "Sun",
+        "Solar",
+        "Sol"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "mercury",
+      "name": "Mercury",
+      "kind": "planet",
+      "color": "#aaa59c",
+      "x": 17,
+      "y": 20,
+      "size": 24,
+      "aliases": [
+        "Mercury"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "venus",
+      "name": "Venus",
+      "kind": "planet",
+      "color": "#dfa95d",
+      "x": 26,
+      "y": 20,
+      "size": 24,
+      "aliases": [
+        "Venus"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "earth",
+      "name": "Earth",
+      "kind": "planet",
+      "color": "#49a8ff",
+      "x": 35,
+      "y": 20,
+      "size": 24,
+      "aliases": [
+        "Earth"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "moon",
+      "name": "Moon",
+      "kind": "natural satellite",
+      "color": "#cbd2d9",
+      "x": 44,
+      "y": 20,
+      "size": 7,
+      "aliases": [
+        "Moon",
+        "Luna",
+        "Lunar"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "earth"
+    },
+    {
+      "id": "mars",
+      "name": "Mars",
+      "kind": "planet",
+      "color": "#df6848",
+      "x": 53,
+      "y": 20,
+      "size": 24,
+      "aliases": [
+        "Mars",
+        "Martian"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "phobos",
+      "name": "Phobos",
+      "kind": "natural satellite",
+      "color": "#93897d",
+      "x": 62,
+      "y": 20,
+      "size": 7,
+      "aliases": [
+        "Phobos"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "mars"
+    },
+    {
+      "id": "deimos",
+      "name": "Deimos",
+      "kind": "natural satellite",
+      "color": "#b2a494",
+      "x": 71,
+      "y": 20,
+      "size": 7,
+      "aliases": [
+        "Deimos"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "mars"
+    },
+    {
+      "id": "jupiter",
+      "name": "Jupiter",
+      "kind": "planet",
+      "color": "#d9a874",
+      "x": 80,
+      "y": 20,
+      "size": 24,
+      "aliases": [
+        "Jupiter",
+        "Jovian"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "io",
+      "name": "Io",
+      "kind": "natural satellite",
+      "color": "#e7c84f",
+      "x": 89,
+      "y": 20,
+      "size": 7,
+      "aliases": [
+        "Io"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "jupiter"
+    },
+    {
+      "id": "europa",
+      "name": "Europa",
+      "kind": "natural satellite",
+      "color": "#c9b999",
+      "x": 8,
+      "y": 30,
+      "size": 7,
+      "aliases": [
+        "Europa"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "jupiter"
+    },
+    {
+      "id": "ganymede",
+      "name": "Ganymede",
+      "kind": "natural satellite",
+      "color": "#918578",
+      "x": 17,
+      "y": 30,
+      "size": 7,
+      "aliases": [
+        "Ganymede"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "jupiter"
+    },
+    {
+      "id": "callisto",
+      "name": "Callisto",
+      "kind": "natural satellite",
+      "color": "#6f665e",
+      "x": 26,
+      "y": 30,
+      "size": 7,
+      "aliases": [
+        "Callisto"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "jupiter"
+    },
+    {
+      "id": "amalthea",
+      "name": "Amalthea",
+      "kind": "natural satellite",
+      "color": "#b85e4a",
+      "x": 35,
+      "y": 30,
+      "size": 7,
+      "aliases": [
+        "Amalthea"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "jupiter"
+    },
+    {
+      "id": "saturn",
+      "name": "Saturn",
+      "kind": "planet",
+      "color": "#e6cb83",
+      "x": 44,
+      "y": 30,
+      "size": 24,
+      "aliases": [
+        "Saturn",
+        "Saturnian"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "mimas",
+      "name": "Mimas",
+      "kind": "natural satellite",
+      "color": "#bfc6ca",
+      "x": 53,
+      "y": 30,
+      "size": 7,
+      "aliases": [
+        "Mimas"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "saturn"
+    },
+    {
+      "id": "enceladus",
+      "name": "Enceladus",
+      "kind": "natural satellite",
+      "color": "#dce9ef",
+      "x": 62,
+      "y": 30,
+      "size": 7,
+      "aliases": [
+        "Enceladus"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "saturn"
+    },
+    {
+      "id": "tethys",
+      "name": "Tethys",
+      "kind": "natural satellite",
+      "color": "#c7d4d8",
+      "x": 71,
+      "y": 30,
+      "size": 7,
+      "aliases": [
+        "Tethys"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "saturn"
+    },
+    {
+      "id": "dione",
+      "name": "Dione",
+      "kind": "natural satellite",
+      "color": "#b3bfca",
+      "x": 80,
+      "y": 30,
+      "size": 7,
+      "aliases": [
+        "Dione"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "saturn"
+    },
+    {
+      "id": "rhea",
+      "name": "Rhea",
+      "kind": "natural satellite",
+      "color": "#aeb5bc",
+      "x": 89,
+      "y": 30,
+      "size": 7,
+      "aliases": [
+        "Rhea"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "saturn"
+    },
+    {
+      "id": "titan",
+      "name": "Titan",
+      "kind": "natural satellite",
+      "color": "#d99e42",
+      "x": 8,
+      "y": 40,
+      "size": 7,
+      "aliases": [
+        "Titan"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "saturn"
+    },
+    {
+      "id": "hyperion",
+      "name": "Hyperion",
+      "kind": "natural satellite",
+      "color": "#aa8b6f",
+      "x": 17,
+      "y": 40,
+      "size": 7,
+      "aliases": [
+        "Hyperion"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "saturn"
+    },
+    {
+      "id": "iapetus",
+      "name": "Iapetus",
+      "kind": "natural satellite",
+      "color": "#9b9690",
+      "x": 26,
+      "y": 40,
+      "size": 7,
+      "aliases": [
+        "Iapetus"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "saturn"
+    },
+    {
+      "id": "phoebe",
+      "name": "Phoebe",
+      "kind": "natural satellite",
+      "color": "#757776",
+      "x": 35,
+      "y": 40,
+      "size": 7,
+      "aliases": [
+        "Phoebe"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "saturn"
+    },
+    {
+      "id": "uranus",
+      "name": "Uranus",
+      "kind": "planet",
+      "color": "#80ddd8",
+      "x": 44,
+      "y": 40,
+      "size": 24,
+      "aliases": [
+        "Uranus"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "miranda",
+      "name": "Miranda",
+      "kind": "natural satellite",
+      "color": "#b9bdbb",
+      "x": 53,
+      "y": 40,
+      "size": 7,
+      "aliases": [
+        "Miranda"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "uranus"
+    },
+    {
+      "id": "ariel",
+      "name": "Ariel",
+      "kind": "natural satellite",
+      "color": "#b6c8d1",
+      "x": 62,
+      "y": 40,
+      "size": 7,
+      "aliases": [
+        "Ariel"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "uranus"
+    },
+    {
+      "id": "umbriel",
+      "name": "Umbriel",
+      "kind": "natural satellite",
+      "color": "#737c83",
+      "x": 71,
+      "y": 40,
+      "size": 7,
+      "aliases": [
+        "Umbriel"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "uranus"
+    },
+    {
+      "id": "titania",
+      "name": "Titania",
+      "kind": "natural satellite",
+      "color": "#bab1a5",
+      "x": 80,
+      "y": 40,
+      "size": 7,
+      "aliases": [
+        "Titania"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "uranus"
+    },
+    {
+      "id": "oberon",
+      "name": "Oberon",
+      "kind": "natural satellite",
+      "color": "#9c9894",
+      "x": 89,
+      "y": 40,
+      "size": 7,
+      "aliases": [
+        "Oberon"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "uranus"
+    },
+    {
+      "id": "puck",
+      "name": "Puck",
+      "kind": "natural satellite",
+      "color": "#7c8587",
+      "x": 8,
+      "y": 50,
+      "size": 7,
+      "aliases": [
+        "Puck"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "uranus"
+    },
+    {
+      "id": "neptune",
+      "name": "Neptune",
+      "kind": "planet",
+      "color": "#4389f1",
+      "x": 17,
+      "y": 50,
+      "size": 24,
+      "aliases": [
+        "Neptune"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "triton",
+      "name": "Triton",
+      "kind": "natural satellite",
+      "color": "#b8c8cd",
+      "x": 26,
+      "y": 50,
+      "size": 7,
+      "aliases": [
+        "Triton"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "neptune"
+    },
+    {
+      "id": "nereid",
+      "name": "Nereid",
+      "kind": "natural satellite",
+      "color": "#899ba5",
+      "x": 35,
+      "y": 50,
+      "size": 7,
+      "aliases": [
+        "Nereid"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "neptune"
+    },
+    {
+      "id": "proteus",
+      "name": "Proteus",
+      "kind": "natural satellite",
+      "color": "#7a858b",
+      "x": 44,
+      "y": 50,
+      "size": 7,
+      "aliases": [
+        "Proteus"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "neptune"
+    },
+    {
+      "id": "ceres",
+      "name": "Ceres",
+      "kind": "dwarf planet",
+      "color": "#a6a49a",
+      "x": 53,
+      "y": 50,
+      "size": 12,
+      "aliases": [
+        "Ceres"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "pluto",
+      "name": "Pluto",
+      "kind": "dwarf planet",
+      "color": "#d5b49a",
+      "x": 62,
+      "y": 50,
+      "size": 12,
+      "aliases": [
+        "Pluto"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "charon",
+      "name": "Charon",
+      "kind": "natural satellite",
+      "color": "#b3aaa2",
+      "x": 71,
+      "y": 50,
+      "size": 7,
+      "aliases": [
+        "Charon"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "pluto"
+    },
+    {
+      "id": "styx",
+      "name": "Styx",
+      "kind": "natural satellite",
+      "color": "#9b9d9f",
+      "x": 80,
+      "y": 50,
+      "size": 7,
+      "aliases": [
+        "Styx"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "pluto"
+    },
+    {
+      "id": "nix",
+      "name": "Nix",
+      "kind": "natural satellite",
+      "color": "#c1c2bf",
+      "x": 89,
+      "y": 50,
+      "size": 7,
+      "aliases": [
+        "Nix"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "pluto"
+    },
+    {
+      "id": "kerberos",
+      "name": "Kerberos",
+      "kind": "natural satellite",
+      "color": "#989b9e",
+      "x": 8,
+      "y": 60,
+      "size": 7,
+      "aliases": [
+        "Kerberos"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "pluto"
+    },
+    {
+      "id": "hydra",
+      "name": "Hydra",
+      "kind": "natural satellite",
+      "color": "#c3c6c3",
+      "x": 17,
+      "y": 60,
+      "size": 7,
+      "aliases": [
+        "Hydra"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "pluto"
+    },
+    {
+      "id": "eris",
+      "name": "Eris",
+      "kind": "dwarf planet",
+      "color": "#dadfe2",
+      "x": 26,
+      "y": 60,
+      "size": 12,
+      "aliases": [
+        "Eris"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "dysnomia",
+      "name": "Dysnomia",
+      "kind": "natural satellite",
+      "color": "#8e9399",
+      "x": 35,
+      "y": 60,
+      "size": 7,
+      "aliases": [
+        "Dysnomia"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "eris"
+    },
+    {
+      "id": "haumea",
+      "name": "Haumea",
+      "kind": "dwarf planet",
+      "color": "#d4dddf",
+      "x": 44,
+      "y": 60,
+      "size": 12,
+      "aliases": [
+        "Haumea"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "hiiaka",
+      "name": "Hiʻiaka",
+      "kind": "natural satellite",
+      "color": "#b9c9d0",
+      "x": 53,
+      "y": 60,
+      "size": 7,
+      "aliases": [
+        "Hiʻiaka",
+        "Hi'iaka",
+        "Hiiaka"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "haumea"
+    },
+    {
+      "id": "namaka",
+      "name": "Namaka",
+      "kind": "natural satellite",
+      "color": "#93a5ae",
+      "x": 62,
+      "y": 60,
+      "size": 7,
+      "aliases": [
+        "Namaka"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "haumea"
+    },
+    {
+      "id": "makemake",
+      "name": "Makemake",
+      "kind": "dwarf planet",
+      "color": "#cba68a",
+      "x": 71,
+      "y": 60,
+      "size": 12,
+      "aliases": [
+        "Makemake"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "mk2",
+      "name": "MK 2",
+      "kind": "natural satellite",
+      "color": "#8d969c",
+      "x": 80,
+      "y": 60,
+      "size": 7,
+      "aliases": [
+        "MK 2",
+        "S/2015 (136472) 1"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "makemake"
+    },
+    {
+      "id": "vesta",
+      "name": "Vesta",
+      "kind": "asteroid",
+      "color": "#ada49a",
+      "x": 89,
+      "y": 60,
+      "size": 7,
+      "aliases": [
+        "Vesta"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "pallas",
+      "name": "Pallas",
+      "kind": "asteroid",
+      "color": "#a8a59c",
+      "x": 8,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Pallas"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "hygiea",
+      "name": "Hygiea",
+      "kind": "asteroid",
+      "color": "#858c89",
+      "x": 17,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Hygiea"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "eros",
+      "name": "Eros",
+      "kind": "asteroid",
+      "color": "#ac987b",
+      "x": 26,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Eros"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "itokawa",
+      "name": "Itokawa",
+      "kind": "asteroid",
+      "color": "#b7a68f",
+      "x": 35,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Itokawa"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "bennu",
+      "name": "Bennu",
+      "kind": "asteroid",
+      "color": "#777e81",
+      "x": 44,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Bennu"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "ryugu",
+      "name": "Ryugu",
+      "kind": "asteroid",
+      "color": "#808783",
+      "x": 53,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Ryugu"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "didymos",
+      "name": "Didymos",
+      "kind": "asteroid",
+      "color": "#a3a39b",
+      "x": 62,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Didymos"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "dimorphos",
+      "name": "Dimorphos",
+      "kind": "natural satellite",
+      "color": "#92958b",
+      "x": 71,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Dimorphos"
+      ],
+      "status": "Archive coverage not yet verified",
+      "parent": "didymos"
+    },
+    {
+      "id": "psyche",
+      "name": "Psyche",
+      "kind": "asteroid",
+      "color": "#a1a0a4",
+      "x": 80,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Psyche"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "arrokoth",
+      "name": "Arrokoth",
+      "kind": "trans-Neptunian object",
+      "color": "#b67f65",
+      "x": 89,
+      "y": 70,
+      "size": 7,
+      "aliases": [
+        "Arrokoth",
+        "2014 MU69",
+        "Ultima Thule"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "quaoar",
+      "name": "Quaoar",
+      "kind": "trans-Neptunian object",
+      "color": "#ab8c7a",
+      "x": 8,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "Quaoar"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "sedna",
+      "name": "Sedna",
+      "kind": "trans-Neptunian object",
+      "color": "#b6745c",
+      "x": 17,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "Sedna"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "gonggong",
+      "name": "Gonggong",
+      "kind": "trans-Neptunian object",
+      "color": "#ac786c",
+      "x": 26,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "Gonggong"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "orcus",
+      "name": "Orcus",
+      "kind": "trans-Neptunian object",
+      "color": "#afa9a5",
+      "x": 35,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "Orcus"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "halley",
+      "name": "1P/Halley",
+      "kind": "comet",
+      "color": "#a3c2d4",
+      "x": 44,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "1P/Halley",
+        "Halley"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "67p",
+      "name": "67P/Churyumov–Gerasimenko",
+      "kind": "comet",
+      "color": "#8b9b9b",
+      "x": 53,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "67P/Churyumov–Gerasimenko",
+        "67P",
+        "Churyumov-Gerasimenko"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "tempel-1",
+      "name": "9P/Tempel 1",
+      "kind": "comet",
+      "color": "#b6aba0",
+      "x": 62,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "9P/Tempel 1",
+        "Tempel 1"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "wild-2",
+      "name": "81P/Wild 2",
+      "kind": "comet",
+      "color": "#bdc1bd",
+      "x": 71,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "81P/Wild 2",
+        "Wild 2"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "hartley-2",
+      "name": "103P/Hartley 2",
+      "kind": "comet",
+      "color": "#b6b3a2",
+      "x": 80,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "103P/Hartley 2",
+        "Hartley 2"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "asteroid-belt",
+      "name": "Asteroid belt",
+      "kind": "minor-body region",
+      "color": "#a38e79",
+      "x": 89,
+      "y": 80,
+      "size": 7,
+      "aliases": [
+        "Asteroid belt",
+        "Asteroid",
+        "Minor planet",
+        "Small body",
+        "Small bodies",
+        "Near-earth object"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "kuiper-belt",
+      "name": "Kuiper belt",
+      "kind": "minor-body region",
+      "color": "#83a8c7",
+      "x": 8,
+      "y": 90,
+      "size": 7,
+      "aliases": [
+        "Kuiper belt",
+        "Kuiper",
+        "Trans-Neptunian",
+        "KBO"
+      ],
+      "status": "Archive coverage not yet verified"
+    },
+    {
+      "id": "oort-cloud",
+      "name": "Oort cloud",
+      "kind": "hypothesized region",
+      "color": "#829db8",
+      "x": 17,
+      "y": 90,
+      "size": 7,
+      "aliases": [
+        "Oort cloud",
+        "Oort"
+      ],
+      "status": "Archive coverage not yet verified"
+    }
+  ],
+  "missions": [
+    {
+      "id": "iss",
+      "name": "International Space Station",
+      "agency": "International partnership",
+      "kind": "Crewed orbital laboratory",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Earth observations and microgravity science",
+      "aliases": [
+        "ISS",
+        "International Space Station"
+      ]
+    },
+    {
+      "id": "jwst",
+      "name": "James Webb Space Telescope",
+      "agency": "NASA · ESA · CSA",
+      "kind": "Infrared observatory",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Solar-system and astrophysics observations",
+      "aliases": [
+        "JWST",
+        "James Webb",
+        "Webb Space Telescope"
+      ]
+    },
+    {
+      "id": "hubble",
+      "name": "Hubble Space Telescope",
+      "agency": "NASA · ESA",
+      "kind": "Orbital observatory",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Remote observations across the solar system",
+      "aliases": [
+        "Hubble",
+        "HST"
+      ]
+    },
+    {
+      "id": "voyager-1",
+      "name": "Voyager 1",
+      "agency": "NASA / JPL",
+      "kind": "Flyby and heliosphere probe",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Jupiter, Saturn, moons, rings, and heliosphere",
+      "aliases": [
+        "Voyager 1",
+        "Voyager I"
+      ]
+    },
+    {
+      "id": "voyager-2",
+      "name": "Voyager 2",
+      "agency": "NASA / JPL",
+      "kind": "Grand Tour probe",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Jupiter, Saturn, Uranus, Neptune, moons, rings, and heliosphere",
+      "aliases": [
+        "Voyager 2",
+        "Voyager II"
+      ]
+    },
+    {
+      "id": "pioneer-10",
+      "name": "Pioneer 10",
+      "agency": "NASA",
+      "kind": "Jupiter flyby probe",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Jupiter encounter and outer heliosphere",
+      "aliases": [
+        "Pioneer 10"
+      ]
+    },
+    {
+      "id": "pioneer-11",
+      "name": "Pioneer 11",
+      "agency": "NASA",
+      "kind": "Outer-planet flyby probe",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Jupiter, Saturn, and outer heliosphere",
+      "aliases": [
+        "Pioneer 11"
+      ]
+    },
+    {
+      "id": "new-horizons",
+      "name": "New Horizons",
+      "agency": "NASA / APL",
+      "kind": "Outer-solar-system probe",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Jupiter flyby, Pluto, Charon, Arrokoth, and Kuiper belt",
+      "aliases": [
+        "New Horizons"
+      ]
+    },
+    {
+      "id": "cassini",
+      "name": "Cassini–Huygens",
+      "agency": "NASA · ESA · ASI",
+      "kind": "Saturn orbiter and Titan lander",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Saturn, rings, Titan, Enceladus, and other moons",
+      "aliases": [
+        "Cassini",
+        "Huygens"
+      ]
+    },
+    {
+      "id": "galileo",
+      "name": "Galileo",
+      "agency": "NASA / JPL",
+      "kind": "Jupiter orbiter and atmospheric probe",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Jupiter, Galilean satellites, asteroid flybys",
+      "aliases": [
+        "Galileo spacecraft",
+        "Galileo mission",
+        "Galileo probe"
+      ]
+    },
+    {
+      "id": "juno",
+      "name": "Juno",
+      "agency": "NASA / JPL",
+      "kind": "Jupiter orbiter",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Jupiter, Io, Europa, and Ganymede observations",
+      "aliases": [
+        "Juno"
+      ]
+    },
+    {
+      "id": "messenger",
+      "name": "MESSENGER",
+      "agency": "NASA / APL",
+      "kind": "Mercury orbiter",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Mercury surface, magnetosphere, and composition",
+      "aliases": [
+        "MESSENGER"
+      ]
+    },
+    {
+      "id": "mariner",
+      "name": "Mariner",
+      "agency": "NASA / JPL",
+      "kind": "Planetary flyby and orbiter series",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Mercury, Venus, and Mars historical observations",
+      "aliases": [
+        "Mariner 2",
+        "Mariner 4",
+        "Mariner 5",
+        "Mariner 6",
+        "Mariner 7",
+        "Mariner 9",
+        "Mariner 10"
+      ]
+    },
+    {
+      "id": "magellan",
+      "name": "Magellan",
+      "agency": "NASA",
+      "kind": "Venus radar orbiter",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Venus radar mapping and gravity",
+      "aliases": [
+        "Magellan spacecraft",
+        "Magellan mission"
+      ]
+    },
+    {
+      "id": "pioneer-venus",
+      "name": "Pioneer Venus",
+      "agency": "NASA",
+      "kind": "Venus orbiter and multiprobe",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Venus atmosphere and radar archives",
+      "aliases": [
+        "Pioneer Venus"
+      ]
+    },
+    {
+      "id": "venus-express",
+      "name": "Venus Express",
+      "agency": "ESA",
+      "kind": "Venus orbiter",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Venus atmosphere and plasma environment",
+      "aliases": [
+        "Venus Express"
+      ]
+    },
+    {
+      "id": "venera",
+      "name": "Venera / Vega",
+      "agency": "Soviet space program",
+      "kind": "Venus probes and Halley flybys",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Venus and Halley historical records; holdings vary",
+      "aliases": [
+        "Venera",
+        "Vega 1",
+        "Vega 2"
+      ]
+    },
+    {
+      "id": "apollo",
+      "name": "Apollo",
+      "agency": "NASA",
+      "kind": "Crewed lunar exploration",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Lunar surface, samples, photography, and geophysics",
+      "aliases": [
+        "Apollo"
+      ]
+    },
+    {
+      "id": "lro",
+      "name": "Lunar Reconnaissance Orbiter",
+      "agency": "NASA",
+      "kind": "Lunar orbiter",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Lunar mapping and reconnaissance",
+      "aliases": [
+        "LRO",
+        "Lunar Reconnaissance Orbiter"
+      ]
+    },
+    {
+      "id": "viking",
+      "name": "Viking",
+      "agency": "NASA",
+      "kind": "Mars orbiters and landers",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Historical Martian imaging and surface science",
+      "aliases": [
+        "Viking 1",
+        "Viking 2",
+        "Viking mission"
+      ]
+    },
+    {
+      "id": "mars-orbiters",
+      "name": "Mars orbital archives",
+      "agency": "NASA · ESA",
+      "kind": "Mars orbiter series",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Mars Global Surveyor, Odyssey, MRO, MAVEN, Mars Express",
+      "aliases": [
+        "Mars Global Surveyor",
+        "Mars Odyssey",
+        "Mars Reconnaissance Orbiter",
+        "MRO",
+        "MAVEN",
+        "Mars Express"
+      ]
+    },
+    {
+      "id": "mars-rovers",
+      "name": "Mars surface archives",
+      "agency": "NASA",
+      "kind": "Mars rover series",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Pathfinder, Spirit, Opportunity, Curiosity, Perseverance",
+      "aliases": [
+        "Mars Pathfinder",
+        "Spirit rover",
+        "Opportunity rover",
+        "Curiosity",
+        "Perseverance"
+      ]
+    },
+    {
+      "id": "dawn",
+      "name": "Dawn",
+      "agency": "NASA / JPL",
+      "kind": "Asteroid-belt orbiter",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Vesta and Ceres imaging, spectra, and gravity",
+      "aliases": [
+        "Dawn spacecraft",
+        "Dawn mission"
+      ]
+    },
+    {
+      "id": "near",
+      "name": "NEAR Shoemaker",
+      "agency": "NASA / APL",
+      "kind": "Asteroid orbiter",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Eros and Mathilde",
+      "aliases": [
+        "NEAR Shoemaker"
+      ]
+    },
+    {
+      "id": "rosetta",
+      "name": "Rosetta / Philae",
+      "agency": "ESA",
+      "kind": "Comet orbiter and lander",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "67P and asteroid flybys",
+      "aliases": [
+        "Rosetta",
+        "Philae"
+      ]
+    },
+    {
+      "id": "giotto",
+      "name": "Giotto",
+      "agency": "ESA",
+      "kind": "Comet flyby probe",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Halley and Grigg–Skjellerup",
+      "aliases": [
+        "Giotto"
+      ]
+    },
+    {
+      "id": "deep-impact",
+      "name": "Deep Impact / EPOXI",
+      "agency": "NASA",
+      "kind": "Comet encounter mission",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Tempel 1 and Hartley 2",
+      "aliases": [
+        "Deep Impact",
+        "EPOXI"
+      ]
+    },
+    {
+      "id": "stardust",
+      "name": "Stardust",
+      "agency": "NASA",
+      "kind": "Comet sample return",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Wild 2 and Tempel 1",
+      "aliases": [
+        "Stardust"
+      ]
+    },
+    {
+      "id": "hayabusa",
+      "name": "Hayabusa / Hayabusa2",
+      "agency": "JAXA",
+      "kind": "Asteroid sample return",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Itokawa and Ryugu",
+      "aliases": [
+        "Hayabusa",
+        "Hayabusa2"
+      ]
+    },
+    {
+      "id": "osiris-rex",
+      "name": "OSIRIS-REx",
+      "agency": "NASA",
+      "kind": "Asteroid sample return",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Bennu imaging, spectroscopy, and samples",
+      "aliases": [
+        "OSIRIS-REx",
+        "OSIRIS REx"
+      ]
+    },
+    {
+      "id": "dart",
+      "name": "DART",
+      "agency": "NASA / APL",
+      "kind": "Asteroid deflection experiment",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Didymos and Dimorphos observations",
+      "aliases": [
+        "DART mission",
+        "DART spacecraft",
+        "Double Asteroid Redirection Test"
+      ]
+    },
+    {
+      "id": "ulysses",
+      "name": "Ulysses",
+      "agency": "ESA · NASA",
+      "kind": "Solar polar mission",
+      "status": "Historical and published observations; live status not asserted",
+      "focus": "Solar wind, heliosphere, Jupiter flyby",
+      "aliases": [
+        "Ulysses spacecraft",
+        "Ulysses mission"
+      ]
+    }
+  ]
+}

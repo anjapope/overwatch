@@ -43,3 +43,22 @@ The local package is consistently ad-hoc signed and uses the stable bundle ident
 For normal Finder launches, `~/Library/Application Support/Overwatch/provider.json` may contain `providerUrl` and `tokenFile`. Store only a protected token-file path there, never the token value itself.
 
 The application rejects plain HTTP except on loopback. Do not commit tokens or place them in Vite variables; `VITE_*` values are renderer-visible. The provider must already be running with the operational Intelligence database. A successful build does not prove access to Mayday 3; verify the connection from the target machine by refreshing the Observations panel.
+
+
+## Solar atlas and archive requests
+
+The expanded atlas includes 72 selectable bodies/regions and 32 historical and
+observatory mission profiles. Distances, sizes and body illustrations are
+symbolic. Archive evidence routes by explicit names and source-declared topics;
+no spacecraft location or measured surface geometry is inferred. The provider
+now follows pagination beyond the previous 100-record limit, bounded to 50 pages
+with a visible incomplete-coverage notice if truncated.
+
+The paired Mayday Intelligence change adds PDS4 and legacy PDS catalog acquisition
+and 192 prepared watches. They collect metadata and source links, preserving
+observation intervals separately from retrieval dates. Live submission is a
+separate host action, recorded by the authenticated submission helper. See the
+backend's `docs/solar-archive-acquisition.md` for scope and coverage gaps.
+
+Validation: `npm test`, `npm run typecheck`, `npm run build`, and
+`node scripts/test-provider-pages.cjs` after building Electron.
