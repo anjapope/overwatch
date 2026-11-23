@@ -4,7 +4,7 @@ import './OrbitalMonitor.css'
 type Nation = 'Russia' | 'United States' | 'China' | 'Japan' | 'Europe / ESA' | 'India' | 'South Korea' | 'North Korea' | 'Other' | 'Unknown'
 type AssetKind = 'Station' | 'Crewed vehicle' | 'Spacecraft' | 'Satellite'
 interface SatcatRecord { NORAD_CAT_ID?: number | string; OBJECT_NAME?: string; OWNER?: string; OBJECT_TYPE?: string; INCLINATION?: number | string; APOGEE?: number | string; PERIGEE?: number | string; ORBIT_CENTER?: string }
-interface OrbitalAsset extends SatcatRecord { id: string; name: string; owner: string; nation: Nation; kind: AssetKind; apogee: number; perigee: number; inclination: number }
+interface OrbitalAsset { id: string; name: string; owner: string; nation: Nation; kind: AssetKind; apogee: number; perigee: number; inclination: number }
 interface Cache { updatedAt: string; items: OrbitalAsset[] }
 
 const CACHE_KEY = 'overwatch.orbital-catalog.v1'
@@ -35,7 +35,7 @@ function num(value: number | string | undefined): number { const parsed = Number
 function normalize(records: SatcatRecord[]): OrbitalAsset[] {
   return records.filter(item => String(item.OBJECT_TYPE ?? 'PAY').toUpperCase() === 'PAY').filter(item => !item.ORBIT_CENTER || item.ORBIT_CENTER === 'EA').map(item => {
     const name = item.OBJECT_NAME?.trim() || 'Catalog object ' + String(item.NORAD_CAT_ID ?? 'unknown')
-    return { ...item, id: String(item.NORAD_CAT_ID ?? item.OBJECT_NAME ?? Math.random()), name, owner: item.OWNER?.trim() || '', nation: ownerToNation(item.OWNER ?? ''), kind: assetKind(name), apogee: num(item.APOGEE), perigee: num(item.PERIGEE), inclination: num(item.INCLINATION) }
+    return { id: String(item.NORAD_CAT_ID ?? item.OBJECT_NAME ?? Math.random()), name, owner: item.OWNER?.trim() || '', nation: ownerToNation(item.OWNER ?? ''), kind: assetKind(name), apogee: num(item.APOGEE), perigee: num(item.PERIGEE), inclination: num(item.INCLINATION) }
   })
 }
 function readCache(): Cache | null {
