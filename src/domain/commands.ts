@@ -1,6 +1,7 @@
 // Typed application command contracts for Overwatch (Phase B)
 export type AppCommand =
   | { type: 'system' }
+  | { type: 'orbit' }
   | { type: 'search' }
   | { type: 'dossiers' }
   | { type: 'events' }
@@ -13,6 +14,7 @@ export type AppCommand =
 
 export const commandTypes = [
   'system',
+  'orbit',
   'search',
   'dossiers',
   'events',
