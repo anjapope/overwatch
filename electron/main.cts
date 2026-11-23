@@ -1,6 +1,10 @@
 import { app, BrowserWindow, ipcMain, protocol, shell } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
+import { collectBalancedProvider } from './balanced-provider.cjs'
+import { readObservationCache, writeObservationCache } from './observation-store.cjs'
+import os from 'node:os'
+import { createPlanetaryProxy } from './planetary-proxy.cjs'
 
 protocol.registerSchemesAsPrivileged([{
   scheme: 'overwatch',
@@ -47,9 +51,12 @@ const rendererContentTypes: Record<string, string> = {
 }
 
 function installRendererProtocol() {
+  const catalog = JSON.parse(fs.readFileSync(path.join(rendererRoot, 'planetary-layers.json'), 'utf8'))
+  const planetary = createPlanetaryProxy(catalog.layers)
   protocol.handle('overwatch', request => {
     const url = new URL(request.url)
     if (url.hostname !== 'app') return new Response('Not found', { status: 404 })
+    if (url.pathname.startsWith('/planetary/')) return planetary(url.pathname)
     const relativePath = decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname)
     const assetPath = path.resolve(rendererRoot, `.${relativePath}`)
     if (!assetPath.startsWith(`${rendererRoot}${path.sep}`)) return new Response('Not found', { status: 404 })
@@ -81,41 +88,73 @@ function localProviderConfig(): ProviderConfig {
   }
   return {}
 }
-const localConfig = localProviderConfig()
-const providerBaseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
-  || app.commandLine.getSwitchValue('mayday-provider-url') || localConfig.providerUrl
-const providerTokenFile = app.commandLine.getSwitchValue('mayday-provider-token-file') || localConfig.tokenFile
-function readProviderToken(tokenFile?: string) {
-  if (!tokenFile) return ''
-  try { return fs.readFileSync(tokenFile, 'utf8').trim() } catch { return '' }
-}
-const providerToken = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN
-  || readProviderToken(providerTokenFile)
-
-function configuredProviderUrl() {
+function configuredProvider() {
+  // Resolve local configuration at request time. A restart can bring the app
+  // up before a mounted token file or provider configuration is available.
+  const localConfig = localProviderConfig()
+  const providerBaseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
+    || app.commandLine.getSwitchValue('mayday-provider-url') || localConfig.providerUrl
+  const providerTokenFile = app.commandLine.getSwitchValue('mayday-provider-token-file') || localConfig.tokenFile
+  const providerToken = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN || (() => {
+    if (!providerTokenFile) return ''
+    try { return fs.readFileSync(providerTokenFile, 'utf8').trim() } catch { return '' }
+  })()
   if (!providerBaseUrl || !providerToken) throw new Error('Mayday Intelligence provider is not configured')
   const url = new URL(providerBaseUrl)
   if (url.protocol !== 'https:' && !['127.0.0.1', 'localhost', '::1'].includes(url.hostname)) {
     throw new Error('Mayday Intelligence provider must use HTTPS or a loopback tunnel')
   }
-  return new URL('documents?limit=100', `${url.toString().replace(/\/$/, '')}/`)
+  return { url: new URL('documents?limit=100', `${url.toString().replace(/\/$/, '')}/`), token: providerToken }
 }
 
-ipcMain.handle('intelligence:list-observations', async () => {
-  const response = await fetch(configuredProviderUrl(), {
-    headers: { Authorization: `Bearer ${providerToken}`, Accept: 'application/json' },
-    signal: AbortSignal.timeout(10_000),
+let providerRequest = 0
+let providerController: AbortController | undefined
+ipcMain.handle('intelligence:list-observations', async event => {
+  providerController?.abort()
+  providerController = new AbortController()
+  const controller = providerController
+  const request = ++providerRequest
+  return new Promise((resolve, reject) => {
+    let initial = false
+    let last: unknown
+    let provider: ReturnType<typeof configuredProvider>
+    try { provider = configuredProvider() } catch (reason) { reject(reason); return }
+    const cacheFile=path.join(app.getPath('userData'),'observation-cache.json')
+    const retained=readObservationCache(cacheFile)
+    let lastCacheWrite=0
+    void collectBalancedProvider(provider.url, async url => {
+      const response = await fetch(url, {
+        headers: { Authorization: `Bearer ${provider.token}`, Accept: 'application/json' },
+        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(15_000)]),
+      })
+      if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
+      return response.json()
+    }, retained, page => {
+      if (request !== providerRequest) return
+      last = page
+      if(!page.loadingMore || Date.now()-lastCacheWrite>15_000) { try { writeObservationCache(cacheFile,page.items);lastCacheWrite=Date.now() } catch { page.collections.warnings.push('Could not save the local observation cache') } }
+      if (!initial) { initial = true; resolve(page) }
+      else if (!event.sender.isDestroyed()) event.sender.send('intelligence:observations-progress', page)
+    }).catch(reason => {
+      if (request !== providerRequest) return
+      const error = reason instanceof Error ? reason.message : 'Archive loading failed'
+      if (!initial) reject(reason)
+      else if (!event.sender.isDestroyed()) event.sender.send('intelligence:observations-progress', { ...last as object, loadingMore:false, error })
+    })
   })
-  if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
-  const payload: unknown = await response.json()
-  if (!payload || typeof payload !== 'object' || !Array.isArray((payload as { items?: unknown }).items)) {
-    throw new Error('Mayday Intelligence returned an invalid document page')
-  }
-  const items = (payload as { items: unknown[] }).items
-  if (items.some(item => !item || typeof item !== 'object' || (item as { protocol_version?: unknown }).protocol_version !== 'mayday.intelligence.document/1')) {
-    throw new Error('Mayday Intelligence returned an unsupported document contract')
-  }
-  return payload
+})
+
+let lastResourceSample=0
+ipcMain.handle('intelligence:resource-usage',()=>{
+  const processes=app.getAppMetrics().map(metric=>({type:metric.type,pid:metric.pid,rssMiB:metric.memory.workingSetSize/1024,cpuPercent:metric.cpu.percentCPUUsage}))
+  let available=os.freemem(),swapUsedMiB:number|undefined
+  try{
+    const memory=fs.readFileSync('/proc/meminfo','utf8')
+    const kb=(key:string)=>Number(new RegExp('^'+key+':\\s+(\\d+)','m').exec(memory)?.[1] ?? 0)
+    available=kb('MemAvailable')*1024;swapUsedMiB=(kb('SwapTotal')-kb('SwapFree'))/1024
+  }catch{ /* Non-Linux systems use the portable free-memory measurement. */ }
+  const now=Date.now(),sampleSeconds=lastResourceSample?(now-lastResourceSample)/1000:0;lastResourceSample=now
+  return {sampleSeconds,processes,rssMiB:processes.reduce((sum,p)=>sum+p.rssMiB,0),cpuPercent:processes.reduce((sum,p)=>sum+p.cpuPercent,0),systemTotalMiB:os.totalmem()/1024/1024,systemAvailableMiB:available/1024/1024,swapUsedMiB,logicalCpus:os.cpus().length,gpu:app.getGPUFeatureStatus().webgl2 ?? 'unknown'}
 })
 
 function createMainWindow() {
@@ -191,3 +230,4 @@ void app.whenReady().then(() => {
     }
   })
 })
+

@@ -1,0 +1,6 @@
+.nearby-world-links { margin:14px 0; padding:12px; border:1px solid #30465a; border-radius:7px; }
+.nearby-world-links h3 { margin:0 0 7px; font-size:1rem; }
+.nearby-world-links p { font-size:.72rem; color:#98afc7; line-height:1.5; }
+.nearby-world-links>div { display:grid; gap:6px; }
+.nearby-world-links button { display:flex; flex-wrap:wrap; justify-content:space-between; gap:5px; padding:8px; text-align:left; }
+.nearby-world-links small { font-size:.68rem; color:#93acc7; }

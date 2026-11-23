@@ -86,7 +86,10 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
     }
 
     viewer.scene.globe.enableLighting = true
-    viewer.scene.requestRenderMode = false
+    viewer.scene.requestRenderMode = true
+    viewer.scene.maximumRenderTimeChange = 60
+    viewer.targetFrameRate = 30
+    viewer.resolutionScale = .8
     const cameraController = viewer.scene.screenSpaceCameraController
     cameraController.inertiaZoom = 0
     cameraController.minimumZoomDistance = 750_000
@@ -151,6 +154,7 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
         position: Cartesian3.fromDegrees(document.longitude, document.latitude),
         point: { pixelSize: document.document_id === selectedId ? 14 : 10, color: Color.fromCssColorString('#7ec8ff'), outlineColor: Color.WHITE, outlineWidth: 1 } })
     })
+    viewer.scene.requestRender()
   }, [observations, dossiers, selectedId, selectedRegionId, ukraineObservations])
 
   return (
@@ -167,3 +171,4 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
     </section>
   )
 }
+

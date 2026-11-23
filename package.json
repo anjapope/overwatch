@@ -21,7 +21,7 @@
     "package:linux": "npm run build && node ./scripts/package-linux.cjs",
     "open:mac": "open /private/tmp/overwatch-release/Overwatch-darwin-arm64/Overwatch.app",
     "lint": "eslint .",
-    "test": "vitest run",
+    "test": "vitest run --config vitest.config.mjs",
     "preview": "vite preview",
     "start": "npm run build && electron .",
     "test:lifecycle": "node ./scripts/test-lifecycle.cjs",
@@ -53,3 +53,4 @@
     "wait-on": "^9.1.0"
   }
 }
+
