@@ -14,7 +14,7 @@ export function CommandBar({ active, onNavigate }: { active: WorkspaceView; onNa
 
   return (
     <nav className="command-bar" role="toolbar" aria-label="Command Bar">
-      {(['system','search','dossiers','events','watches','alerts','briefings','sources','layers','settings'] as const).map(type =>
+      {(['system','orbit','search','dossiers','events','watches','alerts','briefings','sources','layers','settings'] as const).map(type =>
         <button key={type} className={`cmd-btn ${active === type ? 'active' : ''}`} aria-pressed={active === type} onClick={buildHandler({ type })}>{type[0].toUpperCase() + type.slice(1)}</button>)}
     </nav>
   )
