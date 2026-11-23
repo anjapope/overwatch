@@ -9,6 +9,7 @@ import { buildRegionalDossiers } from './analysis/regionalIntelligence'
 import { OperationsWorkspace } from './components/OperationsWorkspace'
 import { loadWorkspace, saveWorkspace, type WorkspaceState, type WorkspaceView } from './domain/workspace'
 import { SolarSystemNavigator } from './components/SolarSystemNavigator'
+import { OrbitalMonitor } from './components/OrbitalMonitor'
 
 function App() {
   const [observations, setObservations] = useState<IntelligenceDocument[]>([])
@@ -59,7 +60,7 @@ function App() {
           {activeView === 'globe' ? <div className="operational-workspace">
             <OverwatchGlobe observations={observations} dossiers={dossiers} selectedId={selectedId} selectedRegionId={selectedRegionId} onSelect={select} onSelectRegion={dossier => setSelectedRegionId(dossier.region.id)} />
             <ObservationFeed observations={observations} selectedId={selectedId} selectedRegion={selectedRegion} loading={loading} error={error} onSelect={select} onCloseRegion={() => setSelectedRegionId(undefined)} onRefresh={() => void load()} />
-          </div> : activeView === 'system' ? <SolarSystemNavigator observations={observations} onOpenEarth={() => setActiveView('globe')} /> : <OperationsWorkspace view={activeView} observations={observations} selectedId={selectedId} workspace={workspace} onChange={setWorkspace} onBack={() => setActiveView('globe')} />}
+          </div> : activeView === 'system' ? <SolarSystemNavigator observations={observations} onOpenEarth={() => setActiveView('globe')} /> : activeView === 'orbit' ? <OrbitalMonitor /> : <OperationsWorkspace view={activeView} observations={observations} selectedId={selectedId} workspace={workspace} onChange={setWorkspace} onBack={() => setActiveView('globe')} />}
         </main>
       </div>
     </AppStateProvider>
