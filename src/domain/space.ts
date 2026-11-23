@@ -1,4 +1,5 @@
 import catalog from './solarCatalog.json'
+import type { IntelligenceDocument } from './intelligence'
 
 export type CelestialBodyId = (typeof catalog.bodies)[number]['id']
 export type ReferenceFrame =
@@ -18,6 +19,16 @@ export interface SpaceMissionProfile {
   id: string; name: string; agency: string; kind: string; status: string; focus: string; terms: RegExp
 }
 export const celestialBodies: CelestialBody[] = catalog.bodies
+const currentOnlyBodies = new Set(['sun','mercury','venus','earth','moon','mars','phobos','deimos','asteroid-belt','eros','itokawa','bennu','ryugu','didymos'])
+const currentEvidenceWindowMs = 30*24*60*60*1000
+export function usesCurrentEvidenceOnly(bodyId:CelestialBodyId):boolean { return currentOnlyBodies.has(bodyId) }
+/** Inner-system evidence is recent-only; outer-system mission records retain their historical context. */
+export function isCurrentBodyEvidence(bodyId:CelestialBodyId,document:IntelligenceDocument,now=Date.now()):boolean {
+  if(!currentOnlyBodies.has(bodyId))return true
+  if(document.source_type==='pds' || [document.source_id,document.connector_id].some(id=>id?.startsWith('overwatch-space-')))return false
+  const published=Date.parse(document.publication_time ?? '')
+  return Number.isFinite(published) && published >= now-currentEvidenceWindowMs
+}
 const escaped = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 const expression = (terms: string[]) => new RegExp(`(?:^|[^\\p{L}\\p{N}])(?:${terms.map(escaped).join('|')})(?=$|[^\\p{L}\\p{N}])`, 'iu')
 export const spaceMissionProfiles: SpaceMissionProfile[] = catalog.missions.map(mission => ({ ...mission, terms: expression(mission.aliases) }))

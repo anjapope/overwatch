@@ -10,7 +10,7 @@ export function ObservationFeed({ earthFeedOptions, onEarthFeedOptionsChange, co
   const selected = observations.find(item => item.document_id === selectedId)
   const evidenceUrl = safeExternalUrl(selected?.canonical_url)
   return <aside className="observation-panel" aria-label="Live Intelligence observations">
-    <header><div><span className="eyebrow">Mayday Intelligence</span><h1>Observations</h1></div><button onClick={onRefresh} disabled={loading}>{loading ? 'Loading…' : 'Refresh'}</button></header>
+    <header><div><span className="eyebrow">{earthFeedOptions?.includeArchives?'Earth feed · archives included':'Earth current feed · last 30 days'}</span><h1>Observations</h1></div><button onClick={onRefresh} disabled={loading}>{loading ? 'Loading…' : 'Refresh'}</button></header>
     {onEarthFeedModeChange && <EarthFeedSettings options={earthFeedOptions} onOptionsChange={onEarthFeedOptionsChange} mode={earthFeedMode} documents={allObservations ?? observations} onChange={onEarthFeedModeChange}/>}
     {collectionStatus && <div className="feed-message" role="status">Retained: {collectionStatus.news} news · {collectionStatus.space} space · {collectionStatus.other} other{collectionStatus.cached?' · cached':''}{!!collectionStatus.warnings.length && <details><summary>Collection notices</summary>{collectionStatus.warnings.map((warning,index)=><p key={index}>{warning}</p>)}</details>}</div>}
     {error && <div className="feed-message error">{error}{retrying && <small className="retry-status">Retrying automatically while the provider reconnects. You can also press Refresh.</small>}</div>}

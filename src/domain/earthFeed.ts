@@ -1,5 +1,6 @@
 import type { IntelligenceDocument } from './intelligence'
 export type EarthFeedMode = 'all' | 'science' | 'politics'
+export const CURRENT_EVIDENCE_WINDOW_DAYS = 30
 export const earthFeedModes: { id: EarthFeedMode; label: string }[] = [
   { id:'all', label:'All evidence' }, { id:'science', label:'Science & space' }, { id:'politics', label:'Politics & security' },
 ]
@@ -18,7 +19,7 @@ export function filterEarthFeed(documents: readonly IntelligenceDocument[], mode
   return [...documents].sort((a,b)=>(Date.parse(b.publication_time || b.storage_time)||0)-(Date.parse(a.publication_time || a.storage_time)||0)).filter(document=>{
     if(mode!=='all' && !earthDocumentCategories(document).includes(mode))return false
     if(!options)return true
-    if(!options.includeArchives && mode!=='science' && isBulkArchive(document))return false
+    if(!options.includeArchives && (isBulkArchive(document) || !isCurrentEvidence(document)))return false
     if(options.hideTests && isTestSource(document))return false
     const source=document.source_id || document.connector_id || document.source_name || document.publisher || 'unknown'
     const title=document.title.trim().toLocaleLowerCase().replace(/\s+/g,' ')
@@ -48,6 +49,11 @@ export function loadEarthFeedOptions():EarthFeedOptions {
 export function saveEarthFeedOptions(options:EarthFeedOptions) {try{localStorage.setItem(optionsKey,JSON.stringify(options))}catch{/* Session settings still work. */}}
 export function isBulkArchive(document:IntelligenceDocument):boolean {
   return document.source_type==='pds' || [document.source_id,document.connector_id].some(id=>id?.startsWith('overwatch-space-'))
+}
+/** Current views use the source publication date; ingestion time cannot make an archive current. */
+export function isCurrentEvidence(document:IntelligenceDocument,now=Date.now()):boolean {
+  const published=Date.parse(document.publication_time ?? '')
+  return Number.isFinite(published) && published >= now-CURRENT_EVIDENCE_WINDOW_DAYS*24*60*60*1000
 }
 export function isTestSource(document:IntelligenceDocument):boolean {
   return [document.source_id,document.connector_id].some(id=>id && /(?:^|[-_])(?:test|demo|fixture|example)(?:$|[-_])/i.test(id))
