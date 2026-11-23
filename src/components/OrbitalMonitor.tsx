@@ -55,10 +55,10 @@ export function OrbitalMonitor() {
   const [error, setError] = useState('')
   const [lastAttempt, setLastAttempt] = useState(0)
 
-  const refresh = useCallback(async (force = false) => {
+  const refresh = useCallback(async () => {
     const now = Date.now()
     const current = readCache()
-    if (!force && current && now - new Date(current.updatedAt).getTime() < CACHE_TTL) { setAssets(current.items); setUpdatedAt(current.updatedAt); return }
+    if (current && now - new Date(current.updatedAt).getTime() < CACHE_TTL) { setAssets(current.items); setUpdatedAt(current.updatedAt); return }
     if (now - lastAttempt < 60_000) return
     setLastAttempt(now); setLoading(true); setError('')
     try {
@@ -82,13 +82,13 @@ export function OrbitalMonitor() {
   const toggleNation = (nation: Nation) => setSelectedNations(current => current.includes(nation) ? current.filter(item => item !== nation) : [...current, nation])
 
   return <section className="orbital-workspace" aria-label="Near-Earth orbital monitor">
-    <header className="orbital-header"><div><span className="eyebrow">Near-Earth Monitor · Public catalog</span><h1>Orbital assets</h1></div><div className="orbital-header-meta"><span>{highlightedCount.toLocaleString()} highlighted / {assets.length.toLocaleString()} active payloads</span><button onClick={() => void refresh(true)} disabled={loading}>{loading ? 'Updating…' : 'Refresh catalog'}</button></div></header>
+    <header className="orbital-header"><div><span className="eyebrow">Near-Earth Monitor · Public catalog</span><h1>Orbital assets</h1></div><div className="orbital-header-meta"><span>{highlightedCount.toLocaleString()} highlighted / {assets.length.toLocaleString()} active payloads</span><button onClick={() => void refresh()} disabled={loading}>{loading ? 'Updating…' : 'Refresh catalog'}</button></div></header>
     <div className="orbital-controls"><div className="orbital-nationalities"><strong>Highlight nationality</strong><div>{nations.map(nation => <button key={nation} className={selectedNations.length === 0 || selectedNations.includes(nation) ? 'on' : 'dim'} onClick={() => toggleNation(nation)} aria-pressed={selectedNations.includes(nation)}><i style={{backgroundColor:colors[nation]}}/>{nation}<small>{counts[nation].toLocaleString()}</small></button>)}</div></div><p>Owner codes are grouped by catalog attribution. Joint and ambiguous ownership may require manual review.</p></div>
     <div className="orbital-content">
       <div className="orbital-scene">
         <svg viewBox="0 0 1000 560" role="img" aria-label="Semicircular Earth and orbital altitude overview">
           <defs><linearGradient id="orbitalEarth" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#2775a8"/><stop offset="1" stopColor="#07111f"/></linearGradient></defs>
-          {[200,2000,20000,35786].map(altitude => <path key={altitude} d={'M ' + (500-orbitalRadius(altitude)) + ' 452 A ' + orbitalRadius(altitude) + ' ' + orbitalRadius(altitude) + ' 0 0 1 ' + (500+orbitalRadius(altitude)) + ' 452'} fill="none" stroke="rgba(125,165,204,.2)" strokeDasharray="3 7"/>}
+          {[200,2000,20000,35786].map(altitude => <path key={altitude} d={'M ' + (500-orbitalRadius(altitude)) + ' 452 A ' + orbitalRadius(altitude) + ' ' + orbitalRadius(altitude) + ' 0 0 1 ' + (500+orbitalRadius(altitude)) + ' 452'} fill="none" stroke="rgba(125,165,204,.2)" strokeDasharray="3 7"/>)}
           <path d="M 240 452 A 260 260 0 0 1 760 452 L 760 560 L 240 560 Z" fill="url(#orbitalEarth)" stroke="#3c92c7" strokeWidth="2"/><path d="M 240 452 A 260 260 0 0 1 760 452" fill="none" stroke="#66b7e8" strokeWidth="2"/>
           <text x="500" y="505" textAnchor="middle" className="orbital-earth-label">EARTH · SURFACE VIEW</text><text x="500" y="535" textAnchor="middle" className="orbital-note">Orbital altitude is logarithmically scaled</text>
           {visible.slice(0, 7000).map(asset => { const altitude = (asset.apogee + asset.perigee) / 2; const radius = orbitalRadius(altitude); const phase = stablePhase(asset.id); const x = 500 + radius * Math.cos(phase); const y = 452 - radius * Math.sin(phase); return <circle key={asset.id} cx={x} cy={y} r={selected?.id === asset.id ? 5 : 2.2} fill={colors[asset.nation]} opacity={!selectedNations.length || selectedNations.includes(asset.nation) ? 0.88 : 0.1} tabIndex={0} role="button" aria-label={asset.name + ', ' + asset.nation + ', altitude ' + Math.round(altitude) + ' km'} onClick={() => setSelected(asset)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') setSelected(asset) }}><title>{asset.name} · {asset.nation} · {Math.round(asset.perigee)}–{Math.round(asset.apogee)} km</title></circle> })}
