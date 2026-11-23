@@ -20,7 +20,7 @@ function ownerToNation(raw: string): Nation {
   if (['JPN','JAPAN'].includes(owner)) return 'Japan'
   if (['IND','INDIA'].includes(owner)) return 'India'
   if (['KOR','SKOR','ROK','SOUTH KOREA'].includes(owner)) return 'South Korea'
-  if (['NKO','DPRK','NORTH KOREA'].includes(owner)) return 'North Korea'
+  if (['NKO','DPRK','PRK','NORTH KOREA'].includes(owner)) return 'North Korea'
   if (['CIS','SU','RUS','RU','RUSSIA'].includes(owner)) return 'Russia'
   if (europeOwners.has(owner)) return 'Europe / ESA'
   return 'Other'
@@ -41,7 +41,7 @@ function normalize(records: SatcatRecord[]): OrbitalAsset[] {
 function readCache(): Cache | null {
   try { const value = localStorage.getItem(CACHE_KEY); if (!value) return null; const parsed = JSON.parse(value) as Cache; return Array.isArray(parsed.items) && parsed.updatedAt ? parsed : null } catch { return null }
 }
-function orbitalRadius(altitude: number): number { const clamped = Math.max(0, Math.min(40_000, altitude)); return 176 + 150 * Math.log1p(clamped / 120) / Math.log1p(40_000 / 120) }
+function orbitalRadius(altitude: number): number { const clamped = Math.max(0, Math.min(40_000, altitude)); return 270 + 150 * Math.log1p(clamped / 120) / Math.log1p(40_000 / 120) }
 function stablePhase(id: string): number { let hash = 0; for (let index = 0; index < id.length; index += 1) hash = (hash * 31 + id.charCodeAt(index)) | 0; return (Math.abs(hash) % 10000) / 10000 * Math.PI }
 function formatAge(value?: string): string { return value ? new Date(value).toLocaleString() : 'No catalog snapshot' }
 
