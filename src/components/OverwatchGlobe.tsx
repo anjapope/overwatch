@@ -21,6 +21,7 @@ export interface OverwatchGlobeProps {
   selectedRegionId?: string
   onSelect?(document: IntelligenceDocument): void
   onSelectRegion?(dossier: RegionalDossier): void
+  compact?: boolean
 }
 
 const signalColor = (signal: RegionalDossier['signal']) => signal === 'conflict' ? Color.fromCssColorString('#ff443d') : signal === 'attention' ? Color.fromCssColorString('#ffb84d') : Color.fromCssColorString('#42bff5')
@@ -34,7 +35,7 @@ const ukraineHotspots = [
 ]
 const documentText = (document: IntelligenceDocument) => `${document.title} ${document.summary ?? ''}`
 
-export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, selectedRegionId, onSelect, onSelectRegion }: OverwatchGlobeProps) {
+export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, selectedRegionId, onSelect, onSelectRegion, compact = false }: OverwatchGlobeProps) {
   const [globeError, setGlobeError] = useState<string>()
   const containerRef = useRef<HTMLDivElement | null>(null)
   const viewerRef = useRef<Viewer | null>(null)
@@ -96,7 +97,7 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
     cameraController.maximumZoomDistance = 25_000_000
     viewer.camera.lookAt(
       Cartesian3.ZERO,
-      new HeadingPitchRange(0, -Math.PI / 2, 22_000_000),
+      new HeadingPitchRange(0, -Math.PI / 2, compact ? 14_000_000 : 22_000_000),
     )
     viewerRef.current = viewer
     const removeSelection = viewer.selectedEntityChanged.addEventListener(entity => {
@@ -116,7 +117,7 @@ export function OverwatchGlobe({ observations = [], dossiers = [], selectedId, s
         viewer.destroy()
       }
     }
-  }, [])
+  }, [compact])
 
   useEffect(() => {
     const viewer = viewerRef.current
