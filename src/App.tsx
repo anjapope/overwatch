@@ -10,6 +10,7 @@ import { OperationsWorkspace } from './components/OperationsWorkspace'
 import { loadWorkspace, saveWorkspace, type WorkspaceState, type WorkspaceView } from './domain/workspace'
 import { filterEarthFeed, loadEarthFeedMode, saveEarthFeedMode, loadEarthFeedOptions, saveEarthFeedOptions, type EarthFeedOptions, type EarthFeedMode } from './domain/earthFeed'
 import { SolarSystemNavigator } from './components/SolarSystemNavigator'
+import { OrbitalMonitor } from './components/OrbitalMonitor'
 
 function App() {
   const [earthFeedOptions,setEarthFeedOptions]=useState<EarthFeedOptions>(loadEarthFeedOptions)
@@ -106,7 +107,7 @@ function App() {
           {activeView === 'globe' ? <div className="operational-workspace">
             <OverwatchGlobe observations={earthObservations} dossiers={dossiers} selectedId={selectedId} selectedRegionId={selectedRegionId} onSelect={select} onSelectRegion={dossier => setSelectedRegionId(dossier.region.id)} />
             <ObservationFeed observations={earthObservations} earthFeedOptions={earthFeedOptions} onEarthFeedOptionsChange={setEarthOptions} collectionStatus={collections} allObservations={observations} earthFeedMode={earthFeedMode} onEarthFeedModeChange={setEarthMode} selectedId={selectedId} selectedRegion={selectedRegion} loading={loading} retrying={shouldRetry && !loading} error={error} onSelect={select} onCloseRegion={() => setSelectedRegionId(undefined)} onRefresh={() => void load()} />
-          </div> : activeView === 'system' ? <SolarSystemNavigator observations={observations} onOpenEarth={() => setActiveView('globe')} onRefresh={() => void load()} loading={loading} error={error} /> : <OperationsWorkspace view={activeView} observations={observations} selectedId={selectedId} workspace={workspace} onChange={setWorkspace} onBack={() => setActiveView('globe')} />}
+          </div> : activeView === 'system' ? <SolarSystemNavigator observations={observations} onOpenEarth={() => setActiveView('globe')} onRefresh={() => void load()} loading={loading} error={error} /> : activeView === 'orbit' ? <OrbitalMonitor /> : <OperationsWorkspace view={activeView} observations={observations} selectedId={selectedId} workspace={workspace} onChange={setWorkspace} onBack={() => setActiveView('globe')} />}
         </main>
       </div>
     </AppStateProvider>
