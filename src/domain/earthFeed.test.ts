@@ -26,3 +26,17 @@ describe('Earth evidence lens',()=>{
     expect(loadEarthFeedMode()).toBe('all');expect(()=>saveEarthFeedMode('science')).not.toThrow()
   })
 })
+
+describe('Earth feed volume protection',()=>{
+  it('hides archive/test batches and caps each news source without modifying retained records',()=>{
+    const records=[...Array.from({length:100},(_,i)=>doc('News '+i,{source_id:'overwatch-bbc-world',document_id:'n'+i})),doc('Archive',{source_id:'overwatch-space-pds4'}),doc('Fixture',{source_id:'test-news'})]
+    const filtered=filterEarthFeed(records,'all',{includeArchives:false,hideTests:true,perSourceLimit:25,collapseRepeats:true})
+    expect(filtered).toHaveLength(25);expect(filtered.every(d=>d.source_id==='overwatch-bbc-world')).toBe(true)
+    expect(records).toHaveLength(102)
+  })
+  it('collapses repeated records by source and URL, while allowing limits to be disabled',()=>{
+    const records=[doc('Same',{document_id:'1',source_id:'news',canonical_url:'https://example.org/story'}),doc('Updated',{document_id:'2',source_id:'news',canonical_url:'https://example.org/story'})]
+    expect(filterEarthFeed(records,'all',{includeArchives:true,hideTests:false,perSourceLimit:0,collapseRepeats:true})).toHaveLength(1)
+    expect(filterEarthFeed(records,'all',{includeArchives:true,hideTests:false,perSourceLimit:0,collapseRepeats:false})).toHaveLength(2)
+  })
+})

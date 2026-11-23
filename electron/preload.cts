@@ -1,5 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 contextBridge.exposeInMainWorld('overwatch', Object.freeze({
+  getResourceUsage: () => ipcRenderer.invoke('intelligence:resource-usage'),
   listObservations: () => ipcRenderer.invoke('intelligence:list-observations'),
   onObservationProgress: (callback: (page: unknown) => void) => {
     if (typeof callback !== 'function') throw new TypeError('Expected a callback')

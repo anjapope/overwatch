@@ -7,6 +7,7 @@ export interface IntelligenceDocument {
   verification?: Record<string, unknown> | null
 }
 export interface IntelligenceDocumentPage {
+  collections?: { news:number;space:number;other:number;cached:boolean;warnings:string[] };
   truncated?: boolean; total?: number; loadingMore?: boolean; error?: string; items: IntelligenceDocument[]; next_cursor?: string | null }
 export interface GeographicObservation extends IntelligenceDocument { latitude: number; longitude: number }
 

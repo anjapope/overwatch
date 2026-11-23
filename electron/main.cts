@@ -1,7 +1,9 @@
 import { app, BrowserWindow, ipcMain, protocol, shell } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
-import { collectProviderPages } from './provider-pages.cjs'
+import { collectBalancedProvider } from './balanced-provider.cjs'
+import { readObservationCache, writeObservationCache } from './observation-store.cjs'
+import os from 'node:os'
 import { createPlanetaryProxy } from './planetary-proxy.cjs'
 
 protocol.registerSchemesAsPrivileged([{
@@ -86,24 +88,23 @@ function localProviderConfig(): ProviderConfig {
   }
   return {}
 }
-const localConfig = localProviderConfig()
-const providerBaseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
-  || app.commandLine.getSwitchValue('mayday-provider-url') || localConfig.providerUrl
-const providerTokenFile = app.commandLine.getSwitchValue('mayday-provider-token-file') || localConfig.tokenFile
-function readProviderToken(tokenFile?: string) {
-  if (!tokenFile) return ''
-  try { return fs.readFileSync(tokenFile, 'utf8').trim() } catch { return '' }
-}
-const providerToken = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN
-  || readProviderToken(providerTokenFile)
-
-function configuredProviderUrl() {
+function configuredProvider() {
+  // Resolve local configuration at request time. A restart can bring the app
+  // up before a mounted token file or provider configuration is available.
+  const localConfig = localProviderConfig()
+  const providerBaseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
+    || app.commandLine.getSwitchValue('mayday-provider-url') || localConfig.providerUrl
+  const providerTokenFile = app.commandLine.getSwitchValue('mayday-provider-token-file') || localConfig.tokenFile
+  const providerToken = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN || (() => {
+    if (!providerTokenFile) return ''
+    try { return fs.readFileSync(providerTokenFile, 'utf8').trim() } catch { return '' }
+  })()
   if (!providerBaseUrl || !providerToken) throw new Error('Mayday Intelligence provider is not configured')
   const url = new URL(providerBaseUrl)
   if (url.protocol !== 'https:' && !['127.0.0.1', 'localhost', '::1'].includes(url.hostname)) {
     throw new Error('Mayday Intelligence provider must use HTTPS or a loopback tunnel')
   }
-  return new URL('documents?limit=100', `${url.toString().replace(/\/$/, '')}/`)
+  return { url: new URL('documents?limit=100', `${url.toString().replace(/\/$/, '')}/`), token: providerToken }
 }
 
 let providerRequest = 0
@@ -116,16 +117,22 @@ ipcMain.handle('intelligence:list-observations', async event => {
   return new Promise((resolve, reject) => {
     let initial = false
     let last: unknown
-    void collectProviderPages(configuredProviderUrl(), async url => {
+    let provider: ReturnType<typeof configuredProvider>
+    try { provider = configuredProvider() } catch (reason) { reject(reason); return }
+    const cacheFile=path.join(app.getPath('userData'),'observation-cache.json')
+    const retained=readObservationCache(cacheFile)
+    let lastCacheWrite=0
+    void collectBalancedProvider(provider.url, async url => {
       const response = await fetch(url, {
-        headers: { Authorization: `Bearer ${providerToken}`, Accept: 'application/json' },
+        headers: { Authorization: `Bearer ${provider.token}`, Accept: 'application/json' },
         signal: AbortSignal.any([controller.signal, AbortSignal.timeout(15_000)]),
       })
       if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
       return response.json()
-    }, 50, page => {
+    }, retained, page => {
       if (request !== providerRequest) return
       last = page
+      if(!page.loadingMore || Date.now()-lastCacheWrite>15_000) { try { writeObservationCache(cacheFile,page.items);lastCacheWrite=Date.now() } catch { page.collections.warnings.push('Could not save the local observation cache') } }
       if (!initial) { initial = true; resolve(page) }
       else if (!event.sender.isDestroyed()) event.sender.send('intelligence:observations-progress', page)
     }).catch(reason => {
@@ -135,6 +142,19 @@ ipcMain.handle('intelligence:list-observations', async event => {
       else if (!event.sender.isDestroyed()) event.sender.send('intelligence:observations-progress', { ...last as object, loadingMore:false, error })
     })
   })
+})
+
+let lastResourceSample=0
+ipcMain.handle('intelligence:resource-usage',()=>{
+  const processes=app.getAppMetrics().map(metric=>({type:metric.type,pid:metric.pid,rssMiB:metric.memory.workingSetSize/1024,cpuPercent:metric.cpu.percentCPUUsage}))
+  let available=os.freemem(),swapUsedMiB:number|undefined
+  try{
+    const memory=fs.readFileSync('/proc/meminfo','utf8')
+    const kb=(key:string)=>Number(new RegExp('^'+key+':\\s+(\\d+)','m').exec(memory)?.[1] ?? 0)
+    available=kb('MemAvailable')*1024;swapUsedMiB=(kb('SwapTotal')-kb('SwapFree'))/1024
+  }catch{ /* Non-Linux systems use the portable free-memory measurement. */ }
+  const now=Date.now(),sampleSeconds=lastResourceSample?(now-lastResourceSample)/1000:0;lastResourceSample=now
+  return {sampleSeconds,processes,rssMiB:processes.reduce((sum,p)=>sum+p.rssMiB,0),cpuPercent:processes.reduce((sum,p)=>sum+p.cpuPercent,0),systemTotalMiB:os.totalmem()/1024/1024,systemAvailableMiB:available/1024/1024,swapUsedMiB,logicalCpus:os.cpus().length,gpu:app.getGPUFeatureStatus().webgl2 ?? 'unknown'}
 })
 
 function createMainWindow() {
