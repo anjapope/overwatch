@@ -1,5 +1,5 @@
 import { lazy, Suspense, useCallback, useMemo, useState, type CSSProperties } from 'react'
-import { bodiesForDocument, celestialBodies, missionsForDocument, solarSystemGroups, spaceMissionProfiles, type CelestialBody, type CelestialBodyId } from '../domain/space'
+import { bodiesForDocument, celestialBodies, isCurrentBodyEvidence, missionsForDocument, solarSystemGroups, spaceMissionProfiles, usesCurrentEvidenceOnly, type CelestialBody, type CelestialBodyId } from '../domain/space'
 import { safeExternalUrl, type IntelligenceDocument } from '../domain/intelligence'
 
 import { NearbyWorldLinks } from './NearbyWorldLinks'
@@ -18,13 +18,13 @@ export function SolarSystemNavigator({ observations, onOpenEarth, onRefresh, loa
   const [search,setSearch] = useState('')
   const routes = useMemo(() => new Map(observations.map(document => [document.document_id, bodiesForDocument(document)])), [observations])
   const selected = celestialBodies.find(body => body.id === selectedId)!
-  const routed = observations.filter(document => routes.get(document.document_id)?.includes(selected.id))
+  const routed = observations.filter(document => routes.get(document.document_id)?.includes(selected.id) && isCurrentBodyEvidence(selected.id,document))
   const mission = spaceMissionProfiles.find(item => item.id === selectedMissionId)
   const missionEvidence = mission ? observations.filter(document => missionsForDocument(document).includes(mission.id)) : []
   const select = (id: string) => { setSelectedId(id); setSelectedMissionId(undefined) }
   const navigateToWorld = useCallback((id:string) => { setSelectedId(id);setSelectedMissionId(undefined);setFocusedId(id) }, [])
   if (focusedId) return <BodyOperationsView bodyId={focusedId} observations={observations} onBack={() => setFocusedId(undefined)} onNavigate={navigateToWorld} onOpenEarth={onOpenEarth}/>
-  const bodyButton = (body: CelestialBody, moon = false) => <button key={body.id} className={`atlas-body ${moon ? 'satellite' : ''} ${body.id} ${!mission && selectedId === body.id ? 'selected' : ''}`} style={bodyStyle(body)} onClick={() => select(body.id)} aria-label={`Select ${body.name}`} aria-pressed={!mission && selectedId === body.id}><i aria-hidden="true"/><span>{body.name}</span><small>{observations.filter(item => routes.get(item.document_id)?.includes(body.id)).length}</small></button>
+  const bodyButton = (body: CelestialBody, moon = false) => <button key={body.id} className={`atlas-body ${moon ? 'satellite' : ''} ${body.id} ${!mission && selectedId === body.id ? 'selected' : ''}`} style={bodyStyle(body)} onClick={() => select(body.id)} aria-label={`Select ${body.name}`} aria-pressed={!mission && selectedId === body.id}><i aria-hidden="true"/><span>{body.name}</span><small>{observations.filter(item => routes.get(item.document_id)?.includes(body.id) && isCurrentBodyEvidence(body.id,item)).length}</small></button>
   const matches = (body: CelestialBody) => `${body.name} ${body.kind} ${body.aliases.join(' ')}`.toLowerCase().includes(search.toLowerCase().trim())
   return <section className="system-workspace" aria-label="Solar system navigator">
     <header className="operations-header"><div><span className="eyebrow">Solar atlas · symbolic distances and sizes</span><h1>Solar system</h1></div><div className="action-row"><button onClick={onRefresh} disabled={loading}>{loading ? 'Loading…' : 'Refresh evidence'}</button><button onClick={onOpenEarth}>Earth operations</button></div></header>
@@ -45,9 +45,9 @@ export function SolarSystemNavigator({ observations, onOpenEarth, onRefresh, loa
 }
 function BodyOperationsView({bodyId,observations,onBack,onNavigate,onOpenEarth}:{bodyId:CelestialBodyId;observations:IntelligenceDocument[];onBack():void;onNavigate(id:string):void;onOpenEarth():void}) {
   const body = celestialBodies.find(item => item.id === bodyId)!
-  const routed = observations.filter(document => bodiesForDocument(document).includes(bodyId))
+  const routed = observations.filter(document => bodiesForDocument(document).includes(bodyId) && isCurrentBodyEvidence(bodyId,document))
   return <section className={`body-workspace body-${bodyId}`} style={bodyStyle(body)} aria-label={`${body.name} operations view`}>
-    <header className="operations-header"><div><span className="eyebrow">Body-focused evidence · scientific surface explorer</span><h1>{body.name}</h1></div><div className="action-row"><button onClick={onBack}>Solar atlas</button><button onClick={onOpenEarth}>Earth operations</button></div></header>
+    <header className="operations-header"><div><span className="eyebrow">{usesCurrentEvidenceOnly(bodyId)?'Current evidence · 30-day window':'Historical archive · original observation dates'}</span><h1>{body.name}</h1></div><div className="action-row"><button onClick={onBack}>Solar atlas</button><button onClick={onOpenEarth}>Earth operations</button></div></header>
     {layersForBody(bodyId).length ? <Suspense fallback={<div className="feed-message">Starting surface explorer…</div>}><PlanetarySurface key={bodyId} bodyId={bodyId} name={body.name} onNavigate={onNavigate}/></Suspense> : <div className="body-scene" aria-label={`Stylized ${body.name} view`}><div className="body-sphere" aria-hidden="true"/><div className="frame-label">ILLUSTRATION · SURFACE DATA NOT AVAILABLE</div></div>}
 
     <aside className="body-intelligence"><NearbyWorldLinks bodyId={bodyId} onNavigate={onNavigate}/><BodySummary body={body}/><span className="eyebrow">MERLIN space intelligence</span><h2>{routed.length} loaded record(s)</h2><p>Archive records retain their original observation periods. Surface maps load independently of these archive records. Unsupported bodies retain an explicitly labeled illustration. No current spacecraft positions are inferred.</p><Evidence documents={routed}/></aside>
