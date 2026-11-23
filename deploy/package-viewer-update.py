@@ -1,7 +1,11 @@
 from pathlib import Path
-import hashlib,json,struct,shutil
+import hashlib,json,struct,shutil,argparse
 app=Path(__file__).resolve().parents[1]
-out=app/'release/viewer-update';out.mkdir(parents=True,exist_ok=True)
+parser=argparse.ArgumentParser()
+parser.add_argument('--bundle-name',choices=['viewer-update','profile-update'],default='viewer-update')
+parser.add_argument('--installer',choices=['install-viewer-update.sh','install-profile-update.sh'],default='install-viewer-update.sh')
+args=parser.parse_args()
+out=app/'release'/args.bundle_name;out.mkdir(parents=True,exist_ok=True)
 files=[p for d in ['build/electron','dist'] for p in (app/d).rglob('*') if p.is_file()]+[app/'package.json']
 tree={'files':{}};offset=0;entries=[]
 for p in sorted(files):
@@ -22,8 +26,8 @@ with archive.open('rb') as f:
   node=loaded
   for part in p.relative_to(app).parts:node=node['files'][part]
   f.seek(base+int(node['offset']));assert f.read(node['size'])==data,p
-for name in ['install-viewer-update.sh','verify-bundle.py']:shutil.copy2(app/'deploy'/name,out/name)
+for name in [args.installer,'verify-bundle.py']:shutil.copy2(app/'deploy'/name,out/name)
 checksums={name:hashlib.sha256((out/name).read_bytes()).hexdigest() for name in ['overwatch-app.asar','verify-bundle.py']}
 (out/'checksums.json').write_text(json.dumps(checksums,indent=2)+'\n')
 print('Verified',len(entries),'application files;',archive.stat().st_size,'bytes')
-print(out/'install-viewer-update.sh')
+print(out/args.installer)

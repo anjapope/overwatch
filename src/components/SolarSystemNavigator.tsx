@@ -2,6 +2,7 @@ import { lazy, Suspense, useMemo, useState, type CSSProperties } from 'react'
 import { bodiesForDocument, celestialBodies, missionsForDocument, solarSystemGroups, spaceMissionProfiles, type CelestialBody, type CelestialBodyId } from '../domain/space'
 import { safeExternalUrl, type IntelligenceDocument } from '../domain/intelligence'
 
+import { BodySummary } from './BodySummary'
 import { layersForBody } from '../domain/planetary'
 const PlanetarySurface=lazy(()=>import('./PlanetarySurface'))
 
@@ -37,7 +38,7 @@ export function SolarSystemNavigator({ observations, onOpenEarth, onRefresh, loa
       <section className="atlas-missions"><h2>Mission archives</h2><nav className="mission-strip" aria-label="Space mission profiles">{spaceMissionProfiles.map(item => <button key={item.id} className={mission?.id === item.id ? 'selected' : ''} onClick={() => setSelectedMissionId(item.id)} aria-label={`Open ${item.name} profile`}><i className={`mission-icon mission-${item.id}`} aria-hidden="true"/><span>{item.name}</span></button>)}</nav></section>
       <p className="atlas-note">Navigation includes major moons and selected small bodies, not every known object. Counts refer to loaded evidence; zero does not mean no archive exists. Oort cloud is a hypothesized region.</p>
     </div>
-    <aside className="system-dossier">{mission ? <><span className="eyebrow">Mission profile</span><h2>{mission.name}</h2><p>{mission.agency} · {mission.kind}</p><p>{mission.focus}</p><p>{mission.status}</p><Evidence documents={missionEvidence}/></> : <><span className="eyebrow">Selected world</span><h2>{selected.name}</h2><dl><div><dt>Class</dt><dd>{selected.kind}</dd></div>{selected.parent && <div><dt>Parent</dt><dd>{celestialBodies.find(body => body.id === selected.parent)?.name}</dd></div>}<div><dt>Loaded evidence</dt><dd>{routed.length} record(s)</dd></div><div><dt>Archive coverage</dt><dd>Verify against MERLIN retrieval results</dd></div></dl><button className="primary" onClick={() => selected.id === 'earth' ? onOpenEarth() : setFocusedId(selected.id)}>Open {selected.name} operations</button><Evidence documents={routed}/></>}</aside>
+    <aside className="system-dossier">{mission ? <><span className="eyebrow">Mission profile</span><h2>{mission.name}</h2><p>{mission.agency} · {mission.kind}</p><p>{mission.focus}</p><p>{mission.status}</p><Evidence documents={missionEvidence}/></> : <><span className="eyebrow">Selected world</span><h2>{selected.name}</h2><dl><div><dt>Class</dt><dd>{selected.kind}</dd></div>{selected.parent && <div><dt>Parent</dt><dd>{celestialBodies.find(body => body.id === selected.parent)?.name}</dd></div>}<div><dt>Loaded evidence</dt><dd>{routed.length} record(s)</dd></div><div><dt>Archive coverage</dt><dd>Verify against MERLIN retrieval results</dd></div></dl><button className="primary" onClick={() => selected.id === 'earth' ? onOpenEarth() : setFocusedId(selected.id)}>Open {selected.name} operations</button><BodySummary body={selected}/><Evidence documents={routed}/></>}</aside>
   </section>
 }
 function BodyOperationsView({bodyId,observations,onBack,onOpenEarth}:{bodyId:CelestialBodyId;observations:IntelligenceDocument[];onBack():void;onOpenEarth():void}) {
@@ -47,6 +48,6 @@ function BodyOperationsView({bodyId,observations,onBack,onOpenEarth}:{bodyId:Cel
     <header className="operations-header"><div><span className="eyebrow">Body-focused evidence · scientific surface explorer</span><h1>{body.name}</h1></div><div className="action-row"><button onClick={onBack}>Solar atlas</button><button onClick={onOpenEarth}>Earth operations</button></div></header>
     {layersForBody(bodyId).length ? <Suspense fallback={<div className="feed-message">Starting surface explorer…</div>}><PlanetarySurface key={bodyId} bodyId={bodyId} name={body.name}/></Suspense> : <div className="body-scene" aria-label={`Stylized ${body.name} view`}><div className="body-sphere" aria-hidden="true"/><div className="frame-label">ILLUSTRATION · SURFACE DATA NOT AVAILABLE</div></div>}
 
-    <aside className="body-intelligence"><span className="eyebrow">MERLIN space intelligence</span><h2>{routed.length} loaded record(s)</h2><p>Archive records retain their original observation periods. Surface maps load independently of these archive records. Unsupported bodies retain an explicitly labeled illustration. No current spacecraft positions are inferred.</p><Evidence documents={routed}/></aside>
+    <aside className="body-intelligence"><BodySummary body={body}/><span className="eyebrow">MERLIN space intelligence</span><h2>{routed.length} loaded record(s)</h2><p>Archive records retain their original observation periods. Surface maps load independently of these archive records. Unsupported bodies retain an explicitly labeled illustration. No current spacecraft positions are inferred.</p><Evidence documents={routed}/></aside>
   </section>
 }

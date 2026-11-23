@@ -1,0 +1,1125 @@
+{
+  "reviewedAt": "2026-11-22",
+  "profiles": {
+    "sun": {
+      "paragraphs": [
+        "The Sun is the approximately 4.6-billion-year-old star that supplies almost all of the solar system’s light and heat. Nuclear fusion in its core converts hydrogen into helium; magnetic fields drive sunspots, flares, and eruptions that can disturb Earth’s satellites and electrical infrastructure. It has been observed throughout human history and has no individual discoverer.",
+        "Helios, Ulysses, SOHO, SDO, Parker Solar Probe, and Solar Orbiter have studied its atmosphere, wind, and magnetic activity. Parker and Solar Orbiter extend close-range and high-latitude observations, while ESA’s planned Vigil mission is intended to improve advance warning of solar disturbances. Its immediate practical value is solar energy and space-weather forecasting; understanding it also provides a reference for other stars."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Sun",
+          "url": "https://science.nasa.gov/sun/"
+        },
+        {
+          "label": "ESA: Vigil",
+          "url": "https://www.esa.int/Space_Safety/Vigil"
+        }
+      ]
+    },
+    "mercury": {
+      "paragraphs": [
+        "Mercury, known since antiquity, is the smallest planet and the closest to the Sun. Its disproportionately large metallic core, ancient cratered crust, global contraction features, and weak magnetic field make it an unusual rocky world. Despite intense daytime heating, permanently shadowed polar craters contain evidence of water ice.",
+        "Mariner 10 made three flybys in 1974–1975, and MESSENGER orbited from 2011 to 2015. ESA/JAXA’s BepiColombo reached its initial Mercury orbit in November 2026; its two science orbiters are intended to investigate the surface, interior, and magnetic environment. Mercury is chiefly useful as a natural laboratory for planetary formation and extreme thermal engineering; accessible resources and viable extraction have not been demonstrated."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Mercury",
+          "url": "https://science.nasa.gov/mercury/"
+        },
+        {
+          "label": "ESA: BepiColombo arrival updates",
+          "url": "https://www.esa.int/articles/about-us/directorates/science/bepicolombo/latest-updates-bepicolombo-s-arrival-at-mercury"
+        }
+      ]
+    },
+    "venus": {
+      "paragraphs": [
+        "Venus has been known since antiquity. Nearly Earth’s size, it has a dense carbon-dioxide atmosphere, sulfuric-acid clouds, and a crushing, extremely hot surface. Radar and spacecraft observations reveal volcanoes, deformed highlands, and evidence of comparatively recent volcanic activity. How it evolved so differently from Earth remains a major question.",
+        "Mariner 2, the Soviet Venera and Vega missions, Pioneer Venus, Magellan, Venus Express, and Akatsuki established much of this picture. NASA’s DAVINCI atmospheric probe and VERITAS radar orbiter, together with ESA’s EnVision orbiter, are planned follow-ups; EnVision targets a 2031 launch. Venus helps test climate and habitability models and high-temperature technology. Floating habitats and atmospheric resource use remain speculative concepts."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Venus",
+          "url": "https://science.nasa.gov/venus/"
+        },
+        {
+          "label": "NASA: DAVINCI",
+          "url": "https://science.nasa.gov/mission/davinci/"
+        },
+        {
+          "label": "NASA: VERITAS",
+          "url": "https://science.nasa.gov/mission/veritas/overview/"
+        },
+        {
+          "label": "ESA: EnVision",
+          "url": "https://www.esa.int/missions/about-us/directorates/science/envision"
+        }
+      ]
+    },
+    "earth": {
+      "paragraphs": [
+        "Earth is the only world known to support life and the reference against which planetary habitability is judged. Liquid oceans, an oxygen-rich atmosphere, plate tectonics, and a protective magnetic field interact with its biosphere. There is no single discovery event: recognizing Earth as a planet emerged through centuries of astronomical observation and argument.",
+        "Landsat, Terra, Aqua, Sentinel, and many other missions observe land, oceans, ice, weather, and atmospheric change; crewed stations also support Earth science. Continuing NASA and ESA Earth-observation programs will expand those records. Their practical uses include crop monitoring, disaster response, navigation, water management, and climate assessment. Earth’s living systems and resources also support every current space mission."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Earth",
+          "url": "https://science.nasa.gov/earth/facts/"
+        },
+        {
+          "label": "ESA: Earth observation",
+          "url": "https://www.esa.int/Applications/Observing_the_Earth"
+        }
+      ]
+    },
+    "moon": {
+      "paragraphs": [
+        "Earth’s Moon has been known since prehistory. Its ancient cratered highlands, basaltic plains, and preserved impact record document the early inner solar system. Most evidence favors formation after a giant impact involving the young Earth. Water occurs in several forms, including ice in permanently shadowed polar locations, but its distribution and accessibility remain important uncertainties.",
+        "Luna, Surveyor, Apollo, Lunar Reconnaissance Orbiter, Chandrayaan, Chang’e, Kaguya, and other missions have mapped, landed on, or returned material from the Moon. Artemis and robotic commercial and national programs plan further exploration. Samples reveal planetary history; prospective uses include testing deep-space operations and producing oxygen or propellant from local materials. Those possibilities require site-specific measurements and engineering demonstrations."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Moon",
+          "url": "https://science.nasa.gov/moon/"
+        },
+        {
+          "label": "NASA: Artemis",
+          "url": "https://www.nasa.gov/humans-in-space/artemis/"
+        }
+      ]
+    },
+    "mars": {
+      "paragraphs": [
+        "Mars, observed since antiquity, is a cold rocky planet with a thin carbon-dioxide atmosphere, polar ice, enormous volcanoes, and ancient river and lake deposits. Its rocks record a wetter past, while subsurface ice and organic compounds make it a central target for studying habitability. No Martian life has been confirmed.",
+        "Mariner, Viking, Pathfinder, the Mars Exploration Rovers, Curiosity, Perseverance, InSight, and numerous international orbiters have explored it. ESA’s Rosalind Franklin rover targets launch in 2028 and arrival in 2030; MMX will investigate the wider Mars system. Ice and atmospheric carbon dioxide could support future consumables production, but human operations face radiation, dust, and transport challenges. Returning selected rock samples remains a scientific objective with an evolving implementation."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Mars",
+          "url": "https://science.nasa.gov/mars/"
+        },
+        {
+          "label": "ESA: Rosalind Franklin",
+          "url": "https://www.esa.int/missions/about-us/directorates/human-and-robotic-exploration/mars/exomars/rosalind-franklin-rover"
+        },
+        {
+          "label": "JAXA: MMX mission",
+          "url": "https://www.isas.jaxa.jp/en/missions/spacecraft/developing/mmx.html"
+        }
+      ]
+    },
+    "phobos": {
+      "paragraphs": [
+        "Asaph Hall discovered Phobos in 1877. Mars’s larger, inner moon is a dark, irregular body dominated by the Stickney impact crater and networks of grooves. It orbits Mars in less than eight hours and is gradually spiraling inward. Whether it formed from impact debris or from captured material remains unresolved.",
+        "Mariner 9, Viking, Mars Express, and Mars Reconnaissance Orbiter have observed Phobos. JAXA’s MMX launched in October 2026 and plans close observations, surface sampling, and return of Phobos material to Earth. The samples could resolve the moons’ origins and preserve material ejected from Mars. Its low gravity also makes it interesting for future staging studies, although useful concentrations of water or other extractable resources are unverified."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Phobos",
+          "url": "https://science.nasa.gov/mars/moons/phobos/"
+        },
+        {
+          "label": "JAXA: MMX mission",
+          "url": "https://www.isas.jaxa.jp/en/missions/spacecraft/developing/mmx.html"
+        }
+      ]
+    },
+    "deimos": {
+      "paragraphs": [
+        "Deimos was discovered by Asaph Hall in 1877, shortly before he identified Phobos. Smaller and farther from Mars than its companion, it is an irregular, dark moon whose dusty surface appears smoother than Phobos’s. Its nearly circular orbit complicates a simple capture explanation, and its origin is still debated.",
+        "Viking orbiters and later Mars spacecraft have photographed Deimos, although coverage is much less detailed than for Phobos. JAXA’s MMX, launched in October 2026, plans observations of both moons while sampling Phobos. Deimos can help distinguish competing formation models and may be relevant to future Mars-system navigation and staging concepts. Those operational possibilities are prospective; neither a resource deposit nor a practical surface base has been established."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Deimos",
+          "url": "https://science.nasa.gov/mars/moons/deimos/"
+        },
+        {
+          "label": "JAXA: MMX mission",
+          "url": "https://www.isas.jaxa.jp/en/missions/spacecraft/developing/mmx.html"
+        }
+      ]
+    },
+    "jupiter": {
+      "paragraphs": [
+        "Jupiter, known since antiquity, is the largest planet: a hydrogen-and-helium giant with deep atmospheric jets, long-lived storms, an enormous magnetosphere, rings, and a diverse moon system. Its interior contains highly compressed fluids, including electrically conducting metallic hydrogen. Its gravity strongly influenced the formation and later arrangement of the solar system.",
+        "Pioneer 10 and 11, both Voyagers, Galileo, Cassini, New Horizons, and Juno have investigated Jupiter through flybys or orbital missions. Europa Clipper and ESA’s Juice are traveling toward the system, with planned Jupiter arrivals in 2030 and 2031 respectively. Jupiter is valuable for studying giant planets and providing gravity assists. Its radiation environment and lack of a solid surface make straightforward human access or resource extraction exceptionally difficult."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Jupiter",
+          "url": "https://science.nasa.gov/jupiter/"
+        },
+        {
+          "label": "NASA: Europa Clipper",
+          "url": "https://science.nasa.gov/mission/europa-clipper/"
+        },
+        {
+          "label": "ESA: Juice mission",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice"
+        }
+      ]
+    },
+    "io": {
+      "paragraphs": [
+        "Galileo Galilei discovered Io in January 1610. The innermost Galilean moon is the solar system’s most volcanically active world, heated by tidal flexing maintained by its orbital relationships with Europa and Ganymede. Sulfur compounds color its surface, while eruptions continually replace older terrain and supply material to Jupiter’s magnetosphere.",
+        "Voyager revealed active volcanic plumes in 1979; Galileo and Juno later obtained close observations, with additional measurements from other Jupiter flybys and telescopes. Europa Clipper and Juice chiefly target other moons and the wider system, rather than an Io landing. Io’s chief value is understanding tidal heating, volcanism, and plasma interactions. Its radiation, eruptions, and tenuous atmosphere make practical surface utilization a remote prospect."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Io",
+          "url": "https://science.nasa.gov/jupiter/jupiter-moons/io/"
+        },
+        {
+          "label": "NASA: Europa Clipper",
+          "url": "https://science.nasa.gov/mission/europa-clipper/"
+        },
+        {
+          "label": "ESA: Juice mission",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice"
+        }
+      ]
+    },
+    "europa": {
+      "paragraphs": [
+        "Europa was discovered by Galileo Galilei in 1610. Its fractured water-ice shell overlies strong evidence for a global salty ocean. Tidal heating supplies energy, while interactions between ice, ocean, and rocky interior may create environments relevant to life. Ridges and disrupted terrain record ice movement; possible plumes remain an active research question.",
+        "Voyager and Galileo established its ocean-world importance, and Juno added close flyby data in 2022. NASA’s Europa Clipper, launched in 2024, plans repeated flybys after reaching Jupiter in 2030; Juice also plans Europa encounters. These are investigations of habitability, not confirmation of life. Europa’s greatest value is scientific: ocean chemistry and energy exchange. Radiation and the need to avoid biological contamination complicate any future surface or subsurface operations."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Europa",
+          "url": "https://science.nasa.gov/jupiter/jupiter-moons/europa/"
+        },
+        {
+          "label": "NASA: Europa Clipper",
+          "url": "https://science.nasa.gov/mission/europa-clipper/"
+        },
+        {
+          "label": "ESA: Juice mission",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice"
+        }
+      ]
+    },
+    "ganymede": {
+      "paragraphs": [
+        "Galileo Galilei discovered Ganymede in 1610. Larger than Mercury, it is the solar system’s largest moon and has its own intrinsic magnetic field. Dark cratered regions contrast with brighter grooved terrain, while magnetic and other observations support an internal ocean beneath its icy crust.",
+        "Voyager, Galileo, and Juno have investigated Ganymede, including a close Juno flyby in 2021. ESA’s Juice plans to arrive at Jupiter in 2031 and later enter orbit around Ganymede; Europa Clipper will also use Ganymede flybys. It offers a way to study ocean worlds, magnetic dynamos, and the evolution of large icy satellites. Its water ice is a potential future resource, but accessibility, extraction, and sustained operations remain unproven."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Ganymede",
+          "url": "https://science.nasa.gov/jupiter/jupiter-moons/ganymede/"
+        },
+        {
+          "label": "ESA: Juice mission",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice"
+        },
+        {
+          "label": "NASA: Europa Clipper",
+          "url": "https://science.nasa.gov/mission/europa-clipper/"
+        }
+      ]
+    },
+    "callisto": {
+      "paragraphs": [
+        "Callisto, discovered by Galileo Galilei in 1610, is the outermost Galilean moon. Its densely cratered surface and immense impact structures preserve an old geological record. Magnetic observations suggest a salty subsurface ocean, although its interior appears less completely separated into layers than those of some neighboring moons.",
+        "Voyager and Galileo supplied the main close-range observations. ESA’s Juice plans numerous Callisto flybys to examine its surface and interior. Callisto lies in a less intense radiation environment than Europa or Io, which has prompted studies of possible future exploration bases. Such bases are concepts, not approved settlements. Its immediate usefulness is as a record of impacts and a comparison world for understanding why neighboring icy moons evolved differently."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Callisto",
+          "url": "https://science.nasa.gov/jupiter/jupiter-moons/callisto/"
+        },
+        {
+          "label": "ESA: Juice mission",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice"
+        }
+      ]
+    },
+    "amalthea": {
+      "paragraphs": [
+        "Edward Emerson Barnard discovered Amalthea in 1892. This small, reddish, irregular moon orbits inside Io and contributes dust to Jupiter’s faint gossamer rings. Its low bulk density points to a porous interior rather than a compact, solid block; the origin of such a body so close to Jupiter is an important puzzle.",
+        "Voyager imaged Amalthea, and Galileo obtained better surface views and a close gravity encounter in 2002. Juno has also observed it. No dedicated Amalthea mission is identified in the reviewed mission plans; further work can use telescopes and wider Jupiter-system observations. It is useful for studying moon formation, porous bodies, and the transfer of dust into rings. Severe radiation and poorly characterized materials limit practical resource proposals."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Amalthea",
+          "url": "https://science.nasa.gov/jupiter/jupiter-moons/amalthea/"
+        }
+      ]
+    },
+    "saturn": {
+      "paragraphs": [
+        "Saturn has been known since antiquity. This hydrogen-and-helium giant is distinguished by bright rings made largely of water-ice particles, low average density, powerful winds, and a hexagonal atmospheric pattern at its north pole. Its rings and many moons form a dynamic system that records collisions, tidal evolution, and exchanges of material.",
+        "Pioneer 11 and the Voyagers made flybys, while Cassini orbited from 2004 to 2017 and delivered Huygens to Titan. NASA’s planned Dragonfly mission targets Titan, with launch no earlier than 2028 and arrival in 2034. Saturn’s system is valuable for investigating planetary interiors, ring dynamics, and potentially habitable moons. Ring ice is physically present, but industrial harvesting is a speculative use rather than a demonstrated activity."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Saturn",
+          "url": "https://science.nasa.gov/saturn/"
+        },
+        {
+          "label": "NASA: Dragonfly",
+          "url": "https://science.nasa.gov/mission/dragonfly/"
+        }
+      ]
+    },
+    "mimas": {
+      "paragraphs": [
+        "William Herschel discovered Mimas in 1789. This small icy Saturnian moon is dominated by the enormous Herschel crater. Its heavily cratered exterior once made it appear geologically inactive, but analyses of Cassini measurements have raised the possibility of a relatively young internal ocean; the interior is not yet directly confirmed.",
+        "Voyager flybys and Cassini provided its resolved imagery and orbital measurements. No dedicated Mimas follow-up mission is identified in the reviewed plans. Its potential value lies in testing how a small, apparently old icy body can maintain or recently develop liquid water, and in examining tidal interactions with Saturn’s rings. Water ice is abundant in the surface composition, but there is no established extraction or operational infrastructure."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Mimas",
+          "url": "https://science.nasa.gov/saturn/moons/mimas/"
+        },
+        {
+          "label": "Research: Mimas ocean inferred from Cassini orbit measurements",
+          "url": "https://www.nature.com/articles/s41586-023-06975-9"
+        }
+      ]
+    },
+    "enceladus": {
+      "paragraphs": [
+        "William Herschel discovered Enceladus in 1789. Beneath its bright icy exterior lies a global ocean that vents water vapor and ice particles through south-polar fractures. Cassini detected salts, organic compounds, molecular hydrogen, and material containing phosphorus, making this small moon a leading target for investigating environments that might support life.",
+        "Voyager first revealed its unusual terrain; Cassini discovered and repeatedly sampled the plumes. Dedicated plume-sampling and orbiter/lander missions have been studied, but the reviewed sources do not establish an approved return flight. Enceladus could allow ocean material to be examined without drilling through the ice. Its strongest near-term value is astrobiology and geochemistry; the detection of life’s ingredients is not evidence that life itself exists there."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Enceladus",
+          "url": "https://science.nasa.gov/saturn/moons/enceladus/"
+        },
+        {
+          "label": "NASA: Phosphorus in Enceladus ocean material",
+          "url": "https://www.nasa.gov/missions/cassini/nasa-cassini-data-reveals-building-block-for-life-in-enceladus-ocean/"
+        }
+      ]
+    },
+    "tethys": {
+      "paragraphs": [
+        "Giovanni Domenico Cassini discovered Tethys in 1684. Its low density indicates a body made predominantly of water ice. The immense Odysseus impact basin and Ithaca Chasma canyon system show how even an icy moon can preserve both violent impacts and large-scale crustal deformation.",
+        "Voyager and Cassini photographed Tethys and mapped its surface and thermal properties. No dedicated return mission is identified in the reviewed plans; Cassini’s archive remains central to further work. Tethys is useful for comparing impact mechanics and the freezing or expansion histories of icy satellites. Its ice is a possible distant resource, but a practical use case would require much better knowledge of surface mechanics, contamination, and transport costs."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Tethys",
+          "url": "https://science.nasa.gov/saturn/moons/tethys/"
+        }
+      ]
+    },
+    "dione": {
+      "paragraphs": [
+        "Cassini discovered Dione in 1684. This Saturnian moon combines an icy exterior with a substantial rocky component. Bright, wispy markings first seen by Voyager were resolved by Cassini into cliffs along tectonic fractures. Its structure and geological history leave open questions about past heating and possible liquid water beneath the crust.",
+        "Voyager flybys and repeated Cassini encounters supplied the main close-range data. No dedicated follow-up mission is identified in the reviewed plans. Dione is valuable as a comparison with active Enceladus: their different surfaces help reveal how orbital forcing and interior structure control icy-moon evolution. Ice could in principle supply water, but neither an accessible reserve nor a feasible extraction operation has been demonstrated."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Dione",
+          "url": "https://science.nasa.gov/saturn/moons/dione/"
+        }
+      ]
+    },
+    "rhea": {
+      "paragraphs": [
+        "Cassini discovered Rhea in 1672. Saturn’s second-largest moon is an ice-rich, heavily cratered world with bright fractures and an extremely tenuous oxygen-and-carbon-dioxide exosphere. Its battered surface preserves a long impact record, while the exosphere illustrates how radiation and charged particles can alter icy surfaces.",
+        "Voyager and Cassini observed Rhea, with Cassini making targeted flybys and sampling its surrounding environment. No dedicated Rhea mission is identified in the reviewed plans. It is useful for studying how ice interacts with magnetospheric particles and for comparing ancient terrains across Saturn’s system. Surface ice is a prospective material resource, but the exosphere is far too thin to breathe or treat as a usable atmosphere."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Rhea",
+          "url": "https://science.nasa.gov/saturn/moons/rhea/"
+        }
+      ]
+    },
+    "titan": {
+      "paragraphs": [
+        "Christiaan Huygens discovered Titan in 1655. Saturn’s largest moon has a thick nitrogen atmosphere, organic haze, methane weather, dunes, and lakes and seas of liquid hydrocarbons. Water ice forms much of its solid exterior, and an internal ocean is inferred. Its complex chemistry offers a way to explore processes that may precede biology.",
+        "Voyager 1 studied its atmosphere; Cassini mapped the surface with radar and infrared instruments, and ESA’s Huygens landed in 2005. NASA’s Dragonfly rotorcraft is planned to launch no earlier than 2028 and arrive in late 2034 to investigate surface chemistry and habitability. Titan’s dense atmosphere enables flight in low gravity. Water ice and hydrocarbons could have future uses, but neither commercial extraction nor indigenous life has been demonstrated."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Titan",
+          "url": "https://science.nasa.gov/saturn/moons/titan/"
+        },
+        {
+          "label": "NASA: Dragonfly",
+          "url": "https://science.nasa.gov/mission/dragonfly/"
+        }
+      ]
+    },
+    "hyperion": {
+      "paragraphs": [
+        "William and George Bond and William Lassell independently discovered Hyperion in 1848. This irregular Saturnian moon has a low-density, highly porous interior and an unusual, sponge-like cratered surface. It tumbles chaotically rather than keeping a simple, permanently oriented face toward Saturn, influenced by its shape and interactions with Titan.",
+        "Voyager observed Hyperion, and Cassini obtained detailed close flyby images in 2005 and later encounters. No dedicated return mission is identified in the reviewed plans. Its porous structure and rotation make it useful for studying how loosely consolidated icy bodies survive impacts and respond to gravitational torques. Potential resource use remains highly speculative because the mechanical behavior of such weak material is poorly constrained."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Hyperion",
+          "url": "https://science.nasa.gov/saturn/moons/hyperion/"
+        }
+      ]
+    },
+    "iapetus": {
+      "paragraphs": [
+        "Cassini discovered Iapetus in 1671. Its striking bright and dark hemispheres arise from an interaction between deposited dark material and temperature-driven migration of surface ice. An enormous equatorial ridge gives it a distinctive silhouette. Its distant, inclined orbit and unusual shape preserve clues about the Saturn system’s early history.",
+        "Voyager provided reconnaissance, and Cassini’s close encounters revealed the ridge, craters, and surface color boundaries. No dedicated Iapetus follow-up mission is identified in the reviewed plans. It is valuable for testing how dust transfer, sunlight, and sublimation reorganize an icy surface. Its relatively remote position has prompted exploration speculation, but ice accessibility and any realistic staging or extraction capability remain unestablished."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Iapetus",
+          "url": "https://science.nasa.gov/saturn/moons/iapetus/"
+        }
+      ]
+    },
+    "phoebe": {
+      "paragraphs": [
+        "William Henry Pickering identified Phoebe on photographic plates made in 1898; the discovery was announced in 1899. This dark outer moon travels around Saturn in a retrograde orbit, suggesting capture rather than formation alongside the major regular moons. Its composition and density point to a mixture of ice and rock with primitive outer-solar-system material.",
+        "Voyager obtained distant observations, while Cassini’s June 2004 flyby provided the principal detailed images and compositional data. No dedicated return mission is identified in the reviewed plans. Phoebe is useful as a captured sample of the population from which giant-planet irregular moons arose, and as a source of dust redistributed through Saturn’s system. Any resource assessment would require much more direct reconnaissance."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Phoebe",
+          "url": "https://science.nasa.gov/saturn/moons/phoebe/"
+        }
+      ]
+    },
+    "uranus": {
+      "paragraphs": [
+        "William Herschel discovered Uranus in 1781, although earlier observers had recorded it as a star. This ice giant rotates on its side, producing extreme seasons. Its atmosphere contains hydrogen, helium, and methane, while its tilted, offset magnetic field and dark rings distinguish it from a simple smaller version of Jupiter.",
+        "Voyager 2 made the only close spacecraft encounter in 1986; later telescopes, including Hubble and Webb, have tracked atmospheric and ring changes. A Uranus Orbiter and Probe is a high-priority mission concept under study, not a launched or fully scheduled mission. Uranus is valuable for understanding a common class of exoplanet and the origin of unusual planetary interiors. Atmospheric mining remains a remote concept rather than an established application."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Uranus",
+          "url": "https://science.nasa.gov/uranus/"
+        },
+        {
+          "label": "NASA: Uranus Orbiter and Probe concept",
+          "url": "https://ntrs.nasa.gov/citations/20260004996"
+        }
+      ]
+    },
+    "miranda": {
+      "paragraphs": [
+        "Gerard Kuiper discovered Miranda in 1948. The smallest of Uranus’s five major moons has towering scarps, patchwork terrain, and large ridged regions called coronae. This unexpectedly complex landscape points to substantial past deformation and heating, although competing explanations for its detailed history remain under investigation.",
+        "Voyager 2’s 1986 flyby supplied the only close-range spacecraft images, covering only part of the surface. A future Uranus orbiter could transform the record, but the Uranus Orbiter and Probe remains a mission concept and does not guarantee a Miranda encounter. The moon’s value is in testing how small icy bodies become geologically active. Water ice is present, but practical resource accessibility has not been assessed."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Miranda",
+          "url": "https://science.nasa.gov/uranus/moons/miranda/"
+        },
+        {
+          "label": "NASA: Uranus Orbiter and Probe concept",
+          "url": "https://ntrs.nasa.gov/citations/20260004996"
+        }
+      ]
+    },
+    "ariel": {
+      "paragraphs": [
+        "William Lassell discovered Ariel in 1851. It is a relatively bright major moon of Uranus, with fault valleys and resurfaced terrain that suggest a more active geological past than its dark neighbor Umbriel. Water ice and carbon dioxide are detected at its surface; its internal structure and possible retained liquid water remain uncertain.",
+        "Voyager 2 photographed Ariel in 1986, and telescopic observations have added compositional information. A proposed Uranus Orbiter and Probe could examine the moon system, but no dedicated Ariel mission is approved in the reviewed sources. Ariel is useful for studying tidal heating, icy tectonics, and how surface chemicals exchange with an interior. Ice utilization is a hypothetical future application, requiring reconnaissance far beyond the existing flyby coverage."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Ariel",
+          "url": "https://science.nasa.gov/uranus/moons/ariel/"
+        },
+        {
+          "label": "NASA: Uranus Orbiter and Probe concept",
+          "url": "https://ntrs.nasa.gov/citations/20260004996"
+        }
+      ]
+    },
+    "umbriel": {
+      "paragraphs": [
+        "William Lassell discovered Umbriel in 1851. It is a dark, heavily cratered major Uranian moon, contrasting with brighter and more visibly reworked Ariel. A bright ring associated with the Wunda crater stands out against its generally subdued terrain. The cause of its dark surface and the extent of any past internal activity remain unresolved.",
+        "Voyager 2 provided its only close spacecraft reconnaissance during the 1986 Uranus flyby. Future observations depend on telescopes and potentially a Uranus orbiter, which remains a mission concept rather than a scheduled Umbriel visit. Its scientific value lies in preserving an old impact record and testing why similar icy moons develop different surfaces. Any practical use of its ice would require new measurements of composition and terrain."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Umbriel",
+          "url": "https://science.nasa.gov/uranus/moons/umbriel/"
+        },
+        {
+          "label": "NASA: Uranus Orbiter and Probe concept",
+          "url": "https://ntrs.nasa.gov/citations/20260004996"
+        }
+      ]
+    },
+    "titania": {
+      "paragraphs": [
+        "William Herschel discovered Titania in 1787. Uranus’s largest moon combines ice and rock and displays extensive fault valleys across cratered terrain. These fractures indicate crustal extension, potentially connected to cooling and interior evolution. Whether liquid water survives at depth is a subject for modeling and future measurement, not an established observation.",
+        "Voyager 2’s January 1986 flyby supplied the principal resolved surface data. The proposed Uranus Orbiter and Probe could investigate Titania and its neighboring moons, but its final mission and encounter schedule are not established. Titania is useful for understanding how large icy satellites store heat and alter their crusts. Its water-bearing composition suggests a possible distant resource, although practical access and extraction remain entirely prospective."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Titania",
+          "url": "https://science.nasa.gov/uranus/moons/titania/"
+        },
+        {
+          "label": "NASA: Uranus Orbiter and Probe concept",
+          "url": "https://ntrs.nasa.gov/citations/20260004996"
+        }
+      ]
+    },
+    "oberon": {
+      "paragraphs": [
+        "William Herschel discovered Oberon in 1787. Uranus’s second-largest moon has a heavily cratered, ice-and-rock exterior, with dark material on some crater floors and evidence of large-scale relief. Its surface offers an older-looking comparison to the more conspicuously deformed landscapes of Ariel and Miranda.",
+        "Voyager 2 photographed Oberon during the 1986 Uranus encounter, leaving large areas poorly resolved or unseen. A future Uranus orbiter could provide fuller mapping and interior measurements, but remains a concept without a guaranteed Oberon visit. Oberon is valuable for reconstructing impacts and the thermal histories of icy moons. Water ice could have future material uses, but there is no validated reserve, landing site, or extraction plan."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Oberon",
+          "url": "https://science.nasa.gov/uranus/moons/oberon/"
+        },
+        {
+          "label": "NASA: Uranus Orbiter and Probe concept",
+          "url": "https://ntrs.nasa.gov/citations/20260004996"
+        }
+      ]
+    },
+    "puck": {
+      "paragraphs": [
+        "The Voyager 2 imaging team discovered Puck in December 1985 during the approach to Uranus. It is a small, dark inner moon, roughly 150 kilometers across, that orbits in less than a day. Its cratered surface and position between the innermost moons and major satellites help connect the planet’s ring and satellite populations.",
+        "Voyager 2 obtained the only close spacecraft imagery during its 1986 flyby. No dedicated Puck mission is identified in the reviewed plans; a proposed Uranus orbiter could offer better observations if its eventual trajectory permits. Puck is useful for investigating the survival and collisional history of small moons. Its detailed composition and interior remain too uncertain for a meaningful practical resource assessment."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Puck",
+          "url": "https://science.nasa.gov/uranus/moons/puck/"
+        },
+        {
+          "label": "NASA: Uranus Orbiter and Probe concept",
+          "url": "https://ntrs.nasa.gov/citations/20260004996"
+        }
+      ]
+    },
+    "neptune": {
+      "paragraphs": [
+        "Neptune was identified telescopically in 1846 by Johann Galle and Heinrich d’Arrest using Urbain Le Verrier’s prediction; John Couch Adams independently made related calculations. This distant ice giant has a dynamic methane-bearing atmosphere, strong winds, faint rings, and an unusually tilted magnetic field. Its large moon Triton probably originated elsewhere and was captured.",
+        "Voyager 2 made the only close encounter in 1989. Hubble, Webb, and ground-based observatories extend the record, while proposed Neptune orbiters and Triton missions remain concepts rather than approved flights in the reviewed sources. Neptune helps explain ice-giant interiors, atmospheric energy transport, and the rearrangement of the outer solar system. Its extreme distance makes operational use or resource extraction a highly speculative prospect."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Neptune",
+          "url": "https://science.nasa.gov/neptune/"
+        }
+      ]
+    },
+    "triton": {
+      "paragraphs": [
+        "William Lassell discovered Triton in 1846, only weeks after Neptune’s discovery. It is a large retrograde moon, probably captured from the trans-Neptunian population. Nitrogen frost, a thin atmosphere, young-looking terrain, and dark plume deposits reveal an active and complex world; an internal ocean is possible but not directly confirmed.",
+        "Voyager 2’s 1989 flyby provided the only close spacecraft observations, including evidence of erupting plumes. Dedicated flyby and orbiter proposals have been studied, but no approved Triton flight is established in the reviewed sources. Triton is useful for comparing captured icy worlds with Pluto and studying how capture and tides alter habitability. Its volatile ices are scientifically valuable; practical exploitation remains remote and untested."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Triton",
+          "url": "https://science.nasa.gov/neptune/moons/triton/"
+        }
+      ]
+    },
+    "nereid": {
+      "paragraphs": [
+        "Gerard Kuiper discovered Nereid in 1949. This outer Neptunian moon follows a highly eccentric orbit, unlike the nearly circular paths of most regular satellites. It may be a captured body or a survivor whose orbit was strongly disturbed when Triton was captured. Its shape, geology, and interior remain poorly known.",
+        "Voyager 2 obtained only distant, low-detail observations in 1989; most later work uses Earth-based or space telescopes. No dedicated Nereid visit is identified in the reviewed mission plans. Improving its orbit, rotation, and composition would help reconstruct the violent assembly of Neptune’s moon system. Given the limited data, proposed material or staging uses would be speculation rather than an evidence-based assessment."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Nereid",
+          "url": "https://science.nasa.gov/neptune/moons/nereid/"
+        }
+      ]
+    },
+    "proteus": {
+      "paragraphs": [
+        "The Voyager 2 imaging team discovered Proteus in 1989. Neptune’s second-largest moon is a dark, irregular, heavily cratered body, large enough to approach the size at which gravity can substantially round an icy object. Its close orbit and low reflectivity had made it difficult to separate from Neptune in earlier Earth-based observations.",
+        "Voyager 2 supplied its only close spacecraft reconnaissance, revealing a rough surface with major impact features. No dedicated return mission is identified in the reviewed plans; a future Neptune orbiter could improve coverage, but remains a proposal. Proteus is useful for studying impacts, the boundary between irregular and rounded bodies, and the history of Neptune’s inner satellites. Its detailed material properties are insufficiently known for practical utilization planning."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Proteus",
+          "url": "https://science.nasa.gov/neptune/moons/proteus/"
+        }
+      ]
+    },
+    "ceres": {
+      "paragraphs": [
+        "Giuseppe Piazzi discovered Ceres on 1 January 1801. The largest object in the main asteroid belt is a dwarf planet with a rocky interior and a water-rich crust. Dawn found bright salt deposits, evidence of brines, and the isolated mountain Ahuna Mons, showing that this small world has a more complicated history than a simple frozen rock.",
+        "NASA’s Dawn orbited from 2015 to 2018 after visiting Vesta. Further Ceres lander and sample-return studies remain proposals in the reviewed sources, rather than an approved flight. Ceres can help explain water and chemical transport in the early solar system. Its water-bearing material also makes it interesting for hypothetical future supplies in the asteroid belt, but usable concentrations, excavation methods, and commercial feasibility remain untested."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Ceres",
+          "url": "https://science.nasa.gov/dwarf-planets/ceres/"
+        }
+      ]
+    },
+    "pluto": {
+      "paragraphs": [
+        "Clyde Tombaugh discovered Pluto in 1930 at Lowell Observatory. Reclassified as a dwarf planet in 2006, it has nitrogen-ice glaciers, water-ice mountains, layered atmospheric haze, and evidence of complex internal evolution. Its heart-shaped Sputnik Planitia basin demonstrates that small, distant worlds can sustain active surface processes.",
+        "New Horizons made the only close flyby in July 2015, observing Pluto and its five moons. A Pluto orbiter and other return concepts have been studied, but no approved return mission is identified in the reviewed plans. Pluto is valuable for investigating volatile transport, the formation of binary systems, and the Kuiper belt’s history. Its ices are scientifically important, while their extreme distance makes practical resource utilization highly speculative."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Pluto",
+          "url": "https://science.nasa.gov/dwarf-planets/pluto/"
+        },
+        {
+          "label": "NASA: New Horizons",
+          "url": "https://science.nasa.gov/mission/new-horizons/"
+        }
+      ]
+    },
+    "charon": {
+      "paragraphs": [
+        "James Christy discovered Charon in 1978, with Robert Harrington helping establish its orbit. It is unusually large compared with Pluto, and both bodies keep the same faces toward each other. New Horizons revealed huge canyons, plains, and a reddish polar cap, suggesting a history of internal change and surface processing by material exchanged across the system.",
+        "New Horizons supplied the only close spacecraft observations during the 2015 Pluto flyby. No approved dedicated Charon return mission is identified in the reviewed sources. Its scientific value lies in understanding giant impacts, binary-world formation, and the evolution of ice-rich interiors. Water ice could theoretically be useful to distant explorers, but the present data do not establish a workable resource or infrastructure plan."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Charon",
+          "url": "https://science.nasa.gov/dwarf-planets/pluto/moons/charon/"
+        },
+        {
+          "label": "NASA: New Horizons",
+          "url": "https://science.nasa.gov/mission/new-horizons/"
+        }
+      ]
+    },
+    "styx": {
+      "paragraphs": [
+        "Mark Showalter’s team discovered Styx in Hubble images in 2012 while checking the Pluto system for hazards to New Horizons. It is a tiny, elongated satellite outside Charon’s orbit. Its existence adds to evidence that the small Pluto moons formed from debris associated with an ancient collision, although the details of their assembly remain uncertain.",
+        "New Horizons observed Styx during its 2015 flyby, but its small size and encounter distance limited the available detail. No approved return visit is identified in the reviewed mission plans. Continued orbit and rotation measurements can test how small moons remain stable around the Pluto–Charon pair. Its main value is scientific; the sparse observations do not support a credible resource inventory or operational use."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Styx",
+          "url": "https://science.nasa.gov/dwarf-planets/pluto/moons/styx/"
+        },
+        {
+          "label": "NASA: New Horizons",
+          "url": "https://science.nasa.gov/mission/new-horizons/"
+        }
+      ]
+    },
+    "nix": {
+      "paragraphs": [
+        "A Hubble discovery team including Hal Weaver found Nix in 2005. This small, irregular moon orbits the Pluto–Charon pair and has a largely bright, ice-rich surface with a conspicuous reddish region. Its shape and rapid, unusual rotation help trace the origin and later evolution of Pluto’s smaller satellites.",
+        "New Horizons obtained resolved images and color observations during the July 2015 encounter. No approved return mission to Nix is identified in the reviewed plans. It is useful for testing models of debris-disk moon formation and the dynamics of satellites around a binary central pair. Although surface ice is suggested, the limited compositional and mechanical data do not justify treating Nix as a practical supply depot."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Nix",
+          "url": "https://science.nasa.gov/dwarf-planets/pluto/moons/nix/"
+        },
+        {
+          "label": "NASA: New Horizons",
+          "url": "https://science.nasa.gov/mission/new-horizons/"
+        }
+      ]
+    },
+    "kerberos": {
+      "paragraphs": [
+        "Mark Showalter’s team discovered Kerberos with Hubble in 2011. New Horizons later showed that the small Pluto-system moon is bright and apparently double-lobed, overturning expectations that its faint appearance meant it was relatively large and dark. Its reflectivity suggests a surface rich in comparatively clean water ice.",
+        "New Horizons supplied its only close spacecraft images in 2015. No approved dedicated return mission is identified in the reviewed plans. Kerberos is useful for investigating gentle mergers, the assembly of small satellites, and how reflected brightness can mislead estimates of size. Its tiny scale and poorly constrained structure make any proposed resource or construction use far more uncertain than its scientific role."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Kerberos",
+          "url": "https://science.nasa.gov/dwarf-planets/pluto/moons/kerberos/"
+        },
+        {
+          "label": "NASA: New Horizons",
+          "url": "https://science.nasa.gov/mission/new-horizons/"
+        }
+      ]
+    },
+    "hydra": {
+      "paragraphs": [
+        "A Hubble team including Hal Weaver discovered Hydra in 2005. The outermost of Pluto’s five known moons is irregular, bright, and rapidly rotating. Its ice-rich appearance, together with the properties of the other small moons, supports investigation of a shared origin in collision debris around the Pluto–Charon pair.",
+        "New Horizons photographed Hydra and obtained compositional information during its July 2015 flyby. No approved return visit is identified in the reviewed plans; telescopic monitoring and archival analysis remain the available follow-up paths. Hydra’s value is in satellite formation, surface alteration, and orbital dynamics around a binary system. Practical use of its ice remains speculative because its detailed structure and surface conditions are not adequately characterized."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Hydra",
+          "url": "https://science.nasa.gov/dwarf-planets/pluto/moons/hydra/"
+        },
+        {
+          "label": "NASA: New Horizons",
+          "url": "https://science.nasa.gov/mission/new-horizons/"
+        }
+      ]
+    },
+    "eris": {
+      "paragraphs": [
+        "Mike Brown, Chad Trujillo, and David Rabinowitz recognized Eris in January 2005 in Palomar images taken in 2003. Similar in size to Pluto but more massive, it follows a distant, elongated, inclined orbit and has a bright methane-bearing icy surface. Its discovery helped trigger the 2006 debate that formalized the dwarf-planet category.",
+        "No spacecraft has visited Eris; telescopes and stellar occultations provide its size, surface, and orbital information. Measurements of its moon Dysnomia constrain the system’s mass and tidal evolution. No approved flyby or orbiter is identified in the reviewed plans. Eris is valuable for comparing the formation and volatile retention of large trans-Neptunian worlds. Its remoteness makes resource extraction a speculative idea with no demonstrated feasibility."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Eris",
+          "url": "https://science.nasa.gov/dwarf-planets/eris/"
+        }
+      ]
+    },
+    "dysnomia": {
+      "paragraphs": [
+        "Mike Brown’s team discovered Dysnomia in 2005 using the Keck Observatory. This moon of Eris is much fainter than its parent and is known primarily through unresolved telescopic measurements. Its orbit is especially important because it permits the mass of the Eris system to be calculated; its own surface and internal structure remain poorly constrained.",
+        "No spacecraft has encountered Dysnomia, and no approved mission to it is identified in the reviewed plans. Continued telescopic astrometry and photometry can improve its orbit and test how tides altered Eris’s rotation. Its present usefulness is therefore as a dynamical measuring tool and a clue to distant satellite formation. Claims about accessible resources would go well beyond the available observations."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Eris",
+          "url": "https://science.nasa.gov/dwarf-planets/eris/"
+        },
+        {
+          "label": "NASA: Measuring Eris through Dysnomia",
+          "url": "https://science.nasa.gov/missions/hubble/astronomers-measure-mass-of-largest-dwarf-planet/"
+        }
+      ]
+    },
+    "haumea": {
+      "paragraphs": [
+        "Haumea is a rapidly rotating, elongated dwarf planet with water-ice-rich surfaces, two moons, and a ring. Its discovery history is disputed: a Spanish team led by José Luis Ortiz and a U.S. team led by Mike Brown reported independent detections, with relevant images dating to 2003 and 2004. NASA notes that the official nomenclature record does not name an individual discoverer.",
+        "No spacecraft has visited Haumea. Telescopes and stellar occultations reveal its shape, ring, and satellite system; a related family of icy objects may record an ancient collision. No approved flight to Haumea is identified in the reviewed plans. Its scientific usefulness is in testing the links among impacts, fast rotation, internal evolution, and ring formation. The presence of ice does not establish accessible or economically useful deposits."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Haumea",
+          "url": "https://science.nasa.gov/dwarf-planets/haumea/"
+        },
+        {
+          "label": "NASA: Origins of Haumea",
+          "url": "https://www.nasa.gov/solar-system/nasa-studies-origins-of-weird-solar-system-object-dwarf-planet-haumea/"
+        }
+      ]
+    },
+    "hiiaka": {
+      "paragraphs": [
+        "Mike Brown’s team discovered Hiʻiaka in 2005 using Keck observations. The larger, outer moon of Haumea has a surface showing strong water-ice signatures. Its orbit helps constrain Haumea’s mass, while its relationship with the inner moon Namaka provides clues to the system’s formation and subsequent dynamical evolution.",
+        "Hiʻiaka has not been visited by a spacecraft, and no approved mission is identified in the reviewed plans. Further telescopic work can refine its rotation, orbit, and ice properties, testing whether the moons formed directly from an impact disk or through later reassembly. Its usefulness is primarily as a natural experiment in icy-moon formation; little is known about terrain or mechanical properties relevant to practical extraction."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Haumea",
+          "url": "https://science.nasa.gov/dwarf-planets/haumea/"
+        },
+        {
+          "label": "Research: Haumea satellite orbits",
+          "url": "https://doi.org/10.1088/0004-6256/137/6/4766"
+        }
+      ]
+    },
+    "namaka": {
+      "paragraphs": [
+        "Mike Brown’s team discovered Namaka in 2005 with Keck. Haumea’s smaller, inner moon has an orbit that interacts with Hiʻiaka’s, making the system more dynamically complicated than a single isolated satellite. Its faintness limits direct knowledge of its shape, surface composition, and internal structure.",
+        "No spacecraft has visited Namaka, and no approved flight is identified in the reviewed plans. Continued measurements of its orbit can help reconstruct Haumea’s collisional past and the tidal evolution of its satellites; favorable mutual events can add constraints on the system. Namaka is useful chiefly as a dynamical probe. Potential resource uses are currently unconstrained because even its basic physical properties require better measurements."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Haumea",
+          "url": "https://science.nasa.gov/dwarf-planets/haumea/"
+        },
+        {
+          "label": "Research: Haumea satellite orbits",
+          "url": "https://doi.org/10.1088/0004-6256/137/6/4766"
+        }
+      ]
+    },
+    "makemake": {
+      "paragraphs": [
+        "Mike Brown, Chad Trujillo, and David Rabinowitz discovered Makemake at Palomar in 2005. This bright Kuiper-belt dwarf planet has a cold surface containing methane and other volatile compounds. Its size and chemistry make it an important comparison with Pluto and Eris, while the dark moon nicknamed MK 2 offers a route to measuring the system’s mass.",
+        "No spacecraft has flown past Makemake. Ground-based telescopes, Hubble, infrared observatories, and stellar occultations provide the available information. No approved dedicated visit is identified in the reviewed mission plans. Makemake is useful for understanding why distant worlds retain different surface ices and atmospheres. Any future resource or habitation role is speculative, given the long travel times and absence of close-range reconnaissance."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Makemake",
+          "url": "https://science.nasa.gov/dwarf-planets/makemake/"
+        }
+      ]
+    },
+    "mk2": {
+      "paragraphs": [
+        "MK 2 is the nickname of S/2015 (136472) 1, a small moon of Makemake identified in Hubble observations from April 2015 and announced in 2016. Alex Parker led the discovery analysis. The moon appears much darker than Makemake, raising questions about different surface coatings, volatile retention, and the pair’s origin.",
+        "No spacecraft has visited MK 2, and no approved mission to it is identified in the reviewed plans. Continued observations can establish its orbit more precisely and thereby constrain Makemake’s mass and density. Its current usefulness is as a measuring tool for the dwarf planet and a test of how small outer-solar-system satellites evolve. Its size and surface remain too uncertain for a meaningful resource assessment."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Makemake moon discovery",
+          "url": "https://science.nasa.gov/missions/hubble/hubble-discovers-moon-orbiting-the-dwarf-planet-makemake/"
+        }
+      ]
+    },
+    "vesta": {
+      "paragraphs": [
+        "Heinrich Wilhelm Olbers discovered Vesta in 1807. This large main-belt asteroid is a differentiated protoplanet with a crust, mantle, and core, preserving evidence of early melting. The immense Rheasilvia impact basin excavated deep material; related fragments are represented among meteorites collected on Earth.",
+        "NASA’s Dawn orbited Vesta in 2011–2012 before continuing to Ceres. No approved dedicated return mission is identified in the reviewed plans. Vesta’s value is unusually direct: spacecraft maps can be compared with laboratory analyses of likely Vestan meteorites to reconstruct early planetary geology. Its rocky materials are potential future construction feedstock, but that possibility is separate from the demonstrated scientific connection between asteroid and samples."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Vesta",
+          "url": "https://science.nasa.gov/solar-system/asteroids/4-vesta/"
+        }
+      ]
+    },
+    "pallas": {
+      "paragraphs": [
+        "Heinrich Wilhelm Olbers discovered Pallas in 1802. One of the largest main-belt asteroids, it follows a strongly inclined orbit and has a heavily cratered surface resolved by large ground-based telescopes. Its composition indicates a history involving water-altered material, while high-speed collisions may explain its unusually battered appearance.",
+        "No spacecraft has visited Pallas. Telescopic imaging and spectroscopy remain the main sources, and proposed flyby concepts have not become an approved encounter in the reviewed plans. Pallas is useful for understanding impacts and aqueous alteration on surviving planetary building blocks. Possible water-bearing minerals are scientifically significant, but their presence does not demonstrate accessible water reserves or a practical asteroid-mining operation."
+      ],
+      "sources": [
+        {
+          "label": "MIT: Pallas research",
+          "url": "https://news.mit.edu/2020/pallas-golf-ball-asteroid-0210"
+        },
+        {
+          "label": "US Naval Observatory: Early asteroid discoveries",
+          "url": "https://aa.usno.navy.mil/faq/minorplanets"
+        }
+      ]
+    },
+    "hygiea": {
+      "paragraphs": [
+        "Annibale de Gasparis discovered Hygiea in 1849. This dark, carbon-rich main-belt object is among the belt’s largest bodies. Very Large Telescope observations revealed a nearly spherical shape, prompting discussion of whether it could meet dwarf-planet criteria; it is not one of the five formally recognized dwarf planets in this atlas.",
+        "No spacecraft has visited Hygiea, and no approved dedicated encounter is identified in the reviewed plans. Imaging, spectroscopy, and occultations can improve its dimensions and test whether a giant collision reassembled its current shape and asteroid family. Hygiea is useful for studying the transition from irregular asteroids to rounded worlds. Possible material resources require compositional and engineering evidence beyond its dark, primitive-looking surface."
+      ],
+      "sources": [
+        {
+          "label": "ESO: Hygiea shape and origin",
+          "url": "https://www.eso.org/public/news/eso1918/"
+        },
+        {
+          "label": "Linda Hall Library: Discovery of Hygiea",
+          "url": "https://www.lindahall.org/about/news/scientist-of-the-day/annibale-de-gasparis/"
+        }
+      ]
+    },
+    "eros": {
+      "paragraphs": [
+        "Carl Gustav Witt discovered Eros in 1898, with Auguste Charlois independently recording it. This elongated, stony near-Earth asteroid has craters, boulders, and smooth deposits of fine material. Historical observations of Eros helped measure the scale of the solar system; modern observations reveal the geology of a small body with very weak gravity.",
+        "NASA’s NEAR Shoemaker orbited Eros in 2000 and made a controlled landing in February 2001, continuing to transmit from the surface. No approved dedicated return mission is identified in the reviewed plans. Eros is useful for studying regolith motion, asteroid composition, and navigation near irregular gravity fields. Its mineral content motivates general resource interest, but no extraction capability or economically viable deposit has been established."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Eros",
+          "url": "https://science.nasa.gov/solar-system/asteroids/433-eros/"
+        }
+      ]
+    },
+    "itokawa": {
+      "paragraphs": [
+        "The LINEAR survey discovered Itokawa in 1998. This small, elongated near-Earth asteroid is a loose collection of rocky fragments rather than a single intact rock. Smooth areas of fine grains contrast with boulder fields, illustrating how impacts and shaking redistribute material under extremely weak gravity.",
+        "JAXA’s Hayabusa rendezvoused in 2005, touched the surface, and returned microscopic samples to Earth in 2010. No approved return visit to Itokawa is identified in the reviewed plans. The samples link its stony asteroid type to ordinary chondrite meteorites and reveal its parent body’s history. Itokawa is useful for improving sampling and planetary-defense models; its weak structure would make hypothetical excavation and anchoring difficult."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Itokawa",
+          "url": "https://science.nasa.gov/solar-system/asteroids/25143-itokawa/"
+        },
+        {
+          "label": "JPL: Near-Earth asteroid missions",
+          "url": "https://cneos.jpl.nasa.gov/missions/"
+        }
+      ]
+    },
+    "bennu": {
+      "paragraphs": [
+        "The LINEAR survey discovered Bennu in 1999. This approximately half-kilometer carbon-rich near-Earth asteroid is a porous rubble pile with a boulder-covered surface. Returned material contains organic compounds and minerals formed through interactions with water in its parent body, preserving information about chemistry before Earth’s formation.",
+        "NASA’s OSIRIS-REx arrived in 2018, collected material in 2020, and returned its sample capsule in 2023. The spacecraft continues as OSIRIS-APEX toward Apophis, rather than returning to Bennu; laboratory analysis of Bennu material continues. Bennu is useful for investigating prebiotic chemistry and refining long-term impact-risk predictions. Water-bearing minerals motivate resource research, but a successful scientific sample return is not a demonstration of profitable mining."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Bennu",
+          "url": "https://science.nasa.gov/solar-system/asteroids/101955-bennu/facts/"
+        },
+        {
+          "label": "NASA: OSIRIS-APEX",
+          "url": "https://science.nasa.gov/mission/osiris-apex/"
+        },
+        {
+          "label": "NASA: Bennu sample chemistry",
+          "url": "https://www.nasa.gov/missions/osiris-rex/surprising-phosphate-finding-in-nasas-osiris-rex-asteroid-sample/"
+        }
+      ]
+    },
+    "ryugu": {
+      "paragraphs": [
+        "The LINEAR survey discovered Ryugu in 1999. This dark, spinning-top-shaped near-Earth asteroid is a carbon-rich rubble pile. Samples show water-altered minerals and organic chemistry inherited from a larger parent body, making it a record of how primitive materials survived the solar system’s early evolution.",
+        "JAXA’s Hayabusa2 explored Ryugu in 2018–2019, deployed small surface explorers, created an artificial crater, and returned samples in 2020. The spacecraft’s extended mission targets other asteroids rather than another Ryugu visit. Ongoing sample analysis can investigate the origins of water and organic ingredients on rocky planets. Ryugu also helps test low-gravity sampling and deflection models; extracting usable water from its minerals remains an engineering prospect, not an established operation."
+      ],
+      "sources": [
+        {
+          "label": "JAXA: Hayabusa2",
+          "url": "https://www.isas.jaxa.jp/en/missions/spacecraft/current/hayabusa2.html"
+        },
+        {
+          "label": "JAXA: Ryugu samples and properties",
+          "url": "https://curation.isas.jaxa.jp/en/research/hayabusa2/"
+        },
+        {
+          "label": "DLR: Ryugu and MASCOT",
+          "url": "https://www.dlr.de/en/research-and-transfer/projects-and-missions/hayabusa2"
+        }
+      ]
+    },
+    "didymos": {
+      "paragraphs": [
+        "Joseph Montani discovered Didymos through Spacewatch in 1996. It is the larger member of a near-Earth binary asteroid system whose smaller companion is Dimorphos. The pair offers a natural laboratory for studying rubble-pile structure, rapid rotation, and how small moons form and exchange material.",
+        "NASA’s DART imaged the system before striking Dimorphos in September 2022; LICIACube observed the aftermath. ESA’s Hera reached the pair in 2026 and is investigating the system and the consequences of the impact, with closer observations and CubeSat work planned. Its clearest practical value is planetary defense: measuring how an impact transfers momentum helps design future asteroid-deflection missions. It was selected as a test system, not as evidence of an imminent Earth impact."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Didymos",
+          "url": "https://science.nasa.gov/solar-system/asteroids/didymos/"
+        },
+        {
+          "label": "ESA: Hera at Didymos, November 2026",
+          "url": "https://www.esa.int/articles/about-us/directorates/operations/space-safety/hera/hera-spacecraft-in-rectangular-orbit-around-target-asteroids"
+        }
+      ]
+    },
+    "dimorphos": {
+      "paragraphs": [
+        "Dimorphos was identified as Didymos’s small companion in 2003 through observations led by Petr Pravec and subsequent confirmation. Before DART it was roughly 160 meters across. NASA’s impact experiment changed its orbit around Didymos, while ejecta and possible large-scale reshaping revealed how strongly a weak asteroid can respond to a collision.",
+        "DART intentionally struck Dimorphos on 26 September 2022, with LICIACube documenting the ejecta. ESA’s Hera arrived at the binary system in 2026 and plans progressively closer investigations to determine properties needed to interpret the experiment. Dimorphos is useful as a real-world calibration of kinetic-impact planetary defense and low-gravity geophysics. There is no demonstrated resource-extraction operation, and that is not the purpose of the current mission."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Dimorphos",
+          "url": "https://science.nasa.gov/solar-system/asteroids/didymos/"
+        },
+        {
+          "label": "ESA: Discovery of the binary",
+          "url": "https://www.esa.int/Space_Safety/Hera/Name_given_to_asteroid_target_of_ESA_s_planetary_defence_mission"
+        },
+        {
+          "label": "ESA: Hera at Didymos, November 2026",
+          "url": "https://www.esa.int/articles/about-us/directorates/operations/space-safety/hera/hera-spacecraft-in-rectangular-orbit-around-target-asteroids"
+        }
+      ]
+    },
+    "psyche": {
+      "paragraphs": [
+        "Annibale de Gasparis discovered asteroid Psyche in 1852. This large main-belt object appears unusually rich in metal, mixed with silicate rock. It may preserve material related to a planetesimal’s interior, but the simple picture of an exposed, almost entirely metallic planetary core is unconfirmed.",
+        "No spacecraft has yet reached Psyche. NASA’s Psyche spacecraft launched in October 2023 and is traveling toward a planned 2029 orbital arrival to measure its composition, magnetic properties, and gravity. The mission can test how planetary cores form using a body accessible from space. Although its metals inspire mining speculation, neither a reliable economic valuation nor a feasible extraction operation follows from present remote measurements."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Psyche",
+          "url": "https://science.nasa.gov/solar-system/asteroids/16-psyche/"
+        },
+        {
+          "label": "NASA: Psyche mission",
+          "url": "https://science.nasa.gov/mission/psyche/"
+        }
+      ]
+    },
+    "arrokoth": {
+      "paragraphs": [
+        "The New Horizons search team discovered Arrokoth in Hubble images in 2014. This small, reddish Kuiper-belt object consists of two joined lobes, interpreted as the result of a gentle merger. Its relatively undisturbed structure and cold environment preserve unusually direct evidence of how the earliest planetary building blocks assembled.",
+        "New Horizons flew past Arrokoth on 1 January 2019, providing its only close spacecraft observations. No approved return mission is identified in the reviewed plans. Scientists continue to analyze its shape, surface chemistry, and crater record to test models of planetesimal formation. Its usefulness is predominantly historical and scientific: the extremely distant, weakly heated material is a record of early conditions, not a demonstrated resource reserve."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Arrokoth",
+          "url": "https://science.nasa.gov/solar-system/kuiper-belt/arrokoth-2014-mu69/"
+        },
+        {
+          "label": "NASA: New Horizons",
+          "url": "https://science.nasa.gov/mission/new-horizons/"
+        }
+      ]
+    },
+    "quaoar": {
+      "paragraphs": [
+        "Mike Brown and Chad Trujillo discovered Quaoar in 2002. This large trans-Neptunian world has water ice and other frozen compounds at its surface, a moon named Weywot, and a ring system whose geometry challenges simple expectations about where rings should gather into moons. Its exact interior and geological history remain uncertain.",
+        "No spacecraft has visited Quaoar. Hubble, infrared observatories, and stellar occultation campaigns, including ESA’s Cheops observations, provide its physical constraints. No approved dedicated flight is identified in the reviewed plans. Quaoar is useful for testing ring formation, volatile retention, and the properties of distant planetary building blocks. Its ice is a scientific target rather than a demonstrated material reserve for future operations."
+      ],
+      "sources": [
+        {
+          "label": "Caltech: Quaoar discovery",
+          "url": "https://www.caltech.edu/about/news/caltech-scientists-find-largest-object-solar-system-plutos-discovery-618"
+        },
+        {
+          "label": "ESA: Quaoar ring",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Cheops/ESA_s_Cheops_finds_an_unexpected_ring_around_dwarf_planet_Quaoar"
+        }
+      ]
+    },
+    "sedna": {
+      "paragraphs": [
+        "Mike Brown, Chad Trujillo, and David Rabinowitz discovered Sedna in 2003. This reddish, detached trans-Neptunian object follows an extremely elongated orbit that never approaches Neptune closely. Its orbit preserves clues about early stellar encounters, an ancient solar birth cluster, or other distant gravitational influences; it does not by itself establish an undiscovered planet.",
+        "No spacecraft has visited Sedna. Telescopic photometry and spectroscopy, including Webb observations, constrain its ices and organic surface materials. No approved Sedna flight is identified in the reviewed plans. Its usefulness is primarily as a dynamical fossil of the outer solar system’s formation and a comparison with less remote icy worlds. Extreme travel distances and sparse physical measurements make practical utilization a speculative prospect."
+      ],
+      "sources": [
+        {
+          "label": "Caltech: Sedna discovery team",
+          "url": "https://web.gps.caltech.edu/~mbrown/sedna/"
+        },
+        {
+          "label": "Research: Webb spectra of Sedna, Gonggong and Quaoar",
+          "url": "https://doi.org/10.1016/j.icarus.2024.116017"
+        }
+      ]
+    },
+    "gonggong": {
+      "paragraphs": [
+        "Meg Schwamb, Mike Brown, and David Rabinowitz discovered Gonggong in 2007 during the Palomar distant-object survey. Formerly 2007 OR10, it is a large, reddish trans-Neptunian world with water ice and other complex surface materials. Its moon Xiangliu and slow rotation help constrain the system’s mass and evolution.",
+        "No spacecraft has visited Gonggong. Hubble, thermal observatories, and Webb spectroscopy supply the available physical evidence. No approved dedicated flight is identified in the reviewed plans. Gonggong is useful for comparing surface chemistry and volatile retention among large distant bodies and testing how satellite interactions alter rotation. Any practical use of its materials would require close reconnaissance and technology far beyond a presently demonstrated extraction system."
+      ],
+      "sources": [
+        {
+          "label": "Discovery account by Meg Schwamb",
+          "url": "https://www.planetary.org/articles/or10-needs-a-name"
+        },
+        {
+          "label": "NASA: Gonggong satellite observations",
+          "url": "https://science.nasa.gov/missions/hubble/hubble-spots-moon-around-third-largest-dwarf-planet/"
+        },
+        {
+          "label": "Research: Webb spectra",
+          "url": "https://doi.org/10.1016/j.icarus.2024.116017"
+        }
+      ]
+    },
+    "orcus": {
+      "paragraphs": [
+        "Mike Brown, Chad Trujillo, and David Rabinowitz discovered Orcus in 2004. This large icy trans-Neptunian object occupies a 3:2 orbital resonance with Neptune, like Pluto, and has a large companion named Vanth. Surface spectra show water ice, while its satellite allows the system’s mass and possible formation history to be investigated.",
+        "No spacecraft has visited Orcus. Ground-based telescopes, Hubble, and occultations provide the available evidence; no approved dedicated encounter is identified in the reviewed mission plans. Orcus and Vanth are useful for comparing binary formation and tidal evolution with the Pluto–Charon system. Possible internal activity and material resources remain subjects for investigation, rather than established conditions suitable for engineering or commercial planning."
+      ],
+      "sources": [
+        {
+          "label": "Research: Orcus surface spectroscopy",
+          "url": "https://authors.library.caltech.edu/records/wg3zy-nav52"
+        },
+        {
+          "label": "JPL: Orcus orbital and discovery record",
+          "url": "https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=90482"
+        },
+        {
+          "label": "NASA: Orcus discovery images",
+          "url": "https://apod.nasa.gov/apod/ap090325.html"
+        }
+      ]
+    },
+    "halley": {
+      "paragraphs": [
+        "Halley’s Comet has been observed since antiquity, so it has no single modern discoverer. In 1705 Edmond Halley recognized that several recorded apparitions belonged to the same returning comet and predicted its return. Its dark, icy nucleus sheds gas and dust as it approaches the Sun, and its debris produces meteor showers seen from Earth.",
+        "Giotto, Vega 1 and 2, Suisei, and Sakigake investigated the 1986 apparition, with other spacecraft contributing observations. Its next perihelion is expected in 2061; no approved return spacecraft is identified in the reviewed plans. Halley is useful for studying ancient solar-system materials, cometary activity, and historical astronomy. Its changing, dust-rich environment is also a demanding test of close-encounter spacecraft protection."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Halley",
+          "url": "https://science.nasa.gov/solar-system/comets/1p-halley/"
+        }
+      ]
+    },
+    "67p": {
+      "paragraphs": [
+        "Klim Churyumov identified this comet in 1969 while examining photographs taken by Svetlana Gerasimenko. Its two-lobed nucleus is coated in dark organic-rich material and changes as sunlight drives gas and dust away. The shape, porous structure, and varied surface preserve clues to how small icy bodies formed and subsequently eroded.",
+        "ESA’s Rosetta escorted 67P from 2014 to 2016, and Philae made the first comet landing in November 2014. Rosetta ended with a controlled descent in September 2016. No approved dedicated return mission is identified in the reviewed plans. Its archive is valuable for understanding comet chemistry, the delivery of organic ingredients, and the relationship between surface processes and internal structure; it is not evidence of an operational comet resource industry."
+      ],
+      "sources": [
+        {
+          "label": "NASA: 67P",
+          "url": "https://science.nasa.gov/solar-system/comets/67p-churyumov-gerasimenko/"
+        }
+      ]
+    },
+    "tempel-1": {
+      "paragraphs": [
+        "Wilhelm Tempel discovered Tempel 1 in 1867. This Jupiter-family comet has an irregular nucleus with layered terrain, smooth deposits, and active regions that change as solar heating removes volatile material. Its relatively short orbital period makes it useful for comparing a comet’s surface across repeated passages near the Sun.",
+        "NASA’s Deep Impact released an impactor into Tempel 1 in July 2005, exposing material below its weathered surface. Stardust-NExT revisited in 2011 to examine the impact site and subsequent changes. No approved further visit is identified in the reviewed plans. Tempel 1 is useful for studying subsurface structure, impact excavation, and erosion; these experiments inform future sampling methods without establishing that extracting large quantities of cometary material is practical."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Tempel 1",
+          "url": "https://science.nasa.gov/solar-system/comets/9p-tempel-1/"
+        }
+      ]
+    },
+    "wild-2": {
+      "paragraphs": [
+        "Paul Wild discovered Wild 2 in 1978 after a close Jupiter encounter had redirected it into a much shorter orbit. Its nucleus contains steep terrain, pits, and active jets. Because it spent comparatively little time in the inner solar system before discovery, its materials offer a valuable comparison with comets more repeatedly heated by the Sun.",
+        "NASA’s Stardust flew past in 2004, captured particles in aerogel, and returned them to Earth in 2006. Laboratory work found diverse minerals and organic compounds, including glycine. No approved return flight is identified in the reviewed plans. The samples are useful for testing large-scale mixing in the young solar system and the origin of prebiotic ingredients. They demonstrate scientific collection, not an established bulk resource-extraction capability."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Wild 2",
+          "url": "https://science.nasa.gov/solar-system/comets/81p-wild/"
+        }
+      ]
+    },
+    "hartley-2": {
+      "paragraphs": [
+        "Malcolm Hartley discovered Hartley 2 in 1986 at Siding Spring Observatory. Its small, two-lobed nucleus is unusually active for its size. Carbon-dioxide-driven jets carry icy particles away from its ends, while smoother terrain near the connecting region behaves differently, demonstrating that a single comet can contain markedly varied active zones.",
+        "NASA’s repurposed Deep Impact spacecraft encountered Hartley 2 during the EPOXI mission in November 2010. No approved dedicated return visit is identified in the reviewed plans. Continuing telescopic and archival studies can investigate how its rotation, outgassing, and water chemistry change over time. Hartley 2 is useful for understanding comet hyperactivity and volatile transport; any attempt to collect its materials would have to contend with an active, dusty, low-gravity environment."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Hartley 2",
+          "url": "https://science.nasa.gov/solar-system/comets/103p-hartley-hartley-2/"
+        }
+      ]
+    },
+    "asteroid-belt": {
+      "paragraphs": [
+        "The main asteroid belt is a broad population between Mars and Jupiter, not a solid wall of rocks or a single destroyed planet. Its objects preserve different mixtures of rock, metal, and volatile-bearing minerals from the early solar system. Giuseppe Piazzi’s discovery of Ceres in 1801 began recognition of this population; further discoveries established that it was a region containing many bodies.",
+        "Pioneer and Voyager crossed the belt, Galileo and Rosetta made asteroid flybys, and Dawn orbited Vesta and Ceres. NASA’s Psyche is headed toward a metal-rich belt asteroid, while Lucy’s wider program includes main-belt encounters before its Trojan investigations. The region is useful for studying planetary formation and testing navigation and sampling. Water and metals motivate future resource proposals, but accessibility varies greatly by target and no belt-wide reserve has been demonstrated."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Asteroids",
+          "url": "https://science.nasa.gov/solar-system/asteroids/facts/"
+        },
+        {
+          "label": "NASA: Psyche",
+          "url": "https://science.nasa.gov/mission/psyche/"
+        },
+        {
+          "label": "NASA: Lucy",
+          "url": "https://science.nasa.gov/mission/lucy/"
+        }
+      ]
+    },
+    "kuiper-belt": {
+      "paragraphs": [
+        "The Kuiper belt is a broad region of icy bodies beyond Neptune, containing Pluto and many smaller remnants of planetary formation. Kenneth Edgeworth and Gerard Kuiper developed influential ideas about such an outer population in the 1940s and 1951. David Jewitt and Jane Luu’s 1992 discovery of the object now called Albion established the wider population beyond the previously known Pluto system.",
+        "Pioneer 10 and later outbound spacecraft traversed the outer planetary region; New Horizons supplied close reconnaissance of Pluto in 2015 and Arrokoth in 2019. Telescopic surveys and continuing remote observations can expand the sample, but additional close encounters require identified targets and mission approval. The belt is useful for reconstructing planetary migration and the assembly of primitive icy bodies. Its material abundance does not make distant extraction presently practical."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Kuiper Belt",
+          "url": "https://science.nasa.gov/solar-system/kuiper-belt/facts/"
+        },
+        {
+          "label": "NASA: Kuiper belt exploration",
+          "url": "https://science.nasa.gov/solar-system/kuiper-belt/exploration/"
+        },
+        {
+          "label": "NASA: New Horizons",
+          "url": "https://science.nasa.gov/mission/new-horizons/"
+        }
+      ]
+    },
+    "oort-cloud": {
+      "paragraphs": [
+        "The Oort cloud is a hypothesized distant reservoir of icy bodies inferred mainly from long-period comet orbits, not a directly mapped shell. Jan Oort developed the influential model in 1950, following earlier related work by Ernst Öpik. Its boundaries and population are uncertain, potentially extending from thousands to tens of thousands of Earth–Sun distances.",
+        "No spacecraft has reached or directly surveyed the Oort cloud; Voyager’s departure from the heliosphere is not arrival there. ESA’s planned Comet Interceptor will seek a comparatively pristine comet entering the inner solar system, potentially providing an indirect sample of this distant population. Its value is in understanding comet origins, early scattering, and stellar or Galactic influences on the solar system. Direct travel or resource use is far beyond existing demonstrated capabilities."
+      ],
+      "sources": [
+        {
+          "label": "NASA: Oort Cloud",
+          "url": "https://science.nasa.gov/solar-system/oort-cloud/facts/"
+        },
+        {
+          "label": "ESA: Comet Interceptor",
+          "url": "https://www.esa.int/missions/about-us/directorates/science/comet-interceptor/comet-interceptor"
+        }
+      ]
+    }
+  }
+}
