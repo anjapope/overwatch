@@ -9,6 +9,7 @@ function assertNever(x: never): never {
 export function reduceApplicationCommand(state: AppState, command: AppCommand): AppState {
   switch (command.type) {
     case 'system':
+    case 'orbit':
     case 'search':
     case 'dossiers':
     case 'events':
