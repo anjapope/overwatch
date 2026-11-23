@@ -1,0 +1,8 @@
+.body-conditions { margin:15px 0; padding:13px; background:#101c29; border:1px solid #30465a; border-radius:7px; overflow-wrap:anywhere; }
+.body-conditions h3 { margin:0 0 10px; font-size:1rem; }
+.body-conditions dl { display:grid; gap:12px; margin:0; }
+.body-conditions dt { font-size:.72rem; color:#8db4d2; line-height:1.4; }
+.body-conditions dd { margin:4px 0 0; font-size:.88rem; line-height:1.5; color:#d7e5f3; }
+.body-conditions details { margin-top:12px; color:#9fb4cb; font-size:.74rem; line-height:1.5; }
+.body-conditions summary { cursor:pointer; }
+.body-conditions a { color:#8bcdf5; }

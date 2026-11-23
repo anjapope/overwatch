@@ -28,7 +28,7 @@ describe('celestial reference profiles', () => {
       const markup = renderToStaticMarkup(<BodySummary body={body}/>)
       expect(markup).toContain(`aria-label="About ${body.name}"`)
       expect(markup).toContain('Sources · reviewed')
-      expect(markup.match(/<p>/g)).toHaveLength(2)
+      expect(markup.match(/class="body-summary-paragraph"/g)).toHaveLength(2)
       for (const source of bodyProfiles[body.id].sources) expect(markup).toContain(source.label.replaceAll('&', '&amp;'))
     }
   })

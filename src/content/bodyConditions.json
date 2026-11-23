@@ -1,0 +1,1132 @@
+{
+  "reviewedAt": "2026-11-22",
+  "model": "T = 278.3 K / sqrt(r in AU), zero Bond albedo, unit emissivity, uniform redistribution; nominal orbital distance, not epoch-specific distance or an observed mean.",
+  "bodies": {
+    "sun": {
+      "temperature": {
+        "kind": "effective photosphere",
+        "note": "Effective radiating temperature, not the much hotter corona or core.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
+        "kelvin": 5772
+      },
+      "atmosphere": {
+        "kind": "Stellar atmosphere / plasma",
+        "composition": "Predominantly hydrogen and helium; trace heavier elements.",
+        "pressure": "Not comparable to a planetary surface",
+        "note": "Composition and ionization vary with layer; the photosphere, chromosphere and corona have very different conditions.",
+        "sourceUrl": "https://science.nasa.gov/sun/"
+      }
+    },
+    "mercury": {
+      "temperature": {
+        "kind": "reference surface mean",
+        "note": "Rounded global reference value, not local or current weather. Day/night, latitude and seasons can cause large differences.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+        "kelvin": 440.15
+      },
+      "atmosphere": {
+        "kind": "Extremely tenuous exosphere",
+        "composition": "O, Na, H, He, K, Ca and Mg detected.",
+        "pressure": "Far below Earth surface pressure",
+        "note": "No dense atmosphere to redistribute heat.",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2015/04/525164main_mercurymoi_pk.pdf"
+      }
+    },
+    "venus": {
+      "temperature": {
+        "kind": "reference surface mean",
+        "note": "Rounded global reference value, not local or current weather. Day/night, latitude and seasons can cause large differences.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+        "kelvin": 737.15
+      },
+      "atmosphere": {
+        "kind": "Dense atmosphere",
+        "composition": "≈96.5% CO₂; ≈3.5% N₂; trace SO₂ and other gases.",
+        "pressure": "≈92 bar at surface",
+        "note": "Sulfuric-acid cloud droplets; proportions are approximate.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html"
+      }
+    },
+    "earth": {
+      "temperature": {
+        "kind": "reference surface mean",
+        "note": "Rounded global reference value, not local or current weather. Day/night, latitude and seasons can cause large differences.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+        "kelvin": 288.15
+      },
+      "atmosphere": {
+        "kind": "Dense atmosphere",
+        "composition": "Dry air: ≈78% N₂, 21% O₂, 0.93% Ar; ≈0.04% CO₂.",
+        "pressure": "≈1.01 bar at sea level",
+        "note": "Water vapor is variable; dry-air percentages are approximate.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+      }
+    },
+    "moon": {
+      "temperature": {
+        "kind": "reference surface mean",
+        "note": "Rounded global reference value, not local or current weather. Day/night, latitude and seasons can cause large differences.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+        "kelvin": 253.15
+      },
+      "atmosphere": {
+        "kind": "Extremely tenuous exosphere",
+        "composition": "Mostly He, Ne and Ar, with trace other species.",
+        "pressure": "Effectively airless; not a breathable atmosphere",
+        "note": "Composition varies with location, sunlight and solar-wind input.",
+        "sourceUrl": "https://science.nasa.gov/moon/lunar-atmosphere/"
+      }
+    },
+    "mars": {
+      "temperature": {
+        "kind": "reference surface mean",
+        "note": "Rounded global reference value, not local or current weather. Day/night, latitude and seasons can cause large differences.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+        "kelvin": 208.15
+      },
+      "atmosphere": {
+        "kind": "Thin atmosphere",
+        "composition": "≈95% CO₂; mostly N₂ and Ar in the remainder; trace O₂, CO and H₂O.",
+        "pressure": "≈0.006 bar; varies with season and elevation",
+        "note": "",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html"
+      }
+    },
+    "phobos": {
+      "temperature": {
+        "kind": "estimated surface range",
+        "note": "Representative published day/night range, not a global mean.",
+        "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2023/05/7a.20190117_PlanetaryProtectionClassificationofSample_RetMissionsfromtheMartianMoons.pdf",
+        "minKelvin": 150,
+        "maxKelvin": 300
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/mars/moons/phobos/"
+      }
+    },
+    "deimos": {
+      "temperature": {
+        "kind": "estimated surface range",
+        "note": "Representative published day/night range, not a global mean.",
+        "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2023/05/7a.20190117_PlanetaryProtectionClassificationofSample_RetMissionsfromtheMartianMoons.pdf",
+        "minKelvin": 161,
+        "maxKelvin": 269
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/mars/moons/deimos/"
+      }
+    },
+    "jupiter": {
+      "temperature": {
+        "kind": "1-bar atmospheric level",
+        "note": "No solid surface. Reference temperature near the atmospheric pressure of Earth’s sea level.",
+        "sourceUrl": "https://science.nasa.gov/resource/solar-system-temperatures/",
+        "kelvin": 163.15
+      },
+      "atmosphere": {
+        "kind": "Gas-giant envelope",
+        "composition": "Mostly molecular hydrogen and helium; traces of methane, ammonia and water.",
+        "pressure": "1 bar is a reference level, not a solid surface",
+        "note": "Composition and temperature change strongly with depth.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html"
+      }
+    },
+    "io": {
+      "temperature": {
+        "kind": "cold-terrain reference",
+        "kelvin": 130,
+        "note": "Representative cold SO₂-frost terrain in published modeling; not a global mean or the much hotter volcanic lava temperature.",
+        "sourceUrl": "https://ntrs.nasa.gov/api/citations/19860018570/downloads/19860018570.pdf"
+      },
+      "atmosphere": {
+        "kind": "Tenuous, variable atmosphere",
+        "composition": "Primarily SO₂; traces of other volcanic gases.",
+        "pressure": "Nanobar-scale; strongly variable",
+        "note": "Sublimation, eclipses and eruptions alter the atmosphere.",
+        "sourceUrl": "https://science.nasa.gov/jupiter/jupiter-moons/io/facts/"
+      }
+    },
+    "europa": {
+      "temperature": {
+        "kind": "representative surface range",
+        "note": "Cold polar to warmer equatorial surface conditions; not a global mean.",
+        "sourceUrl": "https://www.lpi.usra.edu/education/explore/ice/background/iceSolarSystem/",
+        "minKelvin": 53,
+        "maxKelvin": 113
+      },
+      "atmosphere": {
+        "kind": "Extremely tenuous atmosphere",
+        "composition": "Predominantly molecular oxygen (O₂).",
+        "pressure": "Far below breathable pressure",
+        "note": "Produced largely by radiation processing of surface ice; not evidence of photosynthesis.",
+        "sourceUrl": "https://science.nasa.gov/jupiter/jupiter-moons/europa/europa-facts/"
+      }
+    },
+    "ganymede": {
+      "temperature": {
+        "kind": "daytime surface range",
+        "note": "Published daytime range; night and local terrain differ.",
+        "sourceUrl": "https://solarsystem.nasa.gov/moons/jupiter-moons/ganymede/in-depth.amp",
+        "minKelvin": 90,
+        "maxKelvin": 160
+      },
+      "atmosphere": {
+        "kind": "Tenuous exosphere",
+        "composition": "O₂, with detected water vapor and trace water-related species.",
+        "pressure": "Far below breathable pressure",
+        "note": "Composition varies across the surface and with illumination.",
+        "sourceUrl": "https://science.nasa.gov/jupiter/jupiter-moons/ganymede/facts/"
+      }
+    },
+    "callisto": {
+      "temperature": {
+        "kind": "surface reference",
+        "kelvin": 150,
+        "note": "Representative surface-associated temperature from Galileo CO₂-atmosphere analysis; not a global average.",
+        "sourceUrl": "https://ntrs.nasa.gov/citations/20040142091"
+      },
+      "atmosphere": {
+        "kind": "Tenuous exosphere",
+        "composition": "CO₂ and oxygen-bearing species, including O₂.",
+        "pressure": "Extremely low; not breathable",
+        "note": "Surface release and radiolysis supply the exosphere.",
+        "sourceUrl": "https://doi.org/10.3847/PSJ/acb53c"
+      }
+    },
+    "amalthea": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 122,
+        "note": "Calculated at nominal orbital distance 5.203 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 5.203
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/jupiter/jupiter-moons/amalthea/"
+      }
+    },
+    "saturn": {
+      "temperature": {
+        "kind": "1-bar atmospheric level",
+        "note": "No solid surface. Reference temperature near the atmospheric pressure of Earth’s sea level.",
+        "sourceUrl": "https://science.nasa.gov/resource/solar-system-temperatures/",
+        "kelvin": 133.15
+      },
+      "atmosphere": {
+        "kind": "Gas-giant envelope",
+        "composition": "Mostly molecular hydrogen and helium; traces of methane, ammonia and water.",
+        "pressure": "1 bar is a reference level, not a solid surface",
+        "note": "Composition and temperature change strongly with depth.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html"
+      }
+    },
+    "mimas": {
+      "temperature": {
+        "kind": "archival surface mean",
+        "kelvin": 64,
+        "note": "Approximate mean in a NASA-hosted 2006 satellite reference table; local terrain, sunlight and active regions differ.",
+        "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2023/09/20060527_CHARM_Krishan.pdf"
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/saturn/moons/mimas/"
+      }
+    },
+    "enceladus": {
+      "temperature": {
+        "kind": "archival surface mean",
+        "kelvin": 75,
+        "note": "Approximate mean in a NASA-hosted 2006 satellite reference table; local terrain, sunlight and active regions differ.",
+        "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2023/09/20060527_CHARM_Krishan.pdf"
+      },
+      "atmosphere": {
+        "kind": "Plume-fed tenuous gas envelope",
+        "composition": "Mostly H₂O vapor; CO₂, CH₄, H₂, NH₃ and other trace gases.",
+        "pressure": "Highly local and variable",
+        "note": "This describes the plume environment, not a dense global atmosphere.",
+        "sourceUrl": "https://science.nasa.gov/saturn/moons/enceladus/"
+      }
+    },
+    "tethys": {
+      "temperature": {
+        "kind": "archival surface mean",
+        "kelvin": 86,
+        "note": "Approximate mean in a NASA-hosted 2006 satellite reference table; local terrain, sunlight and active regions differ.",
+        "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2023/09/20060527_CHARM_Krishan.pdf"
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/saturn/moons/tethys/"
+      }
+    },
+    "dione": {
+      "temperature": {
+        "kind": "archival surface mean",
+        "kelvin": 87,
+        "note": "Approximate mean in a NASA-hosted 2006 satellite reference table; local terrain, sunlight and active regions differ.",
+        "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2023/09/20060527_CHARM_Krishan.pdf"
+      },
+      "atmosphere": {
+        "kind": "Extremely tenuous exosphere",
+        "composition": "Molecular oxygen inferred from detected O₂ ions.",
+        "pressure": "Extremely low; not breathable",
+        "note": "",
+        "sourceUrl": "https://www.jpl.nasa.gov/news/cassini-detects-hint-of-fresh-air-at-dione/"
+      }
+    },
+    "rhea": {
+      "temperature": {
+        "kind": "archival surface mean",
+        "kelvin": 76,
+        "note": "Approximate mean in a NASA-hosted 2006 satellite reference table; local terrain, sunlight and active regions differ.",
+        "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2023/09/20060527_CHARM_Krishan.pdf"
+      },
+      "atmosphere": {
+        "kind": "Extremely tenuous exosphere",
+        "composition": "O₂ and CO₂.",
+        "pressure": "Extremely low; not breathable",
+        "note": "",
+        "sourceUrl": "https://www.jpl.nasa.gov/news/thin-air-cassini-finds-ethereal-atmosphere-at-rhea/"
+      }
+    },
+    "titan": {
+      "temperature": {
+        "kind": "surface reference",
+        "note": "Huygens measured approximately 94 K at its landing site; a local reference, not global live weather.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/huygenss-landing-second-anniversary-the-surprises-continue/",
+        "kelvin": 94
+      },
+      "atmosphere": {
+        "kind": "Dense atmosphere",
+        "composition": "Mainly N₂; CH₄ roughly 1–5%, varying with altitude, plus organic traces.",
+        "pressure": "≈1.5 bar at surface",
+        "note": "Hydrocarbon haze, clouds and methane weather.",
+        "sourceUrl": "https://science.nasa.gov/saturn/moons/titan/facts/"
+      }
+    },
+    "hyperion": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 90,
+        "note": "Calculated at nominal orbital distance 9.58 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 9.58
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/saturn/moons/hyperion/"
+      }
+    },
+    "iapetus": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 90,
+        "note": "Calculated at nominal orbital distance 9.58 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 9.58
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/saturn/moons/iapetus/"
+      }
+    },
+    "phoebe": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 90,
+        "note": "Calculated at nominal orbital distance 9.58 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 9.58
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/saturn/moons/phoebe/"
+      }
+    },
+    "uranus": {
+      "temperature": {
+        "kind": "1-bar atmospheric level",
+        "note": "No solid surface. Reference temperature near the atmospheric pressure of Earth’s sea level.",
+        "sourceUrl": "https://science.nasa.gov/resource/solar-system-temperatures/",
+        "kelvin": 78.15
+      },
+      "atmosphere": {
+        "kind": "Ice-giant atmosphere",
+        "composition": "Mostly H₂ and He, with methane and trace other gases.",
+        "pressure": "1 bar is a reference level, not a solid surface",
+        "note": "“Ice giant” describes bulk interior composition, not a frozen surface.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html"
+      }
+    },
+    "miranda": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 64,
+        "note": "Calculated at nominal orbital distance 19.2 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 19.2
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/uranus/moons/miranda/"
+      }
+    },
+    "ariel": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 64,
+        "note": "Calculated at nominal orbital distance 19.2 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 19.2
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/uranus/moons/ariel/"
+      }
+    },
+    "umbriel": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 64,
+        "note": "Calculated at nominal orbital distance 19.2 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 19.2
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/uranus/moons/umbriel/"
+      }
+    },
+    "titania": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 64,
+        "note": "Calculated at nominal orbital distance 19.2 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 19.2
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/uranus/moons/titania/"
+      }
+    },
+    "oberon": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 64,
+        "note": "Calculated at nominal orbital distance 19.2 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 19.2
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/uranus/moons/oberon/"
+      }
+    },
+    "puck": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 64,
+        "note": "Calculated at nominal orbital distance 19.2 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 19.2
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/uranus/moons/puck/"
+      }
+    },
+    "neptune": {
+      "temperature": {
+        "kind": "1-bar atmospheric level",
+        "note": "No solid surface. Reference temperature near the atmospheric pressure of Earth’s sea level.",
+        "sourceUrl": "https://science.nasa.gov/resource/solar-system-temperatures/",
+        "kelvin": 73.15
+      },
+      "atmosphere": {
+        "kind": "Ice-giant atmosphere",
+        "composition": "Mostly H₂ and He, with methane and trace other gases.",
+        "pressure": "1 bar is a reference level, not a solid surface",
+        "note": "“Ice giant” describes bulk interior composition, not a frozen surface.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html"
+      }
+    },
+    "triton": {
+      "temperature": {
+        "kind": "surface reference",
+        "note": "Voyager-era representative surface value, roughly ±3 K.",
+        "sourceUrl": "https://ntrs.nasa.gov/api/citations/20180001294/downloads/20180001294.pdf",
+        "kelvin": 38
+      },
+      "atmosphere": {
+        "kind": "Thin atmosphere",
+        "composition": "Mostly N₂, with traces of CH₄ and CO.",
+        "pressure": "Microbar-scale; varies with season",
+        "note": "Nitrogen frost and atmosphere exchange material.",
+        "sourceUrl": "https://www.lpi.usra.edu/publications/slidesets/ss_tour/slide_38.shtml"
+      }
+    },
+    "nereid": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 51,
+        "note": "Calculated at nominal orbital distance 30.1 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 30.1
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/neptune/moons/nereid/"
+      }
+    },
+    "proteus": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 51,
+        "note": "Calculated at nominal orbital distance 30.1 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 30.1
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/neptune/moons/proteus/"
+      }
+    },
+    "ceres": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 167,
+        "note": "Calculated at nominal orbital distance 2.77 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 2.77
+      },
+      "atmosphere": {
+        "kind": "Extremely tenuous / intermittent gas",
+        "composition": "Evidence for water vapor around Ceres.",
+        "pressure": "No substantial global atmosphere",
+        "note": "Outgassing is not a dense, stable weather layer.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/ceres/facts/"
+      }
+    },
+    "pluto": {
+      "temperature": {
+        "kind": "reference surface mean",
+        "note": "Rounded global reference value, not local or current weather. Day/night, latitude and seasons can cause large differences.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+        "kelvin": 48.15
+      },
+      "atmosphere": {
+        "kind": "Thin, seasonally variable atmosphere",
+        "composition": "Mostly N₂; traces of CH₄ and CO, with haze.",
+        "pressure": "Microbar-scale; variable",
+        "note": "Surface frost sublimation and condensation control the atmosphere.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/pluto/"
+      }
+    },
+    "charon": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 44,
+        "note": "Calculated at nominal orbital distance 39.48 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 39.48
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/pluto/moons/charon/"
+      }
+    },
+    "styx": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 44,
+        "note": "Calculated at nominal orbital distance 39.48 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 39.48
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/pluto/moons/styx/"
+      }
+    },
+    "nix": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 44,
+        "note": "Calculated at nominal orbital distance 39.48 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 39.48
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/pluto/moons/nix/"
+      }
+    },
+    "kerberos": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 44,
+        "note": "Calculated at nominal orbital distance 39.48 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 39.48
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/pluto/moons/kerberos/"
+      }
+    },
+    "hydra": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 44,
+        "note": "Calculated at nominal orbital distance 39.48 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 39.48
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/pluto/moons/hydra/"
+      }
+    },
+    "eris": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 34,
+        "note": "Calculated at nominal orbital distance 67.7 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 67.7
+      },
+      "atmosphere": {
+        "kind": "No substantial global atmosphere detected",
+        "composition": "Surface ices are known; their chemistry is not a measured atmospheric mixture.",
+        "pressure": "Unconfirmed / constrained by remote observations",
+        "note": "A tenuous, localized or seasonal atmosphere is not excluded.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/eris/"
+      }
+    },
+    "dysnomia": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 34,
+        "note": "Calculated at nominal orbital distance 67.7 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 67.7
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/eris/"
+      }
+    },
+    "haumea": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 42,
+        "note": "Calculated at nominal orbital distance 43.1 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 43.1
+      },
+      "atmosphere": {
+        "kind": "No substantial global atmosphere detected",
+        "composition": "Surface ices are known; their chemistry is not a measured atmospheric mixture.",
+        "pressure": "Unconfirmed / constrained by remote observations",
+        "note": "A tenuous, localized or seasonal atmosphere is not excluded.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/haumea/"
+      }
+    },
+    "hiiaka": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 42,
+        "note": "Calculated at nominal orbital distance 43.1 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 43.1
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/haumea/"
+      }
+    },
+    "namaka": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 42,
+        "note": "Calculated at nominal orbital distance 43.1 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 43.1
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/haumea/"
+      }
+    },
+    "makemake": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 41,
+        "note": "Calculated at nominal orbital distance 45.8 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 45.8
+      },
+      "atmosphere": {
+        "kind": "No substantial global atmosphere detected",
+        "composition": "Surface ices are known; their chemistry is not a measured atmospheric mixture.",
+        "pressure": "Unconfirmed / constrained by remote observations",
+        "note": "A tenuous, localized or seasonal atmosphere is not excluded.",
+        "sourceUrl": "https://science.nasa.gov/dwarf-planets/makemake/"
+      }
+    },
+    "mk2": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 41,
+        "note": "Calculated at nominal orbital distance 45.8 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 45.8
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/missions/hubble/hubble-discovers-moon-orbiting-the-dwarf-planet-makemake/"
+      }
+    },
+    "vesta": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 181,
+        "note": "Calculated at nominal orbital distance 2.36 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 2.36
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/asteroids/4-vesta/"
+      }
+    },
+    "pallas": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 167,
+        "note": "Calculated at nominal orbital distance 2.77 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 2.77
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://news.mit.edu/2020/pallas-golf-ball-asteroid-0210"
+      }
+    },
+    "hygiea": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 157,
+        "note": "Calculated at nominal orbital distance 3.14 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 3.14
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://www.eso.org/public/news/eso1918/"
+      }
+    },
+    "eros": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 230,
+        "note": "Calculated at nominal orbital distance 1.458 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 1.458
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/asteroids/433-eros/"
+      }
+    },
+    "itokawa": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 242,
+        "note": "Calculated at nominal orbital distance 1.324 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 1.324
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/asteroids/25143-itokawa/"
+      }
+    },
+    "bennu": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 262,
+        "note": "Calculated at nominal orbital distance 1.126 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 1.126
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/asteroids/101955-bennu/facts/"
+      }
+    },
+    "ryugu": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 255,
+        "note": "Calculated at nominal orbital distance 1.189 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 1.189
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://www.isas.jaxa.jp/en/missions/spacecraft/current/hayabusa2.html"
+      }
+    },
+    "didymos": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 217,
+        "note": "Calculated at nominal orbital distance 1.644 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 1.644
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/asteroids/didymos/"
+      }
+    },
+    "dimorphos": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 217,
+        "note": "Calculated at nominal orbital distance 1.644 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 1.644
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/asteroids/didymos/"
+      }
+    },
+    "psyche": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 163,
+        "note": "Calculated at nominal orbital distance 2.92 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 2.92
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/asteroids/16-psyche/"
+      }
+    },
+    "arrokoth": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 42,
+        "note": "Calculated at nominal orbital distance 44.6 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 44.6
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/kuiper-belt/arrokoth-2014-mu69/"
+      }
+    },
+    "quaoar": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 42,
+        "note": "Calculated at nominal orbital distance 43.7 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 43.7
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://www.caltech.edu/about/news/caltech-scientists-find-largest-object-solar-system-plutos-discovery-618"
+      }
+    },
+    "sedna": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 12,
+        "note": "Calculated at nominal orbital distance 506 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 506
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://web.gps.caltech.edu/~mbrown/sedna/"
+      }
+    },
+    "gonggong": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 34,
+        "note": "Calculated at nominal orbital distance 67.5 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 67.5
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://www.planetary.org/articles/or10-needs-a-name"
+      }
+    },
+    "orcus": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 44,
+        "note": "Calculated at nominal orbital distance 39.2 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 39.2
+      },
+      "atmosphere": {
+        "kind": "No substantial atmosphere detected",
+        "composition": "No established bulk atmospheric composition.",
+        "pressure": "Not established / effectively airless for surface operations",
+        "note": "A trace or transient exosphere may still be present; this does not mean an absolute vacuum.",
+        "sourceUrl": "https://authors.library.caltech.edu/records/wg3zy-nav52"
+      }
+    },
+    "halley": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 66,
+        "note": "Calculated at nominal orbital distance 17.8 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 17.8
+      },
+      "atmosphere": {
+        "kind": "Transient coma when active",
+        "composition": "Water vapor, carbon-bearing gases and other volatiles; dust is not atmospheric gas.",
+        "pressure": "No stable surface pressure",
+        "note": "Composition and density depend on solar distance, active regions and epoch. A coma is an escaping envelope, not a planetary weather layer.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/comets/1p-halley/"
+      }
+    },
+    "67p": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 150,
+        "note": "Calculated at nominal orbital distance 3.46 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 3.46
+      },
+      "atmosphere": {
+        "kind": "Transient coma when active",
+        "composition": "Water vapor, carbon-bearing gases and other volatiles; dust is not atmospheric gas.",
+        "pressure": "No stable surface pressure",
+        "note": "Composition and density depend on solar distance, active regions and epoch. A coma is an escaping envelope, not a planetary weather layer.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/comets/67p-churyumov-gerasimenko/"
+      }
+    },
+    "tempel-1": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 157,
+        "note": "Calculated at nominal orbital distance 3.15 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 3.15
+      },
+      "atmosphere": {
+        "kind": "Transient coma when active",
+        "composition": "Water vapor, carbon-bearing gases and other volatiles; dust is not atmospheric gas.",
+        "pressure": "No stable surface pressure",
+        "note": "Composition and density depend on solar distance, active regions and epoch. A coma is an escaping envelope, not a planetary weather layer.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/comets/9p-tempel-1/"
+      }
+    },
+    "wild-2": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 150,
+        "note": "Calculated at nominal orbital distance 3.45 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 3.45
+      },
+      "atmosphere": {
+        "kind": "Transient coma when active",
+        "composition": "Water vapor, carbon-bearing gases and other volatiles; dust is not atmospheric gas.",
+        "pressure": "No stable surface pressure",
+        "note": "Composition and density depend on solar distance, active regions and epoch. A coma is an escaping envelope, not a planetary weather layer.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/comets/81p-wild/"
+      }
+    },
+    "hartley-2": {
+      "temperature": {
+        "kind": "equilibrium model",
+        "kelvin": 149,
+        "note": "Calculated at nominal orbital distance 3.47 AU, not a measured mean. Zero reflectivity, emissivity 1, uniform heat redistribution; ignores atmosphere, tides and rotation. Real surfaces can differ greatly, especially on eccentric orbits.",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html",
+        "nominalDistanceAu": 3.47
+      },
+      "atmosphere": {
+        "kind": "Transient coma when active",
+        "composition": "Water vapor, carbon-bearing gases and other volatiles; dust is not atmospheric gas.",
+        "pressure": "No stable surface pressure",
+        "note": "Composition and density depend on solar distance, active regions and epoch. A coma is an escaping envelope, not a planetary weather layer.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/comets/103p-hartley-hartley-2/"
+      }
+    },
+    "asteroid-belt": {
+      "temperature": {
+        "kind": "not applicable",
+        "note": "A population of objects at different distances; no single regional surface temperature.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/asteroids/facts/"
+      },
+      "atmosphere": {
+        "kind": "Not applicable",
+        "composition": "This is a region, not one atmosphere.",
+        "pressure": "Not applicable",
+        "note": "Individual bodies have different thermal and atmospheric conditions.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/asteroids/facts/"
+      }
+    },
+    "kuiper-belt": {
+      "temperature": {
+        "kind": "not applicable",
+        "note": "A population of objects at different distances; no single regional surface temperature.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/kuiper-belt/facts/"
+      },
+      "atmosphere": {
+        "kind": "Not applicable",
+        "composition": "This is a region, not one atmosphere.",
+        "pressure": "Not applicable",
+        "note": "Individual bodies have different thermal and atmospheric conditions.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/kuiper-belt/facts/"
+      }
+    },
+    "oort-cloud": {
+      "temperature": {
+        "kind": "not applicable",
+        "note": "A population of objects at different distances; no single regional surface temperature.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/oort-cloud/facts/"
+      },
+      "atmosphere": {
+        "kind": "Not applicable",
+        "composition": "This is a region, not one atmosphere.",
+        "pressure": "Not applicable",
+        "note": "Individual bodies have different thermal and atmospheric conditions.",
+        "sourceUrl": "https://science.nasa.gov/solar-system/oort-cloud/facts/"
+      }
+    }
+  }
+}

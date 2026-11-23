@@ -8,9 +8,11 @@ import type { IntelligenceDocument, IntelligenceDocumentPage } from './domain/in
 import { buildRegionalDossiers } from './analysis/regionalIntelligence'
 import { OperationsWorkspace } from './components/OperationsWorkspace'
 import { loadWorkspace, saveWorkspace, type WorkspaceState, type WorkspaceView } from './domain/workspace'
+import { filterEarthFeed, loadEarthFeedMode, saveEarthFeedMode, type EarthFeedMode } from './domain/earthFeed'
 import { SolarSystemNavigator } from './components/SolarSystemNavigator'
 
 function App() {
+  const [earthFeedMode,setEarthFeedMode] = useState<EarthFeedMode>(loadEarthFeedMode)
   const [observations, setObservations] = useState<IntelligenceDocument[]>([])
   const [selectedId, setSelectedId] = useState<string>()
   const [selectedRegionId, setSelectedRegionId] = useState<string>()
@@ -45,7 +47,9 @@ function App() {
   }, [load, applyPage])
   useEffect(() => saveWorkspace(workspace), [workspace])
   const select = useCallback((document: IntelligenceDocument) => setSelectedId(document.document_id), [])
-  const dossiers = useMemo(() => buildRegionalDossiers(observations), [observations])
+  const earthObservations = useMemo(() => filterEarthFeed(observations,earthFeedMode), [observations,earthFeedMode])
+  const setEarthMode = (mode:EarthFeedMode) => { setEarthFeedMode(mode);saveEarthFeedMode(mode);setSelectedId(undefined);setSelectedRegionId(undefined) }
+  const dossiers = useMemo(() => buildRegionalDossiers(earthObservations), [earthObservations])
   const selectedRegion = dossiers.find(item => item.region.id === selectedRegionId)
 
   return (
@@ -64,8 +68,8 @@ function App() {
 
         <main className="app-main" aria-label="Operational globe workspace">
           {activeView === 'globe' ? <div className="operational-workspace">
-            <OverwatchGlobe observations={observations} dossiers={dossiers} selectedId={selectedId} selectedRegionId={selectedRegionId} onSelect={select} onSelectRegion={dossier => setSelectedRegionId(dossier.region.id)} />
-            <ObservationFeed observations={observations} selectedId={selectedId} selectedRegion={selectedRegion} loading={loading} error={error} onSelect={select} onCloseRegion={() => setSelectedRegionId(undefined)} onRefresh={() => void load()} />
+            <OverwatchGlobe observations={earthObservations} dossiers={dossiers} selectedId={selectedId} selectedRegionId={selectedRegionId} onSelect={select} onSelectRegion={dossier => setSelectedRegionId(dossier.region.id)} />
+            <ObservationFeed observations={earthObservations} allObservations={observations} earthFeedMode={earthFeedMode} onEarthFeedModeChange={setEarthMode} selectedId={selectedId} selectedRegion={selectedRegion} loading={loading} error={error} onSelect={select} onCloseRegion={() => setSelectedRegionId(undefined)} onRefresh={() => void load()} />
           </div> : activeView === 'system' ? <SolarSystemNavigator observations={observations} onOpenEarth={() => setActiveView('globe')} onRefresh={() => void load()} loading={loading} error={error} /> : <OperationsWorkspace view={activeView} observations={observations} selectedId={selectedId} workspace={workspace} onChange={setWorkspace} onBack={() => setActiveView('globe')} />}
         </main>
       </div>

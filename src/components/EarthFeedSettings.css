@@ -1,0 +1,11 @@
+.earth-feed-settings { margin:10px 0; padding:10px; border:1px solid #33455b; border-radius:7px; background:#101b29; font-size:.8rem; }
+.earth-feed-settings summary { cursor:pointer; color:#c5e4fb; line-height:1.5; }
+.earth-feed-settings fieldset { margin:12px 0; border:0; padding:0; }
+.earth-feed-settings legend { margin-bottom:8px; color:#a7bacf; }
+.earth-feed-settings label { display:flex; align-items:center; gap:8px; padding:7px 0; }
+.earth-feed-settings label small { margin-left:auto; }
+.earth-feed-settings p { margin:8px 0 0; color:#96acc5; line-height:1.5; }
+
+.regional-feed-wrapper { display:flex; flex-direction:column; min-height:0; height:100%; overflow:hidden; }
+.regional-feed-wrapper>.earth-feed-settings { flex-shrink:0; }
+.regional-feed-wrapper>.observation-panel { flex:1; min-height:0; }

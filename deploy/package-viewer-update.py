@@ -2,8 +2,8 @@ from pathlib import Path
 import hashlib,json,struct,shutil,argparse
 app=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
-parser.add_argument('--bundle-name',choices=['viewer-update','profile-update'],default='viewer-update')
-parser.add_argument('--installer',choices=['install-viewer-update.sh','install-profile-update.sh'],default='install-viewer-update.sh')
+parser.add_argument('--bundle-name',choices=['viewer-update','profile-update','world-update'],default='viewer-update')
+parser.add_argument('--installer',choices=['install-viewer-update.sh','install-profile-update.sh','install-world-update.sh'],default='install-viewer-update.sh')
 args=parser.parse_args()
 out=app/'release'/args.bundle_name;out.mkdir(parents=True,exist_ok=True)
 files=[p for d in ['build/electron','dist'] for p in (app/d).rglob('*') if p.is_file()]+[app/'package.json']
