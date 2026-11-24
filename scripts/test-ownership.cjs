@@ -39,11 +39,12 @@ if (isLikelyOverwatchProcess(amb, repoRoot)) {
 
 // machine-readable lsof (-Fn) parsing check
 const { parseLsofFnOutput } = require('./lifecycle-utils.cjs')
-const sample = 'p14996\nn/Users/andrewpope/Desktop/overwatch repo/overwatch\n'
+const expectedCwd = path.join(repoRoot, 'path with spaces')
+const sample = `p14996\nn${expectedCwd}\n`
 const parsed = parseLsofFnOutput(sample)
-if (parsed !== path.join(repoRoot)) {
+if (parsed !== expectedCwd) {
   console.error('FAIL: parseLsofFnOutput did not return expected path')
-  console.error('got:', parsed, 'expected:', path.join(repoRoot))
+  console.error('got:', parsed, 'expected:', expectedCwd)
   process.exit(2)
 } else {
   console.log('OK: parseLsofFnOutput handles machine-readable cwd with spaces')

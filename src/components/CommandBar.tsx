@@ -1,26 +1,21 @@
 // Restored from stash and adapted to use application dispatch boundary
 import { useAppDispatch } from '../state/provider'
 import type { AppCommand } from '../domain/commands'
+import type { WorkspaceView } from '../domain/workspace'
 
-export function CommandBar() {
+export function CommandBar({ active, onNavigate }: { active: WorkspaceView; onNavigate(view: WorkspaceView): void }) {
   const dispatch = useAppDispatch()
 
   const buildHandler = (cmd: AppCommand) => () => {
     // Emit typed application intent through the dispatch boundary
     dispatch(cmd)
+    onNavigate(cmd.type)
   }
 
   return (
     <nav className="command-bar" role="toolbar" aria-label="Command Bar">
-      <button className="cmd-btn" onClick={buildHandler({ type: 'search' })}>Search</button>
-      <button className="cmd-btn" onClick={buildHandler({ type: 'dossiers' })}>Dossiers</button>
-      <button className="cmd-btn" onClick={buildHandler({ type: 'events' })}>Events</button>
-      <button className="cmd-btn" onClick={buildHandler({ type: 'watches' })}>Watches</button>
-      <button className="cmd-btn" onClick={buildHandler({ type: 'alerts' })}>Alerts</button>
-      <button className="cmd-btn" onClick={buildHandler({ type: 'briefings' })}>Briefings</button>
-      <button className="cmd-btn" onClick={buildHandler({ type: 'sources' })}>Sources</button>
-      <button className="cmd-btn" onClick={buildHandler({ type: 'layers' })}>Layers</button>
-      <button className="cmd-btn" onClick={buildHandler({ type: 'settings' })}>Settings</button>
+      {(['system','search','dossiers','events','watches','alerts','briefings','sources','layers','settings'] as const).map(type =>
+        <button key={type} className={`cmd-btn ${active === type ? 'active' : ''}`} aria-pressed={active === type} onClick={buildHandler({ type })}>{type[0].toUpperCase() + type.slice(1)}</button>)}
     </nav>
   )
 }

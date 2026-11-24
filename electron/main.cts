@@ -1,5 +1,11 @@
-import { app, BrowserWindow, shell } from 'electron'
+import { app, BrowserWindow, ipcMain, protocol, shell } from 'electron'
+import fs from 'node:fs'
 import path from 'node:path'
+
+protocol.registerSchemesAsPrivileged([{
+  scheme: 'overwatch',
+  privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true },
+}])
 
 // Ensure single-instance behavior in the desktop runtime. Minimal and
 // independent lifecycle protection: if another instance controls the app,
@@ -23,6 +29,91 @@ const devServerUrl = process.env.VITE_DEV_SERVER_URL
 
 let mainWindow: BrowserWindow | null = null
 
+const rendererRoot = path.join(__dirname, '..', '..', 'dist')
+const rendererContentTypes: Record<string, string> = {
+  '.css': 'text/css; charset=utf-8',
+  '.gif': 'image/gif',
+  '.html': 'text/html; charset=utf-8',
+  '.jpeg': 'image/jpeg',
+  '.jpg': 'image/jpeg',
+  '.js': 'application/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.ktx2': 'application/octet-stream',
+  '.png': 'image/png',
+  '.svg': 'image/svg+xml',
+  '.wasm': 'application/wasm',
+  '.webp': 'image/webp',
+  '.xml': 'application/xml; charset=utf-8',
+}
+
+function installRendererProtocol() {
+  protocol.handle('overwatch', request => {
+    const url = new URL(request.url)
+    if (url.hostname !== 'app') return new Response('Not found', { status: 404 })
+    const relativePath = decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname)
+    const assetPath = path.resolve(rendererRoot, `.${relativePath}`)
+    if (!assetPath.startsWith(`${rendererRoot}${path.sep}`)) return new Response('Not found', { status: 404 })
+    try {
+      const body = fs.readFileSync(assetPath)
+      return new Response(body, { headers: { 'Content-Type': rendererContentTypes[path.extname(assetPath).toLowerCase()] ?? 'application/octet-stream' } })
+    } catch {
+      return new Response('Not found', { status: 404 })
+    }
+  })
+}
+
+interface ProviderConfig { providerUrl?: string; tokenFile?: string }
+function localProviderConfig(): ProviderConfig {
+  const paths = [
+    path.join(app.getPath('userData'), 'provider.json'),
+    path.resolve(path.dirname(app.getPath('exe')), '..', '..', '..', 'Overwatch.provider.json'),
+  ]
+  for (const configPath of paths) {
+    try {
+      const parsed: unknown = JSON.parse(fs.readFileSync(configPath, 'utf8'))
+      if (!parsed || typeof parsed !== 'object') continue
+      const config = parsed as Record<string, unknown>
+      return {
+        providerUrl: typeof config.providerUrl === 'string' ? config.providerUrl : undefined,
+        tokenFile: typeof config.tokenFile === 'string' ? config.tokenFile : undefined,
+      }
+    } catch { /* Try the next local configuration location. */ }
+  }
+  return {}
+}
+const localConfig = localProviderConfig()
+const providerBaseUrl = process.env.MAYDAY_INTELLIGENCE_PROVIDER_URL
+  || app.commandLine.getSwitchValue('mayday-provider-url') || localConfig.providerUrl
+const providerTokenFile = app.commandLine.getSwitchValue('mayday-provider-token-file') || localConfig.tokenFile
+const providerToken = process.env.MAYDAY_INTELLIGENCE_PROVIDER_TOKEN
+  || (providerTokenFile ? fs.readFileSync(providerTokenFile, 'utf8').trim() : '')
+
+function configuredProviderUrl() {
+  if (!providerBaseUrl || !providerToken) throw new Error('Mayday Intelligence provider is not configured')
+  const url = new URL(providerBaseUrl)
+  if (url.protocol !== 'https:' && !['127.0.0.1', 'localhost', '::1'].includes(url.hostname)) {
+    throw new Error('Mayday Intelligence provider must use HTTPS or a loopback tunnel')
+  }
+  return new URL('documents?limit=100', `${url.toString().replace(/\/$/, '')}/`)
+}
+
+ipcMain.handle('intelligence:list-observations', async () => {
+  const response = await fetch(configuredProviderUrl(), {
+    headers: { Authorization: `Bearer ${providerToken}`, Accept: 'application/json' },
+    signal: AbortSignal.timeout(10_000),
+  })
+  if (!response.ok) throw new Error(`Mayday Intelligence returned HTTP ${response.status}`)
+  const payload: unknown = await response.json()
+  if (!payload || typeof payload !== 'object' || !Array.isArray((payload as { items?: unknown }).items)) {
+    throw new Error('Mayday Intelligence returned an invalid document page')
+  }
+  const items = (payload as { items: unknown[] }).items
+  if (items.some(item => !item || typeof item !== 'object' || (item as { protocol_version?: unknown }).protocol_version !== 'mayday.intelligence.document/1')) {
+    throw new Error('Mayday Intelligence returned an unsupported document contract')
+  }
+  return payload
+})
+
 function createMainWindow() {
   mainWindow = new BrowserWindow({
     width: 1600,
@@ -41,7 +132,8 @@ function createMainWindow() {
   })
 
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-    void shell.openExternal(url)
+    const parsed = new URL(url)
+    if (parsed.protocol === 'https:' || parsed.protocol === 'http:') void shell.openExternal(url)
 
     return { action: 'deny' }
   })
@@ -49,8 +141,7 @@ function createMainWindow() {
   if (devServerUrl) {
     void mainWindow.loadURL(devServerUrl)
   } else {
-    const rendererEntryPath = path.join(__dirname, '..', '..', 'dist', 'index.html')
-    void mainWindow.loadFile(rendererEntryPath)
+    void mainWindow.loadURL('overwatch://app/')
   }
 
   mainWindow.on('closed', () => {
@@ -65,6 +156,7 @@ app.on('window-all-closed', () => {
 })
 
 void app.whenReady().then(() => {
+  installRendererProtocol()
   createMainWindow()
 
   app.on('activate', () => {
