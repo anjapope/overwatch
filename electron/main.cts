@@ -6,6 +6,13 @@ import { readObservationCache, writeObservationCache } from './observation-store
 import os from 'node:os'
 import { createPlanetaryProxy } from './planetary-proxy.cjs'
 
+const softwareRendering = process.env.OVERWATCH_SWIFTSHADER === '1'
+if (softwareRendering) {
+  app.commandLine.appendSwitch('use-gl', 'angle')
+  app.commandLine.appendSwitch('use-angle', 'swiftshader')
+  app.commandLine.appendSwitch('enable-unsafe-swiftshader')
+}
+
 protocol.registerSchemesAsPrivileged([{
   scheme: 'overwatch',
   privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true },
@@ -183,10 +190,14 @@ function createMainWindow() {
 
   const diagnosticLog = path.join(app.getPath('userData'), 'diagnostics.log')
   const appendDiagnostic = (message: string) => {
-    fs.appendFileSync(diagnosticLog, `${new Date().toISOString()} ${message}\n`, { mode: 0o600 })
+    try {
+      fs.appendFileSync(diagnosticLog, `${new Date().toISOString()} ${message}\n`, { mode: 0o600 })
+    } catch (error) {
+      console.warn('Could not write Overwatch diagnostics', error)
+    }
   }
-  mainWindow.webContents.on('console-message', (_event, level, message, line, sourceId) => {
-    appendDiagnostic(`renderer:${level} ${message} (${sourceId}:${line})`)
+  mainWindow.webContents.on('console-message', ({ level, message, lineNumber, sourceId }) => {
+    appendDiagnostic(`renderer:${level} ${message} (${sourceId}:${lineNumber})`)
   })
   mainWindow.webContents.on('did-fail-load', (_event, code, description, validatedURL) => {
     appendDiagnostic(`load-failed:${code} ${description} ${validatedURL}`)
@@ -194,13 +205,27 @@ function createMainWindow() {
   mainWindow.webContents.on('render-process-gone', (_event, details) => {
     appendDiagnostic(`renderer-gone:${details.reason} exit=${details.exitCode}`)
   })
-  mainWindow.webContents.on('did-finish-load', () => {
-    void mainWindow?.webContents.executeJavaScript(`(() => {
+  const contents = mainWindow.webContents
+  contents.on('did-finish-load', () => {
+    appendDiagnostic(`gpu-mode ${softwareRendering ? 'swiftshader' : 'chromium-default'}`)
+    appendDiagnostic(`gpu-features ${JSON.stringify(app.getGPUFeatureStatus())}`)
+    void app.getGPUInfo('complete').then(
+      info => appendDiagnostic(`gpu-info ${JSON.stringify(info)}`),
+      error => appendDiagnostic(`gpu-diagnostic-error ${String(error)}`),
+    )
+    void contents.executeJavaScript(`(() => {
       const container = document.querySelector('.globe-container');
       const canvas = container?.querySelector('canvas');
       const rect = container?.getBoundingClientRect();
-      return { href: location.href, container: rect ? { width: rect.width, height: rect.height, children: container?.childElementCount } : null, canvas: canvas ? { width: canvas.width, height: canvas.height } : null, webgl2: !!document.createElement('canvas').getContext('webgl2') };
-    })()`).then(result => appendDiagnostic(`renderer-ready ${JSON.stringify(result)}`), reason => appendDiagnostic(`diagnostic-failed ${String(reason)}`))
+      const gl = document.createElement('canvas').getContext('webgl2');
+      const debug = gl?.getExtension('WEBGL_debug_renderer_info');
+      const result = { href: location.href, container: rect ? { width: rect.width, height: rect.height, children: container?.childElementCount } : null, canvas: canvas ? { width: canvas.width, height: canvas.height } : null, webgl2: Boolean(gl), webglVendor: debug ? gl.getParameter(debug.UNMASKED_VENDOR_WEBGL) : null, webglRenderer: debug ? gl.getParameter(debug.UNMASKED_RENDERER_WEBGL) : null };
+      gl?.getExtension('WEBGL_lose_context')?.loseContext();
+      return result;
+    })()`).then(
+      result => appendDiagnostic(`renderer-ready ${JSON.stringify(result)}`),
+      error => appendDiagnostic(`diagnostic-failed ${String(error)}`),
+    )
   })
 
   if (devServerUrl) {

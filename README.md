@@ -99,3 +99,16 @@ Sources:
 - https://trek.nasa.gov/
 - https://developers.arcgis.com/javascript/latest/sample-code/mars/
 - https://astro.arcgis.com/arcgis/rest/services/OnMars/MDEM200M/ImageServer
+
+### Desktop graphics
+
+Overwatch uses Chromium's default hardware acceleration. For a desktop startup
+with software WebGL, set `OVERWATCH_SWIFTSHADER=1` when launching Overwatch.
+This opts in to SwiftShader and its reduced WebGL security guarantees. Remove
+the variable and any legacy SwiftShader launcher flags to restore normal GPU
+selection.
+
+The desktop profile's `diagnostics.log` records the WebGL renderer, Chromium GPU
+information and feature status after the renderer loads. When launching with
+`--user-data-dir`, look for the log in that directory. The requested graphics
+mode and the actual WebGL renderer are logged separately.
