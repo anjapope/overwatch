@@ -207,6 +207,12 @@ function createMainWindow() {
   })
   const contents = mainWindow.webContents
   contents.on('did-finish-load', () => {
+    appendDiagnostic(`gpu-mode ${softwareRendering ? 'swiftshader' : 'chromium-default'}`)
+    appendDiagnostic(`gpu-features ${JSON.stringify(app.getGPUFeatureStatus())}`)
+    void app.getGPUInfo('complete').then(
+      info => appendDiagnostic(`gpu-info ${JSON.stringify(info)}`),
+      error => appendDiagnostic(`gpu-diagnostic-error ${String(error)}`),
+    )
     void contents.executeJavaScript(`(() => {
       const container = document.querySelector('.globe-container');
       const canvas = container?.querySelector('canvas');
@@ -219,16 +225,7 @@ function createMainWindow() {
     })()`).then(
       result => appendDiagnostic(`renderer-ready ${JSON.stringify(result)}`),
       error => appendDiagnostic(`diagnostic-failed ${String(error)}`),
-    ).then(async () => {
-      appendDiagnostic(`gpu-mode ${softwareRendering ? 'swiftshader' : 'chromium-default'}`)
-      try {
-        const info = await app.getGPUInfo('complete')
-        appendDiagnostic(`gpu-info ${JSON.stringify(info)}`)
-      } catch (error) {
-        appendDiagnostic(`gpu-diagnostic-error ${String(error)}`)
-      }
-      appendDiagnostic(`gpu-features ${JSON.stringify(app.getGPUFeatureStatus())}`)
-    })
+    )
   })
 
   if (devServerUrl) {
